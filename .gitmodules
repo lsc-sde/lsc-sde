@@ -33,7 +33,7 @@
 	url = https://github.com/lsc-sde/docker-datascience-nlp.git
 [submodule "docker/octave-notebook"]
 	path = docker/octave-notebook
-	url = https://github.com/lsc-sde/octave-notebook.git
+	url = https://github.com/lsc-sde/docker-octave-notebook.git
 [submodule "docker/cpu-dfu"]
 	path = docker/cpu-dfu
 	url = https://github.com/lsc-sde/docker-cpu-dfu.git
@@ -45,7 +45,11 @@
 	url = https://github.com/lsc-sde/docker-fft-notebook.git
 [submodule "docker/lancuni-grp-prj-2021-notebook"]
 	path = docker/lancuni-grp-prj-2021-notebook
-	url = https://github.com/lsc-sde/lancuni-grp-prj-2021-notebook.git
+	url = https://github.com/lsc-sde/docker-lancuni-grp-prj-2021-notebook.git
 [submodule "docker/scipy-code-server"]
 	path = docker/scipy-code-server
-	url = https://github.com/lsc-sde/scipy-code-server.git
+	url = https://github.com/lsc-sde/docker-scipy-code-server.git
+[submodule "octave-notebook"]
+	url = https://github.com/lsc-sde/docker-octave-notebook.git
+[submodule "scipy-code-server"]
+	url = https://github.com/lsc-sde/docker-scipy-code-server.git
