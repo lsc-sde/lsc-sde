@@ -53,3 +53,6 @@
 	url = https://github.com/lsc-sde/docker-octave-notebook.git
 [submodule "scipy-code-server"]
 	url = https://github.com/lsc-sde/docker-scipy-code-server.git
+[submodule "docker/aks-dns-operator"]
+	path = docker/aks-dns-operator
+	url = https://github.com/lsc-sde/docker-aks-dns-operator.git
