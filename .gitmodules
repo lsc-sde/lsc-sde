@@ -1,0 +1,51 @@
+[submodule "iac/k8s"]
+	path = iac/k8s
+	url = https://github.com/lsc-sde/k8s-iac.git
+[submodule "iac/helm/keda"]
+	path = iac/helm/keda
+	url = https://github.com/lsc-sde/helm-keda.git
+[submodule "iac/helm/nginx"]
+	path = iac/helm/nginx
+	url = https://github.com/lsc-sde/helm-nginx.git
+[submodule "iac/helm/prefect-server"]
+	path = iac/helm/prefect-server
+	url = https://github.com/lsc-sde/helm-prefect-server.git
+[submodule "docker/rstudio-notebook"]
+	path = docker/rstudio-notebook
+	url = https://github.com/lsc-sde/docker-rstudio-notebook.git
+[submodule "docker/datascience-default"]
+	path = docker/datascience-default
+	url = https://github.com/lsc-sde/docker-datascience-default.git
+[submodule "docker/datascience-odbc"]
+	path = docker/datascience-odbc
+	url = https://github.com/lsc-sde/docker-datascience-odbc.git
+[submodule "docker/datascience-notebook"]
+	path = docker/datascience-notebook
+	url = https://github.com/lsc-sde/docker-datascience-notebook.git
+[submodule "docker/datascience-code-server"]
+	path = docker/datascience-code-server
+	url = https://github.com/lsc-sde/docker-datascience-code-server.git
+[submodule "docker/beamtree-rstudio"]
+	path = docker/beamtree-rstudio
+	url = https://github.com/lsc-sde/docker-beamtree-rstudio.git
+[submodule "docker/datascience-nlp"]
+	path = docker/datascience-nlp
+	url = https://github.com/lsc-sde/docker-datascience-nlp.git
+[submodule "docker/octave-notebook"]
+	path = docker/octave-notebook
+	url = https://github.com/lsc-sde/octave-notebook.git
+[submodule "docker/cpu-dfu"]
+	path = docker/cpu-dfu
+	url = https://github.com/lsc-sde/docker-cpu-dfu.git
+[submodule "docker/dfu-jupyterlab"]
+	path = docker/dfu-jupyterlab
+	url = https://github.com/lsc-sde/docker-dfu-jupyterlab.git
+[submodule "docker/fft-notebook"]
+	path = docker/fft-notebook
+	url = https://github.com/lsc-sde/docker-fft-notebook.git
+[submodule "docker/lancuni-grp-prj-2021-notebook"]
+	path = docker/lancuni-grp-prj-2021-notebook
+	url = https://github.com/lsc-sde/lancuni-grp-prj-2021-notebook.git
+[submodule "docker/scipy-code-server"]
+	path = docker/scipy-code-server
+	url = https://github.com/lsc-sde/scipy-code-server.git
