@@ -1,6 +1,9 @@
 on:
   workflow_call:
     inputs:
+      environment: 
+        required: true
+        type: string
       repository:
         required: true
         type: string
@@ -11,7 +14,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: Sandbox
+    environment: ${{ inputs.environment }}
     steps:
     - uses: actions/checkout@v3
 
