@@ -10,6 +10,12 @@ on:
       imageName:
         required: true
         type: string
+      azureKeyvault:
+        required: true
+        type: string
+    secrets:
+      azureCredentials:
+        required: true
           
 jobs:
   build:
@@ -17,27 +23,38 @@ jobs:
     environment: ${{ inputs.environment }}
     steps:
     - uses: actions/checkout@v3
+    
+    - uses: Azure/login@v1
+      with:
+        creds: ${{ secrets.AZURECREDENTIALS }} 
+        
+    - uses: Azure/get-keyvault-secrets@v1
+      with:
+        keyvault: ${{ vars.AZUREKEYVAULT }}
+        secrets: 'AZ-CONTAINER-REGISTRY,AZ-SERVICE-PRINCIPAL,AZ-SERVICE-PRINCIPAL-PASSWORD,AZ-TENANT-ID,ENVIRONMENT-TAG,PAT-TOKEN'  # comma separated list of secret keys that need to be fetched from the Key Vault 
+      id: keyvaultSecrets
+
     - name: 'Echo environmental variables'
       run: |
-        echo "AZ_TENANT_ID=${{ vars.az_tenant_id }}"
-        echo "AZ_SERVICE_PRINCIPAL=${{ vars.az_service_principal }}"
-        echo "AZ_CONTAINER_REGISTRY=${{ vars.az_container_registry }}"
+        echo "AZ_TENANT_ID=${{ steps.keyvaultSecrets.outputs.AZ_TENANT_ID }}"
+        echo "AZ_SERVICE_PRINCIPAL=${{ steps.keyvaultSecrets.outputs.AZ_SERVICE_PRINCIPAL }}"
+        echo "AZ_CONTAINER_REGISTRY=${{ steps.keyvaultSecrets.outputs.AZ_CONTAINER_REGISTRY }}"
 
     - name: Azure Container Registry Build
       uses: Azure/acr-build@v1
       with:
         # Service Principal with Contributor role on the ACR
-        service_principal: ${{ vars.az_service_principal }} 
+        service_principal: ${{ steps.keyvaultSecrets.outputs.AZ_SERVICE_PRINCIPAL }} 
         # Service Principal password
-        service_principal_password: ${{ secrets.az_service_principal_password }}
+        service_principal_password: ${{ steps.keyvaultSecrets.outputs.AZ_SERVICE_PRINCIPAL_PASSWORD }}
         # Azure Container Registry tenant
-        tenant: ${{ vars.az_tenant_id }}
+        tenant: ${{ steps.keyvaultSecrets.outputs.AZ_TENANT_ID }}
         # The name of the ACR, minus the .azurecr.io
-        registry: ${{ vars.az_container_registry }}
+        registry: ${{ steps.keyvaultSecrets.outputs.AZ_CONTAINER_REGISTRY }}
         # Repository to use
         repository: ${{ inputs.repository }}
         # Github access token for private repositories
-        git_access_token: ${{ secrets.pat_token }}
+        git_access_token: ${{ steps.keyvaultSecrets.outputs.PAT_TOKEN }}
         # Docker image name
         image: ${{ inputs.imageName }} # optional
         # Docker image tag, default to the commit SHA
@@ -49,11 +66,11 @@ jobs:
     - name: 'Docker Login'
       uses: azure/docker-login@v1
       with:
-        login-server: '${{ vars.az_container_registry }}.azurecr.io'
-        username: ${{ vars. az_service_principal }}
-        password: ${{ secrets.az_service_principal_password }}
+        login-server: '${{ steps.keyvaultSecrets.outputs.AZ_CONTAINER_REGISTRY }}.azurecr.io'
+        username: ${{ steps.keyvaultSecrets.outputs.AZ_SERVICE_PRINCIPAL }}
+        password: ${{ steps.keyvaultSecrets.outputs.AZ_SERVICE_PRINCIPAL_PASSWORD }}
     - name: 'Tag and push'
       run: |
-        docker image pull "${{ vars.az_container_registry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ github.sha }}"
-        docker image tag "${{ vars.az_container_registry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ github.sha }}" "${{ vars.az_container_registry }}.azurecr.io/operators/aks-dns-operator:${{ vars.environment_tag }}"
-        docker image push "${{ vars.az_container_registry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ vars.environment_tag }}"
+        docker image pull "${{ steps.keyvaultSecrets.outputs.AZ_CONTAINER_REGISTRY }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ github.sha }}"
+        docker image tag "${{ steps.keyvaultSecrets.outputs.AZ_CONTAINER_REGISTRY }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ github.sha }}" "${{ vars.az_container_registry }}.azurecr.io/operators/aks-dns-operator:${{ vars.environment_tag }}"
+        docker image push "${{ steps.keyvaultSecrets.outputs.AZ_CONTAINER_REGISTRY }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ steps.keyvaultSecrets.outputs.ENVIRONMENT_TAG }}"
