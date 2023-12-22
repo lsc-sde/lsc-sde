@@ -17,6 +17,11 @@ jobs:
     environment: ${{ inputs.environment }}
     steps:
     - uses: actions/checkout@v3
+    - name: 'Echo environmental variables'
+      run: |
+        echo "AZ_TENANT_ID=${{ vars.az_tenant_id }}"
+        echo "AZ_SERVICE_PRINCIPAL=${{ vars.az_service_principal }}"
+        echo "AZ_CONTAINER_REGISTRY=${{ vars.az_container_registry }}"
 
     - name: Azure Container Registry Build
       uses: Azure/acr-build@v1
