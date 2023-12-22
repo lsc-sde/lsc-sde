@@ -1,0 +1,51 @@
+on:
+  workflow_call:
+    inputs:
+      repository:
+        required: true
+        type: string
+      imageName:
+        required: true
+        type: string
+          
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: Sandbox
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Azure Container Registry Build
+      uses: Azure/acr-build@v1
+      with:
+        # Service Principal with Contributor role on the ACR
+        service_principal: ${{ vars.az_service_principal }} 
+        # Service Principal password
+        service_principal_password: ${{ secrets.az_service_principal_password }}
+        # Azure Container Registry tenant
+        tenant: ${{ vars.az_tenant_id }}
+        # The name of the ACR, minus the .azurecr.io
+        registry: ${{ vars.az_container_registry }}
+        # Repository to use
+        repository: ${{ inputs.repository }}
+        # Github access token for private repositories
+        git_access_token: ${{ secrets.pat_token }}
+        # Docker image name
+        image: ${{ inputs.imageName }} # optional
+        # Docker image tag, default to the commit SHA
+        branch: main # optional
+        # The folder in the Github repo that holds the source
+        folder: ./
+        tag: ${{ github.sha }}
+
+    - name: 'Docker Login'
+      uses: azure/docker-login@v1
+      with:
+        login-server: '${{ vars.az_container_registry }}.azurecr.io'
+        username: ${{ vars. az_service_principal }}
+        password: ${{ secrets.az_service_principal_password }}
+    - name: 'Tag and push'
+      run: |
+        docker image pull "${{ vars.az_container_registry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ github.sha }}"
+        docker image tag "${{ vars.az_container_registry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ github.sha }}" "${{ vars.az_container_registry }}.azurecr.io/operators/aks-dns-operator:${{ vars.environment_tag }}"
+        docker image push "${{ vars.az_container_registry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ vars.environment_tag }}"
