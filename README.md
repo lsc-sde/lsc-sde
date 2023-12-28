@@ -1,5 +1,13 @@
 # lsc-sde
 This is the default repository for the Secure Data Environment
 
+To checkout the repositories, run the following command in the integrated terminal:
+
+```bash
+git clone https://github.com/lsc-sde/lsc-sde.git --recurse-submodules
+cd lsc-sde
+git submodule foreach "git switch main"
+```
+
 * [Docker Images](./docker/)
 * [Infrastructure-as-code](./iac/)
