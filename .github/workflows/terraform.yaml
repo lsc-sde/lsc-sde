@@ -6,7 +6,7 @@ on:
         type: string
       action:
         required: true
-        type: string
+        type: choice
         options:
         - apply
         - destroy
