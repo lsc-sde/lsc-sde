@@ -4,6 +4,12 @@ on:
       workingDirectory: 
         required: true
         type: string
+      action:
+        required: true
+        type: string
+        options:
+        - apply
+        - destroy
     secrets:
       azureCredentials:
         required: true
@@ -35,7 +41,7 @@ jobs:
         export ARM_SUBSCRIPTION_ID=$(echo $AZ_CREDENTIALS | jq '.subscriptionId' -r)
         terraform init
 
-    - name: 'terraform apply'
+    - name: 'terraform ${{ inputs.action }}'
       working-directory: ${{ inputs.workingDirectory }}
       run: |
         AZ_CREDENTIALS=$(cat <<EOF
@@ -48,4 +54,4 @@ jobs:
         export ARM_TENANT_ID=$(echo $AZ_CREDENTIALS | jq '.tenantId' -r)
         export ARM_SUBSCRIPTION_ID=$(echo $AZ_CREDENTIALS | jq '.subscriptionId' -r)
         
-        terraform apply -auto-approve
+        terraform ${{ inputs.action }} -auto-approve
