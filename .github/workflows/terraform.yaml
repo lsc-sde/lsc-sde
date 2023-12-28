@@ -6,10 +6,7 @@ on:
         type: string
       action:
         required: true
-        type: choice
-        options:
-        - apply
-        - destroy
+        type: string
     secrets:
       azureCredentials:
         required: true
