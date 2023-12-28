@@ -1,0 +1,51 @@
+on:
+  workflow_call:
+    inputs:
+      workingDirectory: 
+        required: true
+        type: string
+    secrets:
+      azureCredentials:
+        required: true
+          
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: Azure/login@v1
+      with:
+        creds: ${{ secrets.azureCredentials }} 
+    
+    - name: HashiCorp - Setup Terraform
+      uses: hashicorp/setup-terraform@v2.0.3
+    
+    - name: 'terraform init'
+      working-directory: ${{ inputs.workingDirectory }}
+      run: |
+        AZ_CREDENTIALS=$(cat <<EOF
+        ${{ secrets.azureCredentials }}
+        EOF)
+        export ARM_CLIENT_ID=$(echo $AZ_CREDENTIALS | jq '.clientId' -r)
+        echo "ARM_CLIENT_ID: ${ARM_CLIENT_ID}"
+
+        export ARM_CLIENT_SECRET=$(echo $AZ_CREDENTIALS | jq '.clientSecret' -r)
+        export ARM_TENANT_ID=$(echo $AZ_CREDENTIALS | jq '.tenantId' -r)
+        export ARM_SUBSCRIPTION_ID=$(echo $AZ_CREDENTIALS | jq '.subscriptionId' -r)
+        terraform init
+
+    - name: 'terraform apply'
+      working-directory: ${{ inputs.workingDirectory }}
+      run: |
+        AZ_CREDENTIALS=$(cat <<EOF
+        ${{ secrets.azureCredentials }}
+        EOF)
+        export ARM_CLIENT_ID=$(echo $AZ_CREDENTIALS | jq '.clientId' -r)
+        echo "ARM_CLIENT_ID: ${ARM_CLIENT_ID}"
+
+        export ARM_CLIENT_SECRET=$(echo $AZ_CREDENTIALS | jq '.clientSecret' -r)
+        export ARM_TENANT_ID=$(echo $AZ_CREDENTIALS | jq '.tenantId' -r)
+        export ARM_SUBSCRIPTION_ID=$(echo $AZ_CREDENTIALS | jq '.subscriptionId' -r)
+        
+        terraform apply -auto-approve
