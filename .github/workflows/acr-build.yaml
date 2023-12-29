@@ -1,6 +1,10 @@
 on:
   workflow_call:
     inputs:
+      folder:
+        required: true
+        type: string
+        default: ./
       repository:
         required: true
         type: string
@@ -56,7 +60,7 @@ jobs:
         # Docker image tag, default to the commit SHA
         branch: main # optional
         # The folder in the Github repo that holds the source
-        folder: ./
+        folder: ${{ inputs.folder }}
         tag: ${{ github.sha }}
 
     - name: 'Docker Login'
