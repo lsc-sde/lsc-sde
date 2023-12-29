@@ -56,3 +56,6 @@
 [submodule "docker/aks-dns-operator"]
 	path = docker/aks-dns-operator
 	url = https://github.com/lsc-sde/docker-aks-dns-operator.git
+[submodule "iac/helm/jupyter"]
+	path = iac/helm/jupyter
+	url = https://github.com/lsc-sde/helm-jupyter.git
