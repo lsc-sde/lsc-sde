@@ -13,9 +13,6 @@
 [submodule "docker/rstudio-notebook"]
 	path = docker/rstudio-notebook
 	url = https://github.com/lsc-sde/docker-rstudio-notebook.git
-[submodule "docker/datascience-default"]
-	path = docker/datascience-default
-	url = https://github.com/lsc-sde/docker-datascience-default.git
 [submodule "docker/datascience-odbc"]
 	path = docker/datascience-odbc
 	url = https://github.com/lsc-sde/docker-datascience-odbc.git
