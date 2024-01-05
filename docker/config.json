@@ -1,0 +1,46 @@
+{
+    "images" : [
+        {
+            "name" : "aks-dns-operator",
+            "category" : "controllers"
+        },
+        {
+            "name" : "cpu-dfu",
+            "category" : "data-science"
+        },
+        {
+            "name" : "datascience-nlp",
+            "category" : "data-science"
+        },
+        {
+            "name" : "datascience-notebook",
+            "category" : "data-science"
+        },
+        {
+            "name" : "datascience-odbc",
+            "category" : "data-science"
+        },  
+        {
+            "name" : "rstudio-notebook",
+            "category" : "data-science"
+        },  
+        {
+            "name" : "fft-notebook",
+            "category" : "data-science"
+        },  
+        {
+            "name" : "datascience-code-server",
+            "baseImage" : "datascience-notebook",
+            "category" : "data-science"
+        },
+        {
+            "name" : "octave-notebook",
+            "baseImage" : "datascience-notebook",
+            "category" : "data-science"
+        },
+        {
+            "name" : "scipy-code-server",
+            "category" : "data-science"
+        }
+    ]
+}
