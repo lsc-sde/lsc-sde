@@ -56,3 +56,12 @@
 [submodule "iac/helm/jupyter"]
 	path = iac/helm/jupyter
 	url = https://github.com/lsc-sde/helm-jupyter.git
+[submodule "iac/flux/keda"]
+	path = iac/flux/keda
+	url = https://github.com/lsc-sde/iac-flux-keda.git
+[submodule "iac/flux/nginx"]
+	path = iac/flux/nginx
+	url = https://github.com/lsc-sde/iac-flux-nginx.git
+[submodule "iac/flux/prefect-server"]
+	path = iac/flux/prefect-server
+	url = https://github.com/lsc-sde/iac-flux-prefect-server.git
