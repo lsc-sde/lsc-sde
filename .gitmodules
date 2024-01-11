@@ -65,3 +65,6 @@
 [submodule "iac/flux/prefect-server"]
 	path = iac/flux/prefect-server
 	url = https://github.com/lsc-sde/iac-flux-prefect-server.git
+[submodule "iac/flux/certmanager"]
+	path = iac/flux/certmanager
+	url = https://github.com/lsc-sde/iac-flux-certmanager.git
