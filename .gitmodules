@@ -68,3 +68,6 @@
 [submodule "iac/flux/certmanager"]
 	path = iac/flux/certmanager
 	url = https://github.com/lsc-sde/iac-flux-certmanager.git
+[submodule "iac/flux/jupyter"]
+	path = iac/flux/jupyter
+	url = https://github.com/lsc-sde/iac-flux-jupyter.git
