@@ -1,4 +1,2 @@
 # Helm Charts
-* [nginx](./nginx/)
-* [keda](./keda/)
-* [prefect-server](./prefect-server/)
+* [github-actions-runner](./github-actions-runner/)
