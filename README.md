@@ -12,4 +12,4 @@ git submodule foreach "git switch main"
 * [Docker Images](./docker/)
 * [Helm Charts](./iac/helm/)
 * [Flux Charts](./iac/flux/)
-* [Infrastructure-as-code](./iac/)
+* [Terraform](./iac/k8s/)
