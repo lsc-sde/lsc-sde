@@ -16,6 +16,9 @@ on:
       azureTenantId:
         required: true
         type: string
+      azureContainerRegistry:
+        required: true
+        type: string
       folder:
         required: false
         type: string
@@ -28,7 +31,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: 'install azure cli'
-      working-directory: ${{ inputs.workingDirectory }}
+      working-directory: ${{ inputs.folder }}
       run: |
         apt-get update
         apt-get install ca-certificates curl apt-transport-https lsb-release gnupg -y
@@ -39,4 +42,14 @@ jobs:
         echo "deb [arch=`dpkg --print-architecture` signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ $AZ_DIST main" | tee /etc/apt/sources.list.d/azure-cli.list
         apt-get update
         apt-get install azure-cli -y
+        
+    - name: 'login to azure'
+      working-directory: ${{ inputs.folder }}
+      run: |
+        az login --identity --username ${{ inputs.azureClientId }}
+        
+    - name: 'login to azure container registry'
+      working-directory: ${{ inputs.folder }}
+      run: |
+        az acr login -n ${{ inputs.azureContainerRegistry }}
         
