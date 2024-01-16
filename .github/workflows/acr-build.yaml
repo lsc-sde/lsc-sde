@@ -10,10 +10,6 @@ on:
       azureKeyvault:
         required: true
         type: string
-      runsOnGroup:
-        required: false
-        type: string
-        default: github-actions-runner-k8s
       folder:
         required: false
         type: string
@@ -24,8 +20,7 @@ on:
           
 jobs:
   build:
-    runs-on: 
-      group: ${{ inputs.RUNSONGROUP }}
+    runs-on: [linux, self-hosted]
     steps:
     - uses: actions/checkout@v3
     
