@@ -71,3 +71,6 @@
 [submodule "iac/flux/jupyter"]
 	path = iac/flux/jupyter
 	url = https://github.com/lsc-sde/iac-flux-jupyter.git
+[submodule "iac/helm/github-actions-runner"]
+	path = iac/helm/github-actions-runner
+	url = https://github.com/lsc-sde/iac-helm-github-actions-runner.git
