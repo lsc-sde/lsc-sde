@@ -10,6 +10,15 @@ on:
       azureKeyvault:
         required: true
         type: string
+      azureClientId:
+        required: true
+        type: string
+      azureSubscriptionId:
+        required: true
+        type: string
+      azureTenantId:
+        required: true
+        type: string
       folder:
         required: false
         type: string
@@ -26,51 +35,8 @@ jobs:
     
     - uses: Azure/login@v1
       with:
-        creds: ${{ secrets.AZURECREDENTIALS }} 
-        
-    - uses: Azure/get-keyvault-secrets@v1
-      with:
-        keyvault: ${{ inputs.AZUREKEYVAULT }}
-        secrets: 'AZ-CONTAINER-REGISTRY,AZ-SERVICE-PRINCIPAL,AZ-SERVICE-PRINCIPAL-PASSWORD,AZ-TENANT-ID,ENVIRONMENT-TAG,PAT-TOKEN'  # comma separated list of secret keys that need to be fetched from the Key Vault 
-      id: keyvaultSecrets
-
-    - name: 'Echo environmental variables'
-      run: |
-        echo "AZ-TENANT-ID=${{ steps.keyvaultSecrets.outputs.AZ-TENANT-ID }}"
-        echo "AZ-SERVICE-PRINCIPAL=${{ steps.keyvaultSecrets.outputs.AZ-SERVICE-PRINCIPAL }}"
-        echo "AZ-CONTAINER-REGISTRY=${{ steps.keyvaultSecrets.outputs.AZ-CONTAINER-REGISTRY }}"
-
-    - name: Azure Container Registry Build
-      uses: Azure/acr-build@v1
-      with:
-        # Service Principal with Contributor role on the ACR
-        service_principal: ${{ steps.keyvaultSecrets.outputs.AZ-SERVICE-PRINCIPAL }} 
-        # Service Principal password
-        service_principal_password: ${{ steps.keyvaultSecrets.outputs.AZ-SERVICE-PRINCIPAL-PASSWORD }}
-        # Azure Container Registry tenant
-        tenant: ${{ steps.keyvaultSecrets.outputs.AZ-TENANT-ID }}
-        # The name of the ACR, minus the .azurecr.io
-        registry: ${{ steps.keyvaultSecrets.outputs.AZ-CONTAINER-REGISTRY }}
-        # Repository to use
-        repository: ${{ inputs.repository }}
-        # Github access token for private repositories
-        git_access_token: ${{ steps.keyvaultSecrets.outputs.PAT-TOKEN }}
-        # Docker image name
-        image: ${{ inputs.imageName }} # optional
-        # Docker image tag, default to the commit SHA
-        branch: main # optional
-        # The folder in the Github repo that holds the source
-        folder: ${{ inputs.folder }}
-        tag: ${{ github.sha }}
-
-    - name: 'Docker Login'
-      uses: azure/docker-login@v1
-      with:
-        login-server: '${{ steps.keyvaultSecrets.outputs.AZ-CONTAINER-REGISTRY }}.azurecr.io'
-        username: ${{ steps.keyvaultSecrets.outputs.AZ-SERVICE-PRINCIPAL }}
-        password: ${{ steps.keyvaultSecrets.outputs.AZ-SERVICE-PRINCIPAL-PASSWORD }}
-    - name: 'Tag and push'
-      run: |
-        docker image pull "${{ steps.keyvaultSecrets.outputs.AZ-CONTAINER-REGISTRY }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ github.sha }}"
-        docker image tag "${{ steps.keyvaultSecrets.outputs.AZ-CONTAINER-REGISTRY }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ github.sha }}" "${{ steps.keyvaultSecrets.outputs.AZ-CONTAINER-REGISTRY }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ steps.keyvaultSecrets.outputs.ENVIRONMENT-TAG }}"
-        docker image push "${{ steps.keyvaultSecrets.outputs.AZ-CONTAINER-REGISTRY }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ steps.keyvaultSecrets.outputs.ENVIRONMENT-TAG }}"
+        auth-type: IDENTITY
+        client-id: ${{ inputs.azureClientId }}          
+        tenant-id: ${{ inputs.azureTenantId }}
+        subscription-id: ${{ inputs.azureSubscriptionId }}
+        enable-AzPSSession: true
