@@ -19,6 +19,9 @@ on:
       azureContainerRegistry:
         required: true
         type: string
+      azureKeyVault:
+        required: true
+        type: string
       folder:
         required: false
         type: string
@@ -51,5 +54,7 @@ jobs:
     - name: 'login to azure container registry'
       working-directory: ${{ inputs.folder }}
       run: |
-        az acr login -n ${{ inputs.azureContainerRegistry }}
+        ACR_USERNAME=$(az keyvault secret show --vault-name ${{ inputs.azureKeyVault }} --name AcrAdminUserName --query "value" -o tsv)
+        ACR_PASSWORD=$(az keyvault secret show --vault-name ${{ inputs.azureKeyVault }} --name AcrAdminPassword --query "value" -o tsv)
+        docker login ${{ inputs.azureContainerRegistry }} --username "${ACR_USERNAME}" --password "${ACR_PASSWORD}"
         
