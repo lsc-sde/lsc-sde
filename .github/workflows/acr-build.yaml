@@ -26,7 +26,20 @@ jobs:
     runs-on: [linux, self-hosted]
     steps:
     - uses: actions/checkout@v3
-    
+
+    - name: 'install azure cli'
+      working-directory: ${{ inputs.workingDirectory }}
+      run: |
+        apt-get update
+        apt-get install ca-certificates curl apt-transport-https lsb-release gnupg -y
+        mkdir -p /etc/apt/keyrings
+        curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+        chmod go+r /etc/apt/keyrings/microsoft.gpg
+        AZ_DIST=$(lsb_release -cs)
+        echo "deb [arch=`dpkg --print-architecture` signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ $AZ_DIST main" | tee /etc/apt/sources.list.d/azure-cli.list
+        apt-get update
+        apt-get install azure-cli -y
+        
     - uses: Azure/login@v1
       with:
         auth-type: IDENTITY
