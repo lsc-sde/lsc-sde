@@ -9,6 +9,7 @@ cd lsc-sde
 git submodule foreach "git switch main"
 ```
 
+* [Developers Starter Guide](./Developers.md)
 * [Docker Images](./docker/)
 * [Helm Charts](./iac/helm/)
 * [Flux Charts](./iac/flux/)
