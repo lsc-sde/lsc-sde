@@ -58,5 +58,5 @@ jobs:
         ACR_PASSWORD=$(az keyvault secret show --vault-name ${{ inputs.azureKeyVault }} --name AcrAdminPassword --query "value" -o tsv)
         echo "Logging in to ${{ inputs.azureContainerRegistry }} as username: ${ACR_USERNAME}"
         
-        echo "${ACR_PASSWORD}" | docker login ${{ inputs.azureContainerRegistry }}.privatelink.azurecr.io --username "${ACR_USERNAME}" --password-stdin 
+        az acr login --name ${{ inputs.azureContainerRegistry }} --username "${ACR_USERNAME}" --password "${ACR_PASSWORD}"
         
