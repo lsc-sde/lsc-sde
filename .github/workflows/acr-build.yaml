@@ -60,3 +60,13 @@ jobs:
         
         az acr login --name ${{ inputs.azureContainerRegistry }} --username "${ACR_USERNAME}" --password "${ACR_PASSWORD}"
         
+    - name: 'docker build'
+      working-directory: ${{ inputs.folder }}
+      run: |
+        docker build . -t  ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ github.RUN_NUMBER }}
+        
+    - name: 'docker push'
+      working-directory: ${{ inputs.folder }}
+      run: |
+        docker push ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ github.RUN_NUMBER }}
+        
