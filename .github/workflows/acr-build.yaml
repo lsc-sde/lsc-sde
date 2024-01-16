@@ -7,9 +7,6 @@ on:
       imageName:
         required: true
         type: string
-      azureKeyvault:
-        required: true
-        type: string
       azureClientId:
         required: true
         type: string
@@ -23,9 +20,6 @@ on:
         required: false
         type: string
         default: ./
-    secrets:
-      azureCredentials:
-        required: true
           
 jobs:
   build:
