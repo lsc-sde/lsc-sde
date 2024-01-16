@@ -74,3 +74,6 @@
 [submodule "iac/helm/github-actions-runner"]
 	path = iac/helm/github-actions-runner
 	url = https://github.com/lsc-sde/iac-helm-github-actions-runner.git
+[submodule "iac/flux/github-action-runners"]
+	path = iac/flux/github-action-runners
+	url = https://github.com/lsc-sde/iac-flux-github-action-runners.git
