@@ -40,10 +40,3 @@ jobs:
         apt-get update
         apt-get install azure-cli -y
         
-    - uses: Azure/login@v1
-      with:
-        auth-type: IDENTITY
-        client-id: ${{ inputs.azureClientId }}          
-        tenant-id: ${{ inputs.azureTenantId }}
-        subscription-id: ${{ inputs.azureSubscriptionId }}
-        enable-AzPSSession: true
