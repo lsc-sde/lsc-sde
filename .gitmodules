@@ -77,3 +77,6 @@
 [submodule "iac/flux/github-action-runners"]
 	path = iac/flux/github-action-runners
 	url = https://github.com/lsc-sde/iac-flux-github-action-runners.git
+[submodule "iac/flux/keycloak"]
+	path = iac/flux/keycloak
+	url = https://github.com/lsc-sde/iac-flux-keycloak.git
