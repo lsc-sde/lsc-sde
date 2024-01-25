@@ -4,19 +4,26 @@ on:
       symver:
         description: The symver value for this check-in
         type: string
+      environment:
+        description: The name of the environment
+        type: string
+      prefix:
+        description: The prefix to add to the branch name
+        type: string
       
 jobs:
   createbranch:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     steps:
     - name: Checkout
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.REPOS_RW_TOKEN }}
 
-    - name: Create Release Branch
+    - name: Create Branch for ${{ inputs.environment }}
       run: |
-        export FQ_BRANCH_NAME="release/${{ inputs.symver }}"
+        export FQ_BRANCH_NAME="${{ inputs.prefix }}/${{ inputs.symver }}"
         echo "Creating Branch: ${FQ_BRANCH_NAME}"
         git config --global user.name 'lsc-sde'
         git config --global user.email 'shaun.turner1@nhs.net'
