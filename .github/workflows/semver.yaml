@@ -16,6 +16,9 @@ on:
       GitVersion_Patch: 
         description: The patch version assigned
         value: ${{ jobs.semver.outputs.GitVersion_Patch }}
+      GitVersion_SemVer: 
+        description: The symver assigned
+        value: ${{ jobs.semver.outputs.GitVersion_SemVer }}
 
 jobs:
   semver:
@@ -41,3 +44,4 @@ jobs:
       GitVersion_Major: ${{ steps.gitversion.outputs.GitVersion_Major }}
       GitVersion_Minor: ${{ steps.gitversion.outputs.GitVersion_Minor }}
       GitVersion_Patch: ${{ steps.gitversion.outputs.GitVersion_Patch }}
+      GitVersion_SemVer: ${{ steps.gitversion.outputs.GitVersion_SemVer }}
