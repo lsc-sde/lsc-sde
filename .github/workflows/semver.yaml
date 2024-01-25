@@ -24,11 +24,11 @@ jobs:
   semver:
     runs-on: ubuntu-latest
     outputs:
-      GitVersion_Major: ${{ steps.gitversion.outputs.GitVersion_Major }}
-      GitVersion_Minor: ${{ steps.gitversion.outputs.GitVersion_Minor }}
-      GitVersion_Patch: ${{ steps.gitversion.outputs.GitVersion_Patch }}
-      GitVersion_SemVer: ${{ steps.gitversion.outputs.GitVersion_SemVer }}
-      
+      GitVersion_Major: ${{ steps.gitversion.outputs.major }}
+      GitVersion_Minor: ${{ steps.gitversion.outputs.minor }}
+      GitVersion_Patch: ${{ steps.gitversion.outputs.patch }}
+      GitVersion_SemVer: ${{ steps.gitversion.outputs.semVer }}
+
     steps:
     - name: Checkout
       uses: actions/checkout@v3
