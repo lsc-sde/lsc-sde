@@ -4,6 +4,10 @@ on:
       symver:
         description: The symver value for this check-in
         type: string
+    secrets:
+      token:
+        description: The token to use for checking out the repository
+        type: string
       
 jobs:
   createbranch:
@@ -12,7 +16,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        token: ${{ vars.REPOS_RW_TOKEN }}
+        token: ${{ inputs.token }}
 
     - name: Create Release Branch
       run: |
