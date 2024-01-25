@@ -29,7 +29,7 @@ jobs:
       uses: gittools/actions/gitversion/execute@v0
       id: gitversion
 
-      outputs:
-        GitVersion_Major: ${{ steps.gitversion.outputs.GitVersion_Major }}
-        GitVersion_Minor: ${{ steps.gitversion.outputs.GitVersion_Minor }}
-        GitVersion_Patch: ${{ steps.gitversion.outputs.GitVersion_Patch }}
+    outputs:
+      GitVersion_Major: ${{ steps.gitversion.outputs.GitVersion_Major }}
+      GitVersion_Minor: ${{ steps.gitversion.outputs.GitVersion_Minor }}
+      GitVersion_Patch: ${{ steps.gitversion.outputs.GitVersion_Patch }}
