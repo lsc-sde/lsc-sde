@@ -1,5 +1,11 @@
 on:
   workflow_call:
+    inputs:
+      useConfigFile:
+        description: Use a config file 
+        type: boolean
+        default: false
+
     outputs:
       GitVersion_Major: 
         description: The major version assigned
@@ -28,6 +34,8 @@ jobs:
     - name: Determine Version
       uses: gittools/actions/gitversion/execute@v0
       id: gitversion
+      with:
+        useConfigFile: ${{ inputs.useConfigFile }}
 
     outputs:
       GitVersion_Major: ${{ steps.gitversion.outputs.GitVersion_Major }}
