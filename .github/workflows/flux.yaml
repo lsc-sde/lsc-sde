@@ -27,6 +27,5 @@ jobs:
         echo "Creating Branch: ${FQ_BRANCH_NAME}"
         git config --global user.name 'lsc-sde'
         git config --global user.email 'shaun.turner1@nhs.net'
-        git branch -u "origin/${FQ_BRANCH_NAME}" "${FQ_BRANCH_NAME}"
-        git switch "${FQ_BRANCH_NAME}"
-        git push
+        git branch  "${FQ_BRANCH_NAME}"
+        git push -u "origin/${FQ_BRANCH_NAME}"
