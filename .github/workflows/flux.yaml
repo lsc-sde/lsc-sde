@@ -1,0 +1,17 @@
+on:
+  workflow_call:
+    inputs:
+      symver:
+        description: The symver value for this check-in
+        type: string
+      
+jobs:
+  semver:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create Release Branch
+      run: |
+        git config --global user.name 'lsc-sde'
+        git config --global user.email 'shaun.turner1@nhs.net'
+        git branch release/${{ inputs.symver }}
+        git push
