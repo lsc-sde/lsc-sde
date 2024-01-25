@@ -7,7 +7,6 @@ on:
     secrets:
       token:
         description: The token to use for checking out the repository
-        type: string
       
 jobs:
   createbranch:
