@@ -41,7 +41,7 @@ jobs:
         useConfigFile: ${{ inputs.useConfigFile }}
 
     outputs:
-      GitVersion_Major: ${{ steps.semver.outputs.GitVersion_Major }}
-      GitVersion_Minor: ${{ steps.semver.outputs.GitVersion_Minor }}
-      GitVersion_Patch: ${{ steps.semver.outputs.GitVersion_Patch }}
-      GitVersion_SemVer: ${{ steps.semver.outputs.GitVersion_SemVer }}
+      GitVersion_Major: ${{ steps.gitversion.outputs.GitVersion_Major }}
+      GitVersion_Minor: ${{ steps.gitversion.outputs.GitVersion_Minor }}
+      GitVersion_Patch: ${{ steps.gitversion.outputs.GitVersion_Patch }}
+      GitVersion_SemVer: ${{ steps.gitversion.outputs.GitVersion_SemVer }}
