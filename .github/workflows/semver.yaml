@@ -3,16 +3,16 @@ on:
     outputs:
       GitVersion_Major: 
         description: The major version assigned
-        value: ${{ jobs.symver.outputs.GitVersion_Major }}
+        value: ${{ jobs.semver.outputs.GitVersion_Major }}
       GitVersion_Minor: 
         description: The minor version assigned
-        value: ${{ jobs.symver.outputs.GitVersion_Minor }}
+        value: ${{ jobs.semver.outputs.GitVersion_Minor }}
       GitVersion_Patch: 
         description: The patch version assigned
-        value: ${{ jobs.symver.outputs.GitVersion_Patch }}
+        value: ${{ jobs.semver.outputs.GitVersion_Patch }}
 
 jobs:
-  symver:
+  semver:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
