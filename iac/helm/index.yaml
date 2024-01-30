@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   github-actions-runner:
   - apiVersion: v2
+    appVersion: 2.1.12
+    created: "2024-01-30T15:11:48.7688775Z"
+    description: Helm chart for the github actions runner
+    digest: c46c7d1a1268c41f7f0d1e33efbaf0669471b1015312d53c6624c25b43cb3785
+    name: github-actions-runner
+    type: application
+    urls:
+    - github-actions-runner-0.1.12.tgz
+    version: 0.1.12
+  - apiVersion: v2
     appVersion: 2.1.11
-    created: "2024-01-30T12:37:55.9061533Z"
+    created: "2024-01-30T15:11:48.7688775Z"
     description: Helm chart for the github actions runner
     digest: f3ad391cde5a4461791618261334d6897cb6dc4689f187ea356e56d85c83111c
     name: github-actions-runner
@@ -13,7 +23,7 @@ entries:
     version: 0.1.11
   - apiVersion: v2
     appVersion: 2.1.9
-    created: "2024-01-30T12:37:55.9081548Z"
+    created: "2024-01-30T15:11:48.7716217Z"
     description: Helm chart for the github actions runner
     digest: e75a2c0c0ac6a1d814f5d75c370f5dee059d621a9c32028b42825bfe41922be8
     name: github-actions-runner
@@ -23,7 +33,7 @@ entries:
     version: 0.1.9
   - apiVersion: v2
     appVersion: 2.1.8
-    created: "2024-01-30T12:37:55.9081548Z"
+    created: "2024-01-30T15:11:48.7716217Z"
     description: Helm chart for the github actions runner
     digest: d3df78907532d2ce4b92473a605bbe9791400c3f5992e3f0cfc4551b27b32110
     name: github-actions-runner
@@ -33,7 +43,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: 2.1.7
-    created: "2024-01-30T12:37:55.9081548Z"
+    created: "2024-01-30T15:11:48.7710464Z"
     description: Helm chart for the github actions runner
     digest: 16629e30e54aa8a31693fb99a433ec41083f5bbd076381238ad42a76ac750404
     name: github-actions-runner
@@ -43,7 +53,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 2.1.6
-    created: "2024-01-30T12:37:55.9071547Z"
+    created: "2024-01-30T15:11:48.7710464Z"
     description: Helm chart for the github actions runner
     digest: e9f1b6555e0fca3b01786f53eea7b067f84cf0833659d74bdd26a35cab33490e
     name: github-actions-runner
@@ -53,7 +63,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 1.17.4
-    created: "2024-01-30T12:37:55.9071547Z"
+    created: "2024-01-30T15:11:48.7705261Z"
     description: Helm chart for the github actions runner
     digest: 9e0eed981b4eb10fb88dd34e2feeb195a26f3b06bf9059c25a233d66e89f5ce8
     name: github-actions-runner
@@ -63,7 +73,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 1.17.3
-    created: "2024-01-30T12:37:55.9071547Z"
+    created: "2024-01-30T15:11:48.7705261Z"
     description: Helm chart for the github actions runner
     digest: b69df527b3b407b1f7108f12e918530eed26823c7c153b26fe138b8fda4c700a
     name: github-actions-runner
@@ -73,7 +83,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.17.2
-    created: "2024-01-30T12:37:55.9071547Z"
+    created: "2024-01-30T15:11:48.769996Z"
     description: Helm chart for the github actions runner
     digest: 61830f16e838f2ec2aeef215d7acc0e10b879ec8afdfd0a3aea4d2ec34eec51c
     name: github-actions-runner
@@ -83,7 +93,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.17.1
-    created: "2024-01-30T12:37:55.9061533Z"
+    created: "2024-01-30T15:11:48.769996Z"
     description: Helm chart for the github actions runner
     digest: d19962008e4d3f37c26f8a0a74b51c21e73fc8b56e35985c9cf684aaedc36bdc
     name: github-actions-runner
@@ -93,7 +103,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.17.0
-    created: "2024-01-30T12:37:55.9061533Z"
+    created: "2024-01-30T15:11:48.7688087Z"
     description: Helm chart for the github actions runner
     digest: 12676b02dfb4e1b711bee0b946dcd1719c17b4f4e15618f70d2dc78d50a45f53
     name: github-actions-runner
@@ -103,7 +113,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-30T12:37:55.9051399Z"
+    created: "2024-01-30T15:11:48.7682834Z"
     description: Helm chart for the github actions runner
     digest: a43465b66286bec3e26efcbb9456635da5faae6f6ecc06d4193e7594c8ca40f5
     name: github-actions-runner
@@ -111,4 +121,4 @@ entries:
     urls:
     - github-actions-runner-0.1.0.tgz
     version: 0.1.0
-generated: "2024-01-30T12:37:55.9051399Z"
+generated: "2024-01-30T15:11:48.7682059Z"
