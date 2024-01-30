@@ -22,6 +22,10 @@ on:
       azureKeyVault:
         required: true
         type: string
+      version:
+        required: true
+        type: string
+        default: ${{ github.RUN_NUMBER }}
       folder:
         required: false
         type: string
@@ -63,10 +67,10 @@ jobs:
     - name: 'docker build'
       working-directory: ${{ inputs.folder }}
       run: |
-        docker build . -t  ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ github.RUN_NUMBER }}
+        docker build . -t  ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ inputs.version }}
         
     - name: 'docker push'
       working-directory: ${{ inputs.folder }}
       run: |
-        docker push ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ github.RUN_NUMBER }}
+        docker push ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ inputs.version }}
         
