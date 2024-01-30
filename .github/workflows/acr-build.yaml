@@ -67,7 +67,7 @@ jobs:
     - name: 'docker build'
       working-directory: ${{ inputs.folder }}
       run: |
-        docker build . -t  ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ inputs.version }}
+        docker build . -m 1Gi -c 1 -t  ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ inputs.version }}
         
     - name: 'docker push'
       working-directory: ${{ inputs.folder }}
