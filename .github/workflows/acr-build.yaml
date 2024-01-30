@@ -29,7 +29,7 @@ on:
           
 jobs:
   build:
-    runs-on: [linux, self-hosted]
+    runs-on: [lsc-sde]
     steps:
     - uses: actions/checkout@v3
 
