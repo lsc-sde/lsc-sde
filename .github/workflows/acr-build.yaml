@@ -79,8 +79,8 @@ jobs:
         ACR_PASSWORD=$(az keyvault secret show --vault-name ${{ inputs.azureKeyVault }} --name AcrAdminPassword --query "value" -o tsv)
         echo "Logging in to ${{ inputs.azureContainerRegistry }} as username: ${ACR_USERNAME}"
         
-        ACR_TOKEN=$(az acr login --name ${{ inputs.azureContainerRegistry }} --username "${ACR_USERNAME}" --password "${ACR_PASSWORD}" -t)
-        echo $ACR_TOKEN | img login -u ${{ inputs.azureContainerRegistry }} --password-stdin "${{ inputs.azureContainerRegistry }}.azurecr.io"
+        #ACR_TOKEN=$(az acr login --name ${{ inputs.azureContainerRegistry }} --username "${ACR_USERNAME}" --password "${ACR_PASSWORD}" -t)
+        echo $ACR_PASSWORD | img login -u "${ACR_USERNAME}" --password-stdin "${{ inputs.azureContainerRegistry }}.azurecr.io"
 
     - name: 'pull base image'
       working-directory: ${{ inputs.folder }}
