@@ -85,17 +85,18 @@ jobs:
     - name: 'pull base image'
       working-directory: ${{ inputs.folder }}
       run: |
-        img pull --debug ${{ inputs.baseImage }}
+        img pull --debug --state /tmp/github-runner-lsc-sde ${{ inputs.baseImage }}
           
     - name: 'img build'
       working-directory: ${{ inputs.folder }}
       run: |
         img build . \
+          --state /tmp/github-runner-lsc-sde \
           -t ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ inputs.version }} \
           --debug 
 
     - name: 'img push'
       working-directory: ${{ inputs.folder }}
       run: |
-        img push ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ inputs.version }} --debug
+        img push ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ inputs.version }} --debug  --state /tmp/github-runner-lsc-sde
         
