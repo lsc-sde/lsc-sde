@@ -39,11 +39,26 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: 'install azure cli'
+    - name: 'install prerequisites'
       working-directory: ${{ inputs.folder }}
       run: |
         apt-get update
         apt-get install ca-certificates curl apt-transport-https lsb-release gnupg -y
+
+    - name: 'install img'
+      working-directory: ${{ inputs.folder }}
+      run: |
+        # Export the sha256sum for verification.
+        export IMG_SHA256="cc9bf08794353ef57b400d32cd1065765253166b0a09fba360d927cfbd158088"
+
+        # Download and check the sha256sum.
+        curl -fSL "https://github.com/genuinetools/img/releases/download/v0.5.11/img-linux-amd64" -o "/usr/local/bin/img" \
+          && echo "${IMG_SHA256}  /usr/local/bin/img" | sha256sum -c - \
+          && chmod a+x "/usr/local/bin/img"
+
+    - name: 'install azure cli'
+      working-directory: ${{ inputs.folder }}
+      run: |
         mkdir -p /etc/apt/keyrings
         curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/keyrings/microsoft.gpg > /dev/null
         chmod go+r /etc/apt/keyrings/microsoft.gpg
@@ -64,24 +79,22 @@ jobs:
         ACR_PASSWORD=$(az keyvault secret show --vault-name ${{ inputs.azureKeyVault }} --name AcrAdminPassword --query "value" -o tsv)
         echo "Logging in to ${{ inputs.azureContainerRegistry }} as username: ${ACR_USERNAME}"
         
-        az acr login --name ${{ inputs.azureContainerRegistry }} --username "${ACR_USERNAME}" --password "${ACR_PASSWORD}"
-        
+        ACR_TOKEN=$(az acr login --name ${{ inputs.azureContainerRegistry }} --username "${ACR_USERNAME}" --password "${ACR_PASSWORD}" -t)
+        echo $ACR_TOKEN | img login -u ${{ inputs.azureContainerRegistry }} --password-stdin "${{ inputs.azureContainerRegistry }}.azurecr.io"
+
     - name: 'pull base image'
       working-directory: ${{ inputs.folder }}
       run: |
-        docker pull ${{ inputs.baseImage }}
+        img pull ${{ inputs.baseImage }}
           
-    - name: 'docker build'
+    - name: 'img build'
       working-directory: ${{ inputs.folder }}
       run: |
-        docker build . \
-          -m 1Gi \
-          -c 1 \
+        img build . \
           -t ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ inputs.version }}
-          
         
-    - name: 'docker push'
+    - name: 'img push'
       working-directory: ${{ inputs.folder }}
       run: |
-        docker push ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ inputs.version }}
+        img push ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ inputs.version }}
         
