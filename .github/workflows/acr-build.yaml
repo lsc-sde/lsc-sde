@@ -43,7 +43,7 @@ jobs:
       working-directory: ${{ inputs.folder }}
       run: |
         apt-get update
-        apt-get install ca-certificates curl apt-transport-https lsb-release gnupg -y
+        apt-get install ca-certificates curl apt-transport-https lsb-release gnupg pigz -y
 
     - name: 'install img'
       working-directory: ${{ inputs.folder }}
