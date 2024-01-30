@@ -25,7 +25,9 @@ on:
       version:
         required: true
         type: string
-        default: ${{ github.RUN_NUMBER }}
+      baseImage:
+        required: true
+        type: string
       folder:
         required: false
         type: string
@@ -64,10 +66,19 @@ jobs:
         
         az acr login --name ${{ inputs.azureContainerRegistry }} --username "${ACR_USERNAME}" --password "${ACR_PASSWORD}"
         
+    - name: 'pull base image'
+      working-directory: ${{ inputs.folder }}
+      run: |
+        docker pull ${{ inputs.baseImage }}
+          
     - name: 'docker build'
       working-directory: ${{ inputs.folder }}
       run: |
-        docker build . -m 1Gi -c 1 -t  ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ inputs.version }}
+        docker build . \
+          -m 1Gi \
+          -c 1 \
+          -t ${{ inputs.azureContainerRegistry }}.azurecr.io/${{ inputs.repository }}/${{ inputs.imageName }}:${{ inputs.version }}
+          
         
     - name: 'docker push'
       working-directory: ${{ inputs.folder }}
