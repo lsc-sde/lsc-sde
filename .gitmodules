@@ -80,3 +80,9 @@
 [submodule "iac/flux/keycloak"]
 	path = iac/flux/keycloak
 	url = https://github.com/lsc-sde/iac-flux-keycloak.git
+[submodule "docker/configmap-transformer-controller"]
+	path = docker/configmap-transformer-controller
+	url = https://github.com/lsc-sde/docker-configmap-transformer-controller.git
+[submodule "iac/flux/lscsde"]
+	path = iac/flux/lscsde
+	url = https://github.com/lsc-sde/iac-flux-lscsde.git
