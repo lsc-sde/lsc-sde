@@ -10,6 +10,7 @@ git submodule foreach "git switch main"
 ```
 
 * [Developers Starter Guide](./Developers.md)
+* [New Environment Guide](./New-Environment.md)
 * [Docker Images](./docker/)
 * [Helm Charts](./iac/helm/)
 * [Flux Charts](./iac/flux/)
