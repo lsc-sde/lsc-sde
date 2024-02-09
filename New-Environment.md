@@ -8,3 +8,17 @@ flowchart LR
     A((Kubernetes Cluster)) --> B((Flux))
     B --> A
 ```
+
+## Flux Configurations
+### certmanager
+in the /clusters folder create a copy of the **template** folder and rename the new folder to the name of the environment you're creating (e.g. dev)
+
+### github-action-runners
+in the /cluster folder create a copy of the **template** folder and rename the new folder to the name of the environment you're creating (e.g. dev). 
+
+Once the IAC has completed you will need to revisit this and edit the newly created:
+/cluster/{environment}/secret.yaml
+
+to update the values:
+* userAssignedIdentityID - This will be the client_id of the kubelets managed identity
+* keyvaultName - This will be the name of the key vault for this environment
