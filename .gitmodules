@@ -86,3 +86,6 @@
 [submodule "iac/flux/lscsde"]
 	path = iac/flux/lscsde
 	url = https://github.com/lsc-sde/iac-flux-lscsde.git
+[submodule "docker/secrets-distributor"]
+	path = docker/secrets-distributor
+	url = https://github.com/lsc-sde/docker-secrets-distributor.git
