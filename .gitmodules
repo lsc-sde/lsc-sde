@@ -89,3 +89,6 @@
 [submodule "docker/secrets-distributor"]
 	path = docker/secrets-distributor
 	url = https://github.com/lsc-sde/docker-secrets-distributor.git
+[submodule "docker/datascience-notebook-default"]
+	path = docker/datascience-notebook-default
+	url = https://github.com/lsc-sde/docker-datascience-notebook-default.git
