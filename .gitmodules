@@ -92,3 +92,6 @@
 [submodule "docker/datascience-notebook-default"]
 	path = docker/datascience-notebook-default
 	url = https://github.com/lsc-sde/docker-datascience-notebook-default.git
+[submodule "iac/helm/guacamole"]
+	path = iac/helm/guacamole
+	url = https://github.com/lsc-sde/iac-helm-guacamole.git
