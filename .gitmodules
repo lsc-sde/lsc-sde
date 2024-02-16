@@ -98,3 +98,6 @@
 [submodule "iac/helm/ohsdi"]
 	path = iac/helm/ohsdi
 	url = https://github.com/lsc-sde/iam-helm-ohdsi.git
+[submodule "iac/flux/ohdsi"]
+	path = iac/flux/ohdsi
+	url = https://github.com/lsc-sde/iam-flux-ohdsi.git
