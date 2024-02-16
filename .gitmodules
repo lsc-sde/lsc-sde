@@ -95,3 +95,6 @@
 [submodule "iac/helm/guacamole"]
 	path = iac/helm/guacamole
 	url = https://github.com/lsc-sde/iac-helm-guacamole.git
+[submodule "iac/helm/ohsdi"]
+	path = iac/helm/ohsdi
+	url = https://github.com/lsc-sde/iam-helm-ohdsi.git
