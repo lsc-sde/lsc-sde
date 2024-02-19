@@ -97,7 +97,7 @@
 	url = https://github.com/lsc-sde/iac-helm-guacamole.git
 [submodule "iac/helm/ohsdi"]
 	path = iac/helm/ohsdi
-	url = https://github.com/lsc-sde/iam-helm-ohdsi.git
+	url = https://github.com/lsc-sde/iac-helm-ohdsi.git
 [submodule "iac/flux/ohdsi"]
 	path = iac/flux/ohdsi
-	url = https://github.com/lsc-sde/iam-flux-ohdsi.git
+	url = https://github.com/lsc-sde/iac-flux-ohdsi.git
