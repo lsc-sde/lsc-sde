@@ -104,3 +104,6 @@
 [submodule "docker/ohdsi-webapi"]
 	path = docker/ohdsi-webapi
 	url = https://github.com/lsc-sde/docker-ohdsi-webapi.git
+[submodule "docker/ohdsi-atlas"]
+	path = docker/ohdsi-atlas
+	url = https://github.com/lsc-sde/docker-ohdsi-atlas.git
