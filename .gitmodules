@@ -101,3 +101,6 @@
 [submodule "iac/flux/ohdsi"]
 	path = iac/flux/ohdsi
 	url = https://github.com/lsc-sde/iac-flux-ohdsi.git
+[submodule "docker/ohdsi-webapi"]
+	path = docker/ohdsi-webapi
+	url = https://github.com/lsc-sde/docker-ohdsi-webapi.git
