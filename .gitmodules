@@ -107,3 +107,9 @@
 [submodule "docker/ohdsi-atlas"]
 	path = docker/ohdsi-atlas
 	url = https://github.com/lsc-sde/docker-ohdsi-atlas.git
+[submodule "python-modules/kubespawner-keycloak"]
+	path = python-modules/kubespawner-keycloak
+	url = https://github.com/lsc-sde/py-kubespawner-keycloak.git
+[submodule "docker/jupyterhub"]
+	path = docker/jupyterhub
+	url = https://github.com/lsc-sde/docker-jupyterhub.git
