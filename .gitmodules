@@ -113,3 +113,9 @@
 [submodule "docker/jupyterhub"]
 	path = docker/jupyterhub
 	url = https://github.com/lsc-sde/docker-jupyterhub.git
+[submodule "iac/helm/analytics-workspace-management"]
+	path = iac/helm/analytics-workspace-management
+	url = https://github.com/lsc-sde/iac-helm-analytics-workspace-management.git
+[submodule "python-modules/lscsde-workspace-mgmt"]
+	path = python-modules/lscsde-workspace-mgmt
+	url = https://github.com/lsc-sde/py-lscsde-workspace-mgmt.git
