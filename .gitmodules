@@ -119,3 +119,6 @@
 [submodule "python-modules/lscsde-workspace-mgmt"]
 	path = python-modules/lscsde-workspace-mgmt
 	url = https://github.com/lsc-sde/py-lscsde-workspace-mgmt.git
+[submodule "iac/flux/analytics-workspace-management"]
+	path = iac/flux/analytics-workspace-management
+	url = https://github.com/lsc-sde/iac-flux-analytics-workspace-management.git

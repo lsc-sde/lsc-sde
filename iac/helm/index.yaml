@@ -3,7 +3,7 @@ entries:
   aks-dns-operator:
   - apiVersion: v2
     appVersion: 0.1.7
-    created: "2024-03-01T10:22:47.1425505Z"
+    created: "2024-03-01T11:13:30.7210555Z"
     description: A Helm chart for Kubernetes
     digest: 29316c43dc2d577a720415ce937432112accae8b32504b2bdd2614d440c6d79b
     name: aks-dns-operator
@@ -13,7 +13,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 0.1.6
-    created: "2024-03-01T10:22:47.1425505Z"
+    created: "2024-03-01T11:13:30.7205208Z"
     description: A Helm chart for Kubernetes
     digest: 231844f2c09fe55417df44a00948031ca50ac0112701375675023cbac8cc83fc
     name: aks-dns-operator
@@ -23,7 +23,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 0.1.5
-    created: "2024-03-01T10:22:47.1420379Z"
+    created: "2024-03-01T11:13:30.7205208Z"
     description: A Helm chart for Kubernetes
     digest: a824c0e2474d4c53e1d510c92d826abab992a4f51fbfe168e15b0c89e31fe062
     name: aks-dns-operator
@@ -33,7 +33,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 0.1.4
-    created: "2024-03-01T10:22:47.1420379Z"
+    created: "2024-03-01T11:13:30.7200029Z"
     description: A Helm chart for Kubernetes
     digest: ad8f69b270fba09a51e525b3f5f93d18ef71b8cda2ede287a200f1a834cc03ac
     name: aks-dns-operator
@@ -43,7 +43,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 0.1.3
-    created: "2024-03-01T10:22:47.1415197Z"
+    created: "2024-03-01T11:13:30.7194758Z"
     description: A Helm chart for Kubernetes
     digest: 9e73b787241d544a5a6c6a9f453f1ca2036ea0e64d458b862d0a216979d17a37
     name: aks-dns-operator
@@ -53,7 +53,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 0.1.2
-    created: "2024-03-01T10:22:47.1415197Z"
+    created: "2024-03-01T11:13:30.7189523Z"
     description: A Helm chart for Kubernetes
     digest: 63cdc5a418287758810887af3519c9f9b134795c9820693b15ce594f115b0165
     name: aks-dns-operator
@@ -63,7 +63,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.1.1
-    created: "2024-03-01T10:22:47.1409929Z"
+    created: "2024-03-01T11:13:30.7178935Z"
     description: A Helm chart for Kubernetes
     digest: cd194972bf19482476d3a40262fa7427cd211bc421fa50156f5114ea999eb74e
     name: aks-dns-operator
@@ -73,7 +73,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2024-03-01T10:22:47.1409929Z"
+    created: "2024-03-01T11:13:30.7178935Z"
     description: A Helm chart for Kubernetes
     digest: 31d87f169a10bd126e71e0a93d644a2860c564b298227389bbe55f287fd12d2d
     name: aks-dns-operator
@@ -84,7 +84,17 @@ entries:
   analytics-workspace-management:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2024-03-01T10:22:47.1430842Z"
+    created: "2024-03-01T11:13:30.7215908Z"
+    description: Helm chart for LSCSDE Workspace Management
+    digest: f7f10322789878ce498c6b2e4a877b3f2233f0879c7241b5550319765f3daa87
+    name: analytics-workspace-management
+    type: application
+    urls:
+    - analytics-workspace-management-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-03-01T11:13:30.7210555Z"
     description: Helm chart for LSCSDE Workspace Management
     digest: e16ce30bfe6f13971945c6830cb8e12c9d48badfe60f24fd43c53dd4ed11722f
     name: analytics-workspace-management
@@ -95,7 +105,7 @@ entries:
   configmap-transformer-controller:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2024-03-01T10:22:47.1430842Z"
+    created: "2024-03-01T11:13:30.7215908Z"
     description: A Helm chart for Kubernetes
     digest: 25d8417c4c56a83f4d36a4231260aa7f406b128da66642e432ad8242edc69eb2
     name: configmap-transformer-controller
@@ -106,7 +116,7 @@ entries:
   github-actions-runner:
   - apiVersion: v2
     appVersion: 2.1.17
-    created: "2024-03-01T10:22:47.1466551Z"
+    created: "2024-03-01T11:13:30.7249356Z"
     description: Helm chart for the github actions runner
     digest: ec1de871d20ee740d8b10ea195e9dcf197ea5912284d8e624e131f384a71a10f
     name: github-actions-runner
@@ -116,7 +126,7 @@ entries:
     version: 0.1.17
   - apiVersion: v2
     appVersion: 2.1.16
-    created: "2024-03-01T10:22:47.1461473Z"
+    created: "2024-03-01T11:13:30.7249356Z"
     description: Helm chart for the github actions runner
     digest: d7f4f29788bb1280a66904ae7aecaffcd2d8a906b3ac650ef3d6759b206aba2e
     name: github-actions-runner
@@ -126,7 +136,7 @@ entries:
     version: 0.1.16
   - apiVersion: v2
     appVersion: 2.1.15
-    created: "2024-03-01T10:22:47.1456394Z"
+    created: "2024-03-01T11:13:30.724245Z"
     description: Helm chart for the github actions runner
     digest: da86565d4f4aa1d9594f1c1a8ce569b2aa43ebe573ba8418d8f2f947cd127128
     name: github-actions-runner
@@ -136,7 +146,7 @@ entries:
     version: 0.1.15
   - apiVersion: v2
     appVersion: 2.1.14
-    created: "2024-03-01T10:22:47.1456394Z"
+    created: "2024-03-01T11:13:30.7237133Z"
     description: Helm chart for the github actions runner
     digest: c3e2311dd0c71ccfd6595ed2339962845915476d2cf7d450377027e661bfc0b1
     name: github-actions-runner
@@ -146,7 +156,7 @@ entries:
     version: 0.1.14
   - apiVersion: v2
     appVersion: 2.1.13
-    created: "2024-03-01T10:22:47.1451316Z"
+    created: "2024-03-01T11:13:30.7237133Z"
     description: Helm chart for the github actions runner
     digest: d1a2a00dafd46aacadac4fd8671691fe5465a28421eefa198b094a609fe85c7e
     name: github-actions-runner
@@ -156,7 +166,7 @@ entries:
     version: 0.1.13
   - apiVersion: v2
     appVersion: 2.1.12
-    created: "2024-03-01T10:22:47.1446235Z"
+    created: "2024-03-01T11:13:30.7231869Z"
     description: Helm chart for the github actions runner
     digest: c46c7d1a1268c41f7f0d1e33efbaf0669471b1015312d53c6624c25b43cb3785
     name: github-actions-runner
@@ -166,7 +176,7 @@ entries:
     version: 0.1.12
   - apiVersion: v2
     appVersion: 2.1.11
-    created: "2024-03-01T10:22:47.1441149Z"
+    created: "2024-03-01T11:13:30.7226564Z"
     description: Helm chart for the github actions runner
     digest: f3ad391cde5a4461791618261334d6897cb6dc4689f187ea356e56d85c83111c
     name: github-actions-runner
@@ -176,7 +186,7 @@ entries:
     version: 0.1.11
   - apiVersion: v2
     appVersion: 2.1.9
-    created: "2024-03-01T10:22:47.1540898Z"
+    created: "2024-03-01T11:13:30.7280714Z"
     description: Helm chart for the github actions runner
     digest: e75a2c0c0ac6a1d814f5d75c370f5dee059d621a9c32028b42825bfe41922be8
     name: github-actions-runner
@@ -186,7 +196,7 @@ entries:
     version: 0.1.9
   - apiVersion: v2
     appVersion: 2.1.8
-    created: "2024-03-01T10:22:47.1530819Z"
+    created: "2024-03-01T11:13:30.7275462Z"
     description: Helm chart for the github actions runner
     digest: d3df78907532d2ce4b92473a605bbe9791400c3f5992e3f0cfc4551b27b32110
     name: github-actions-runner
@@ -196,7 +206,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: 2.1.7
-    created: "2024-03-01T10:22:47.1530819Z"
+    created: "2024-03-01T11:13:30.7275462Z"
     description: Helm chart for the github actions runner
     digest: 16629e30e54aa8a31693fb99a433ec41083f5bbd076381238ad42a76ac750404
     name: github-actions-runner
@@ -206,7 +216,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 2.1.6
-    created: "2024-03-01T10:22:47.1530819Z"
+    created: "2024-03-01T11:13:30.7270237Z"
     description: Helm chart for the github actions runner
     digest: e9f1b6555e0fca3b01786f53eea7b067f84cf0833659d74bdd26a35cab33490e
     name: github-actions-runner
@@ -216,7 +226,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 1.17.4
-    created: "2024-03-01T10:22:47.1516104Z"
+    created: "2024-03-01T11:13:30.7264984Z"
     description: Helm chart for the github actions runner
     digest: 9e0eed981b4eb10fb88dd34e2feeb195a26f3b06bf9059c25a233d66e89f5ce8
     name: github-actions-runner
@@ -226,7 +236,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 1.17.3
-    created: "2024-03-01T10:22:47.1516104Z"
+    created: "2024-03-01T11:13:30.7259742Z"
     description: Helm chart for the github actions runner
     digest: b69df527b3b407b1f7108f12e918530eed26823c7c153b26fe138b8fda4c700a
     name: github-actions-runner
@@ -236,7 +246,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.17.2
-    created: "2024-03-01T10:22:47.1506003Z"
+    created: "2024-03-01T11:13:30.7259742Z"
     description: Helm chart for the github actions runner
     digest: 61830f16e838f2ec2aeef215d7acc0e10b879ec8afdfd0a3aea4d2ec34eec51c
     name: github-actions-runner
@@ -246,7 +256,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.17.1
-    created: "2024-03-01T10:22:47.1466551Z"
+    created: "2024-03-01T11:13:30.7254457Z"
     description: Helm chart for the github actions runner
     digest: d19962008e4d3f37c26f8a0a74b51c21e73fc8b56e35985c9cf684aaedc36bdc
     name: github-actions-runner
@@ -256,7 +266,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.17.0
-    created: "2024-03-01T10:22:47.1441149Z"
+    created: "2024-03-01T11:13:30.7226564Z"
     description: Helm chart for the github actions runner
     digest: 12676b02dfb4e1b711bee0b946dcd1719c17b4f4e15618f70d2dc78d50a45f53
     name: github-actions-runner
@@ -266,7 +276,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-03-01T10:22:47.1436017Z"
+    created: "2024-03-01T11:13:30.722123Z"
     description: Helm chart for the github actions runner
     digest: a43465b66286bec3e26efcbb9456635da5faae6f6ecc06d4193e7594c8ca40f5
     name: github-actions-runner
@@ -277,7 +287,7 @@ entries:
   ohdsi:
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1586051Z"
+    created: "2024-03-01T11:13:30.734902Z"
     description: Helm chart for OHDSI
     digest: 859dc83a825222df856d4756941b9221803a35e0447c000b9387a8db0f2214cc
     name: ohdsi
@@ -287,7 +297,7 @@ entries:
     version: 0.1.15
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1576023Z"
+    created: "2024-03-01T11:13:30.7343949Z"
     description: Helm chart for OHDSI
     digest: e25689ace3ca4c0844feb0cb094bee7bea92cf4972ae1572e9dd6c1a87633ea3
     name: ohdsi
@@ -297,7 +307,7 @@ entries:
     version: 0.1.14
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1576023Z"
+    created: "2024-03-01T11:13:30.733388Z"
     description: Helm chart for OHDSI
     digest: 1a7bc9cf952934bcdd883e38c7846e2c3868df5eab7b5787fec6b54e92159d9f
     name: ohdsi
@@ -307,7 +317,7 @@ entries:
     version: 0.1.13
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1565956Z"
+    created: "2024-03-01T11:13:30.7328577Z"
     description: Helm chart for OHDSI
     digest: c04aff9679a416c1ce3c1a85c571682c8e2b80276c6645e8a3145c8dd0178128
     name: ohdsi
@@ -317,7 +327,7 @@ entries:
     version: 0.1.12
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1565956Z"
+    created: "2024-03-01T11:13:30.7307611Z"
     description: Helm chart for OHDSI
     digest: 89c75776e780296a1e6dd4f3e818ea2cb04d57399d8dfad9164c367e94828d12
     name: ohdsi
@@ -327,7 +337,7 @@ entries:
     version: 0.1.11
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1550885Z"
+    created: "2024-03-01T11:13:30.7296537Z"
     description: Helm chart for OHDSI
     digest: 43a5e9dbb726b6705095b03b6a905e2ac1398986a394afbc74e55861af8bf94b
     name: ohdsi
@@ -337,7 +347,7 @@ entries:
     version: 0.1.10
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1658267Z"
+    created: "2024-03-01T11:13:30.7394351Z"
     description: Helm chart for OHDSI
     digest: 9f990017615f3a211303c1a226cde8b720180d60beb57c342eaced59991fd696
     name: ohdsi
@@ -347,7 +357,7 @@ entries:
     version: 0.1.9
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1652999Z"
+    created: "2024-03-01T11:13:30.7389272Z"
     description: Helm chart for OHDSI
     digest: afe07dbf1f0c7ae73ffa8f18125f1db8328c56b1c69cba6fc0d8e80a38dee19f
     name: ohdsi
@@ -357,7 +367,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1647667Z"
+    created: "2024-03-01T11:13:30.7379275Z"
     description: Helm chart for OHDSI
     digest: ea82aa553e7384d2fd8400a00be778501fc3354f596fe19ef47bf0aeb9edea15
     name: ohdsi
@@ -367,7 +377,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1637115Z"
+    created: "2024-03-01T11:13:30.7379275Z"
     description: Helm chart for OHDSI
     digest: 148fe3129a61518afe4a6de11862a3357ea5aa6cd272eff1a2612f1ea876d5fc
     name: ohdsi
@@ -377,7 +387,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1632034Z"
+    created: "2024-03-01T11:13:30.7369287Z"
     description: Helm chart for OHDSI
     digest: f9a055a4952bb55bd434e2456fe0b80644c22749f64f86e8da3950d8fffdb954
     name: ohdsi
@@ -387,7 +397,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1624337Z"
+    created: "2024-03-01T11:13:30.7369287Z"
     description: Helm chart for OHDSI
     digest: f8b75f6f9c5fcc5529b9ac889a98bac2fe829ad5a6ee75e44846737b4ee1011e
     name: ohdsi
@@ -397,7 +407,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1616731Z"
+    created: "2024-03-01T11:13:30.7359199Z"
     description: Helm chart for OHDSI
     digest: 806aaceab812df7e61244867e7ed2b1f8f338324692df9b2caff79d8f1f74f23
     name: ohdsi
@@ -407,7 +417,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1586051Z"
+    created: "2024-03-01T11:13:30.735407Z"
     description: Helm chart for OHDSI
     digest: b3a03b64a4d843b03466511edc3d0bb89a1a3ae927f3caadb673e29de285ef80
     name: ohdsi
@@ -417,7 +427,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1550885Z"
+    created: "2024-03-01T11:13:30.7291188Z"
     description: Helm chart for OHDSI
     digest: a20962c21f7cb8a792ce665d333c06bbe5474a7c010898a3bb92baf6871e0bc1
     name: ohdsi
@@ -427,7 +437,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.5.4
-    created: "2024-03-01T10:22:47.1540898Z"
+    created: "2024-03-01T11:13:30.7285967Z"
     description: Helm chart for OHDSI
     digest: 61646a4b1cd736c3fe5db83d595322219b66343b32b3d088626ca03e4b962a6c
     name: ohdsi
@@ -438,7 +448,7 @@ entries:
   secrets-distributor:
   - apiVersion: v2
     appVersion: 0.1.1
-    created: "2024-03-01T10:22:47.1668851Z"
+    created: "2024-03-01T11:13:30.7404432Z"
     description: A Helm chart for the Secrets Distributor
     digest: f6f7b28b612c09a7fbf5c9a011abc85dc6d2e9fbc7b8c6a7a376550f256fb5b8
     name: secrets-distributor
@@ -448,7 +458,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.1.1
-    created: "2024-03-01T10:22:47.166356Z"
+    created: "2024-03-01T11:13:30.7404432Z"
     description: A Helm chart for the Secrets Distributor
     digest: 386ae00fded93e2f7585f73b472dc922b1599feba19a9b9ce61dd75b7cd9b7ce
     name: secrets-distributor
@@ -458,7 +468,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2024-03-01T10:22:47.166356Z"
+    created: "2024-03-01T11:13:30.7394351Z"
     description: A Helm chart for the Secrets Distributor
     digest: 58e59cbc7d629bc0f009eabd76a3601e6d660da0f2aa397dc3aee7ee59c81c55
     name: secrets-distributor
@@ -466,4 +476,4 @@ entries:
     urls:
     - secrets-distributor-0.1.0.tgz
     version: 0.1.0
-generated: "2024-03-01T10:22:47.1397599Z"
+generated: "2024-03-01T11:13:30.7173695Z"
