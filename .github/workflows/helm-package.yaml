@@ -32,7 +32,7 @@ jobs:
     - name: Helm Package
       working-directory: "./iac/helm/repository"
       run: |
-        helm package "${GITHUB_WORKSPACE}${{ inputs.directory }}" --version "${{ inputs.symver }}"
+        helm package "${GITHUB_WORKSPACE}/${{ inputs.directory }}" --version "${{ inputs.symver }}"
         helm repo index ./
 
     - name: Update Repository
