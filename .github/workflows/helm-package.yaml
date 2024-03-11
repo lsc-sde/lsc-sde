@@ -30,8 +30,16 @@ jobs:
         sudo apt-get install helm
 
 
-    - name: Switch to main branch
+    - name: Switch to main branch for repository
       working-directory: "./iac/helm/repository"
+      run: |
+        git switch main
+        git fetch
+        git pull
+
+        
+    - name: "Switch to main branch for ${{ inputs.directory }}"
+      working-directory: "${{ inputs.directory }}"
       run: |
         git switch main
         git fetch
