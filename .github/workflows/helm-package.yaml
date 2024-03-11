@@ -1,0 +1,52 @@
+on:
+  workflow_call:
+    inputs:
+      symver:
+        description: The symver value for this check-in
+        type: string
+
+      directory:
+        description: The directory under the submodule to update
+        type: string
+      
+jobs:
+  createbranch:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        repository: 'lsc-sde/lsc-sde'
+        submodules: 'true'
+        token: ${{ secrets.REPOS_RW_TOKEN }}
+
+    - name: Install Helm
+      run: |
+        curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | tee /usr/share/keyrings/helm.gpg > /dev/null
+        apt-get install apt-transport-https --yes
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
+        apt-get update
+        apt-get install helm
+
+    - name: Helm Package
+      working-directory: "./iac/helm/repository"
+      run: |
+        helm package "${GITHUB_WORKSPACE}${{ inputs.directory }}" --version "${{ inputs.symver }}"
+        helm repo index ./
+
+    - name: Update Repository
+      working-directory: "./iac/helm/repository"
+      run: |
+        UPDATE_MESSAGE="Updated Package at ${{ inputs.directory }} to version ${{ inputs.symver }}"
+        echo "${UPDATE_MESSAGE}"
+        git config --global user.name 'lsc-sde'
+        git config --global user.email 'shaun.turner1@nhs.net'
+        echo "Committing .gitmodules and ${{ inputs.directory }}"
+
+        git add *.tgz
+        git add index.yaml
+        git commit -m "${UPDATE_MESSAGE}"
+
+        echo "Pushing changes to main branch"
+        git push -u "origin" "main"
