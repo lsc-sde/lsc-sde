@@ -10,7 +10,7 @@ on:
         type: string
       
 jobs:
-  createbranch:
+  package:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
