@@ -21,6 +21,13 @@ jobs:
         submodules: 'true'
         token: ${{ secrets.REPOS_RW_TOKEN }}
 
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        repository: 'lsc-sde/iac-helm-repository'
+        path: './iac/helm/repository'
+        token: ${{ secrets.REPOS_RW_TOKEN }}
+
     - name: Install Helm
       run: |
         curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
