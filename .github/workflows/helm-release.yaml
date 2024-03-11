@@ -16,7 +16,6 @@ jobs:
     uses: lsc-sde/lsc-sde/.github/workflows/flux.yaml@main
     needs:
     - semver
-    - dev
     with:
       symver: ${{ needs.semver.outputs.GitVersion_SemVer }}
       environment: package
