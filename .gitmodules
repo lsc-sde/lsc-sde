@@ -122,3 +122,6 @@
 [submodule "iac/flux/analytics-workspace-management"]
 	path = iac/flux/analytics-workspace-management
 	url = https://github.com/lsc-sde/iac-flux-analytics-workspace-management.git
+[submodule "iac/helm/repository"]
+	path = iac/helm/repository
+	url = https://github.com/lsc-sde/iac-helm-repository.git
