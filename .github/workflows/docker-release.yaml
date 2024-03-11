@@ -1,0 +1,47 @@
+name: Docker build and push
+
+on:
+  workflow_call:
+    inputs:
+      imageName: 
+        description: Name of the image to build
+        type: string
+      directory:
+        description: The directory under the submodule to update
+        type: string
+
+jobs:
+  semver:
+    uses: lsc-sde/lsc-sde/.github/workflows/semver.yaml@main
+    with:
+      useConfigFile: true
+    
+  branch:
+    uses: lsc-sde/lsc-sde/.github/workflows/flux.yaml@main
+    needs:
+    - semver
+    with:
+      symver: ${{ needs.semver.outputs.GitVersion_SemVer }}
+      environment: package
+      prefix: release
+    secrets: inherit
+
+  buildandpush:
+    uses: lsc-sde/lsc-sde/.github/workflows/docker-build.yaml@main
+    needs: 
+    - semver
+    - branch
+    with:
+      imageName: ${{ inputs.imageName }}
+      tag: ${{ needs.semver.outputs.GitVersion_SemVer }}
+    secrets: inherit
+
+  submodule:
+    uses: lsc-sde/lsc-sde/.github/workflows/update-submodules.yaml@main
+    needs: 
+    - semver
+    - buildandpush
+    with:
+      symver: ${{ needs.semver.outputs.GitVersion_SemVer }}
+      directory: ${{ inputs.directory }}
+    secrets: inherit
