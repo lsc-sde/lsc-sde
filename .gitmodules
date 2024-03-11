@@ -125,3 +125,6 @@
 [submodule "iac/helm/repository"]
 	path = iac/helm/repository
 	url = https://github.com/lsc-sde/iac-helm-repository.git
+[submodule "iac/helm/aks-dns-operator"]
+	path = iac/helm/aks-dns-operator
+	url = https://github.com/lsc-sde/iac-helm-aks-dns-operator.git
