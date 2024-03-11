@@ -6,7 +6,7 @@ The above charts are made available by github pages, which is configured against
 
 To add this repository to helm use the following commands
 ```bash
-helm repo add lscsde https://lsc-sde.github.io/lsc-sde/iac/helm/
+helm repo add lscsde https://lsc-sde.github.io/iac-helm-repository/
 helm repo update
 ```
 
