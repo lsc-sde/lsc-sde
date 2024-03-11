@@ -34,7 +34,8 @@ jobs:
       working-directory: "./iac/helm/repository"
       run: |
         git switch main
-        
+        git fetch
+        git pull
 
     - name: Helm Package
       working-directory: "./iac/helm/repository"
