@@ -41,6 +41,8 @@ jobs:
         git add .gitmodules
         git add "${{ inputs.directory }}"
         git commit -m "${UPDATE_MESSAGE}"
-
+        git fetch
+        git pull
+        
         echo "Pushing changes to main branch"
         git push -u "origin" "main"
