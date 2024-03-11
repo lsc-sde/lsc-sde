@@ -131,3 +131,6 @@
 [submodule "iac/helm/secrets-distributor"]
 	path = iac/helm/secrets-distributor
 	url = https://github.com/lsc-sde/iac-helm-secrets-distributor.git
+[submodule "iac/helm/configmap-transformer-controller"]
+	path = iac/helm/configmap-transformer-controller
+	url = https://github.com/lsc-sde/iac-helm-configmap-transformer-controller.git
