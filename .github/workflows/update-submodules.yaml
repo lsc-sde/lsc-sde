@@ -1,0 +1,45 @@
+on:
+  workflow_call:
+    inputs:
+      symver:
+        description: The symver value for this check-in
+        type: string
+
+      directory:
+        description: The directory under the submodule to update
+        type: string
+      
+jobs:
+  createbranch:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        repository: 'lsc-sde'
+        submodules: 'true'
+        token: ${{ secrets.REPOS_RW_TOKEN }}
+
+    - name: Update Submodule
+      run: |
+        UPDATE_MESSAGE="Updated submodule at ${{ inputs.directory }} to version ${{ inputs.symver }}"
+        echo "${UPDATE_MESSAGE}"
+        git config --global user.name 'lsc-sde'
+        git config --global user.email 'shaun.turner1@nhs.net'
+
+        echo "Switching to ${{ inputs.directory }}"
+        cd "${{ inputs.directory }}"
+
+        echo "Switching to main branch"
+        git switch "main"
+
+        echo "Switching to Main workspace"
+        cd "${GITHUB_WORKSPACE}"
+
+        echo "Committing .gitmodules"
+        git add .gitmodules
+        git commit -m "${UPDATE_MESSAGE}"
+
+        echo "Pushing changes to main branch"
+        git push -u "origin" "main"
