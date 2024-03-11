@@ -1,0 +1,47 @@
+on:
+  workflow_call:
+    inputs:
+      directory:
+        description: The directory under the submodule to update
+        type: string
+
+jobs:
+  semver:
+    uses: lsc-sde/lsc-sde/.github/workflows/semver.yaml@main
+    with:
+      useConfigFile: true
+
+    
+  branch:
+    uses: lsc-sde/lsc-sde/.github/workflows/flux.yaml@main
+    needs:
+    - semver
+    - dev
+    with:
+      symver: ${{ needs.semver.outputs.GitVersion_SemVer }}
+      environment: package
+      prefix: release
+    secrets: inherit
+    
+
+  package:
+    uses: lsc-sde/lsc-sde/.github/workflows/helm-package.yaml@main
+    needs: 
+    - semver
+    - branch
+    with:
+      symver: ${{ needs.semver.outputs.GitVersion_SemVer }}
+      directory: ${{ inputs.directory }}
+    secrets: inherit
+
+
+  submodule:
+    uses: lsc-sde/lsc-sde/.github/workflows/update-submodules.yaml@main
+    needs: 
+    - semver
+    - branch
+    - package
+    with:
+      symver: ${{ needs.semver.outputs.GitVersion_SemVer }}
+      directory: ${{ inputs.directory }}
+    secrets: inherit
