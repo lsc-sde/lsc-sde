@@ -37,8 +37,9 @@ jobs:
         echo "Switching to Main workspace"
         cd "${GITHUB_WORKSPACE}"
 
-        echo "Committing .gitmodules"
+        echo "Committing .gitmodules and ${{ inputs.directory }}"
         git add .gitmodules
+        git add "${{ inputs.directory }}"
         git commit -m "${UPDATE_MESSAGE}"
 
         echo "Pushing changes to main branch"
