@@ -134,3 +134,6 @@
 [submodule "iac/flux/lscsde-components"]
 	path = iac/flux/lscsde-components
 	url = https://github.com/lsc-sde/iac-flux-lscsde-components.git
+[submodule "iac/flux/lscsde-configuration"]
+	path = iac/flux/lscsde-configuration
+	url = https://github.com/lsc-sde/iac-flux-lscsde-configuration.git
