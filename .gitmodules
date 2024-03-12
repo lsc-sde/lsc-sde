@@ -131,3 +131,6 @@
 [submodule "iac/helm/configmap-transformer-controller"]
 	path = iac/helm/configmap-transformer-controller
 	url = https://github.com/lsc-sde/iac-helm-configmap-transformer-controller.git
+[submodule "iac/flux/lscsde-components"]
+	path = iac/flux/lscsde-components
+	url = https://github.com/lsc-sde/iac-flux-lscsde-components.git
