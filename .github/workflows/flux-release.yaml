@@ -1,0 +1,43 @@
+on:
+  workflow_call:
+    inputs:
+      directory:
+        description: The directory under the submodule to update
+        type: string
+
+      environment:
+        description: The name of the environment
+        type: string
+        default: package
+
+      prefix:
+        description: The prefix to add to the branch name
+        type: string
+        default: release
+
+jobs:
+  semver:
+    uses: lsc-sde/lsc-sde/.github/workflows/semver.yaml@main
+    with:
+      useConfigFile: true
+
+  branch:
+    uses: lsc-sde/lsc-sde/.github/workflows/flux.yaml@main
+    needs:
+    - semver
+    with:
+      symver: ${{ needs.semver.outputs.GitVersion_SemVer }}
+      environment: ${{ inputs.environment }}
+      prefix: ${{ inputs.prefix }}
+    secrets: inherit
+    
+  submodule:
+    uses: lsc-sde/lsc-sde/.github/workflows/update-submodules.yaml@main
+    needs: 
+    - semver
+    - branch
+    with:
+      symver: ${{ needs.semver.outputs.GitVersion_SemVer }}
+      directory: ${{ inputs.directory }}
+    secrets: inherit
+
