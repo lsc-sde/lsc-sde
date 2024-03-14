@@ -30,7 +30,7 @@ jobs:
         git config --global user.name 'lsc-sde'
         git config --global user.email 'shaun.turner1@nhs.net'
 
-        yq '${{ inputs.yamlPath }} = "${{ inputs.newValue }}"' "${{ inputs.path }}" > "${{ inputs.path }}"
+        yq e '${{ inputs.yamlPath }} = "${{ inputs.newValue }}"' -i "${{ inputs.path }}"
 
         echo "Committing .gitmodules and ${{ inputs.directory }}"
         git add "${{ inputs.path }}"
