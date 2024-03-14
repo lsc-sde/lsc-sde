@@ -27,6 +27,7 @@ jobs:
         echo "${UPDATE_MESSAGE}"
         git config --global user.name 'lsc-sde'
         git config --global user.email 'shaun.turner1@nhs.net'
+        git config --global pull.rebase false
 
         echo "Switching to ${{ inputs.directory }}"
         cd "${{ inputs.directory }}"
