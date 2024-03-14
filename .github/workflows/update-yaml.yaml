@@ -35,7 +35,7 @@ jobs:
         do
           yq e '${{ inputs.yamlPath }} = "${{ inputs.newValue }}"' -i "${file}" 
           echo "Adding ${file} to commit"
-          git add "${{ inputs.path }}"
+          git add "${file}"
         done
 
         git commit -m "${UPDATE_MESSAGE}"
