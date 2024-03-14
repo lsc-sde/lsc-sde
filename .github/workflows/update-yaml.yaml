@@ -30,10 +30,14 @@ jobs:
         git config --global user.name 'lsc-sde'
         git config --global user.email 'shaun.turner1@nhs.net'
 
-        yq e '${{ inputs.yamlPath }} = "${{ inputs.newValue }}"' -i "${{ inputs.path }}"
+        IFS=', ' read -r -a files <<< "${{ inputs.path }}"
+        for file in "${files[@]}"
+        do
+          yq e '${{ inputs.yamlPath }} = "${{ inputs.newValue }}"' -i "${file}" 
+          echo "Adding ${file} to commit"
+          git add "${{ inputs.path }}"
+        done
 
-        echo "Committing .gitmodules and ${{ inputs.directory }}"
-        git add "${{ inputs.path }}"
         git commit -m "${UPDATE_MESSAGE}"
         git fetch
         git pull
