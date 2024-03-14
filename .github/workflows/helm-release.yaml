@@ -61,5 +61,5 @@ jobs:
       repository: lsc-sde/iac-flux-lscsde-configuration
       path: "deployment-config.yaml"
       yamlPath: ".data.${{ inputs.yamlPath }}"
-      newValue: "release/${{ needs.semver.outputs.GitVersion_SemVer }}"
+      newValue: "${{ needs.semver.outputs.GitVersion_SemVer }}"
     secrets: inherit
