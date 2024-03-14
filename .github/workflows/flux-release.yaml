@@ -48,7 +48,7 @@ jobs:
 
   update-flux:
     if: inputs.yamlPath != ''
-    uses: lsc-sde/lsc-sde/.github/workflows/update-submodules.yaml@main
+    uses: lsc-sde/lsc-sde/.github/workflows/update-yaml.yaml@main
     needs: 
     - semver
     - submodule
