@@ -1,0 +1,42 @@
+on:
+  workflow_call:
+    inputs:
+      repository:
+        description: The name of the repository we are updating
+        type: string
+      path:
+        description: The path of the file we are updating
+        type: string
+      yamlPath:
+        description: The path to the value we are updating
+        type: string
+      newValue:
+        description: The value that we're updating it to
+        type: string
+jobs:
+  update-yaml:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ inputs.repository }}
+        token: ${{ secrets.REPOS_RW_TOKEN }}
+
+    - name: Update Submodule
+      run: |
+        UPDATE_MESSAGE="Updating file at ${{ inputs.path }} setting ${{ inputs.yamlPath }} to ${{ inputs.newValue }}"
+        echo "${UPDATE_MESSAGE}"
+        git config --global user.name 'lsc-sde'
+        git config --global user.email 'shaun.turner1@nhs.net'
+
+        yq '${{ inputs.yamlPath }} = "${{ inputs.newValue }}"' "${{ inputs.path }}" > "${{ inputs.path }}"
+
+        echo "Committing .gitmodules and ${{ inputs.directory }}"
+        git add "${{ inputs.path }}"
+        git commit -m "${UPDATE_MESSAGE}"
+        git fetch
+        git pull
+        
+        echo "Pushing changes to main branch"
+        git push -u "origin" "main"
