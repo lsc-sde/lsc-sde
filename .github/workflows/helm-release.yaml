@@ -5,6 +5,12 @@ on:
         description: The directory under the submodule to update
         type: string
 
+      yamlPath:
+        description: The name of the value in the yaml config (if present)
+        type: string
+        default: ""
+
+
 jobs:
   semver:
     uses: lsc-sde/lsc-sde/.github/workflows/semver.yaml@main
@@ -43,4 +49,17 @@ jobs:
     with:
       symver: ${{ needs.semver.outputs.GitVersion_SemVer }}
       directory: ${{ inputs.directory }}
+    secrets: inherit
+
+  update-flux:
+    if: inputs.yamlPath != ''
+    uses: lsc-sde/lsc-sde/.github/workflows/update-yaml.yaml@main
+    needs: 
+    - semver
+    - submodule
+    with:
+      repository: lsc-sde/iac-flux-lscsde-configuration
+      path: "deployment-config.yaml"
+      yamlPath: ".data.${{ inputs.yamlPath }}"
+      newValue: "release/${{ needs.semver.outputs.GitVersion_SemVer }}"
     secrets: inherit
