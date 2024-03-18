@@ -137,3 +137,6 @@
 [submodule "iac/flux/lscsde-configuration"]
 	path = iac/flux/lscsde-configuration
 	url = https://github.com/lsc-sde/iac-flux-lscsde-configuration.git
+[submodule "docker/ohdsi-hades"]
+	path = docker/ohdsi-hades
+	url = https://github.com/lsc-sde/docker-ohdsi-hades.git
