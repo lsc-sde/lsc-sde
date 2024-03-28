@@ -1,6 +1,4 @@
-# lsc-sde
-This is the default repository for the Secure Data Environment
-
+# Lancashire and South Cumbria Secure Data Environment
 To checkout the repositories, run the following command in the integrated terminal:
 
 ```bash
