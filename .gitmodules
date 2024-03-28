@@ -143,3 +143,6 @@
 [submodule "iac/helm/lscsde-flux"]
 	path = iac/helm/lscsde-flux
 	url = https://github.com/lsc-sde/iac-helm-lscsde-flux.git
+[submodule "docker/analytics-vnc-client"]
+	path = docker/analytics-vnc-client
+	url = https://github.com/lsc-sde/docker-analytics-vnc-client.git
