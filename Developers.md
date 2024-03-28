@@ -1,3 +1,10 @@
+# Checking out the code
+```bash
+git clone https://github.com/lsc-sde/lsc-sde.git --recurse-submodules
+cd lsc-sde
+git submodule foreach "git switch main"
+```
+
 # Development Principles / Best Practice
 Before you start developing on these projects, please take the time to read this section on best practice. These are not just about good practice but also about good security and so it is essential that every developer understands that it is their responsibility to upkeep the standards of these projects.
 
