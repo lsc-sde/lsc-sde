@@ -12,6 +12,7 @@ As we are developing open source solutions it is important that every service we
 For example, if we are building a new service, such as the aks-dns-operator, this has code in the form of:
 
 ```mermaid
+flowchart LR
 Service[Python Service] --> Image[Docker Image] --> Helm[Helm Chart] --> Flux[Flux Configuration] --> IAC[Terraform Deployment]
 ```
 
