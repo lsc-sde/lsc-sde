@@ -10,6 +10,10 @@ on:
         type: string
         default: ""
 
+      yamlPathPrefix:
+        description: The prefix of the yaml in the yaml config
+        type: string
+        default: ".data."
 
 jobs:
   semver:
@@ -60,6 +64,6 @@ jobs:
     with:
       repository: lsc-sde/iac-flux-lscsde
       path: "core/deployment-config.yaml"
-      yamlPath: ".data.${{ inputs.yamlPath }}"
+      yamlPath: "${{ inputs.yamlPathPrefix }}${{ inputs.yamlPath }}"
       newValue: "${{ needs.semver.outputs.GitVersion_SemVer }}"
     secrets: inherit
