@@ -34,10 +34,13 @@
         {{ content }}
       </section>
     </div>
-    <script>document.querySelectorAll('.language-mermaid').forEach(s => s.classList.add("mermaid"))</script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true });
+        
+        await mermaid.run({
+            querySelector: '.language-mermaid',
+        });
       </script>
   </body>
 </html>
