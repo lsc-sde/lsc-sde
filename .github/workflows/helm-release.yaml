@@ -5,6 +5,11 @@ on:
         description: The directory under the submodule to update
         type: string
 
+      yamlFilePath:
+        description: The file path of the yaml file to update 
+        type: string
+        default: "core/deployment-config.yaml"
+
       yamlPath:
         description: The name of the value in the yaml config (if present)
         type: string
@@ -63,7 +68,7 @@ jobs:
     - submodule
     with:
       repository: lsc-sde/iac-flux-lscsde
-      path: "core/deployment-config.yaml"
+      path: "${{ inputs.yamlFilePath }}"
       yamlPath: "${{ inputs.yamlPathPrefix }}${{ inputs.yamlPath }}"
       newValue: "${{ needs.semver.outputs.GitVersion_SemVer }}"
     secrets: inherit
