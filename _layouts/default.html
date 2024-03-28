@@ -38,8 +38,7 @@
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         for(var el in document.getElementsByClassName(".language-mermaid")){
-            var elValue = el.value;
-            el.value = elValue.replaceAll("&gt;",">").replaceAll("&lt;", "<");
+            el.value = el.value.replaceAll("&gt;",">").replaceAll("&lt;", "<");
         };
         
         mermaid.initialize({ startOnLoad: true });
