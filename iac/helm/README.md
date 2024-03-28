@@ -27,7 +27,7 @@ The core chart to call is lscsde-flux, this will install all of the flux/helm re
 There are pipelines on each of the helm repositories which will:
 ```mermaid
 flowchart TB
-semver[Calculate SEMVER from git history] --> branch[Create Release Branch] --> package[Package the Helm Chart] --> update[Update submodules of lsc-sde repository] --> update[Update Yaml Configuration files in iac-flux-lscsde]
+semver[Calculate SEMVER from git history] --> branch[Create Release Branch] --> package[Package the Helm Chart] --> update[Update submodules of lsc-sde repository] --> updateyaml[Update Yaml Configuration files in iac-flux-lscsde]
 ```
 
 This will in turn trigger the pipeline for [the flux repositories](../flux/)
