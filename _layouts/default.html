@@ -34,17 +34,11 @@
         {{ content }}
       </section>
     </div>
-
-    <script src="https://unpkg.com/mermaid@8.9.3/dist/mermaid.min.js"></script>
-    <script>
-    $(document).ready(function () {
-        mermaid.initialize({
-        startOnLoad:true,
-        theme: "default",
-        });
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
         window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
-    });
-    </script>
 
+      </script>
   </body>
 </html>
