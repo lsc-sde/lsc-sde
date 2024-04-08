@@ -8,7 +8,7 @@ The Lancashire and South Cumbria Secure Data Environment is designed primarily t
 IaC for the LSCSDE is split into 3 core types:
 * [Helm Charts](./helm/)
 * [Flux Charts](./flux/)
-* [Terraform](./k8s/)
+* [Terraform](https://github.com/lsc-sde/k8s-iac)
 
 
 ## Container Images
