@@ -35,6 +35,8 @@ mindmap
       OHDSI
         Atlas
         Hades
+    (Management)
+      LSC SDE Management Portal
 ```
 
 ### General Components
