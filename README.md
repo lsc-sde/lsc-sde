@@ -20,6 +20,7 @@ mindmap
           OHDSI Hades
     Systems Administrator
       LSC SDE Management Portal    
+```
 
 ## Components
 ```mermaid
