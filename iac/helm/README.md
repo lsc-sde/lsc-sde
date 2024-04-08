@@ -2,15 +2,15 @@
 * [lscsde-flux](./lscsde-flux/)
 
 # Application Charts
-* [Analytics Workspace Management](./analytics-workspace-management/)
-* [Apache Guacamole](./guacamole/)
-* [OHDSI](./ohsdi/)
+* [Analytics Workspace Management](https://github.com/lsc-sde/iac-helm-analytics-workspace-management)
+* [Apache Guacamole](https://github.com/lsc-sde/iac-helm-guacamole)
+* [OHDSI](https://github.com/lsc-sde/iac-helm-ohdsi)
 
 # Utility Charts
-* [AKS DNS Operator](./aks-dns-operator/)
-* [Secrets Distributor](./secrets-distributor/)
-* [ConfigMap Transformer Controller](./configmap-transformer-controller/) - deprecated
-* [github-actions-runner](./github-actions-runner/) - deprecated
+* [AKS DNS Operator](https://github.com/lsc-sde/iac-helm-aks-dns-operator)
+* [Secrets Distributor](https://github.com/lsc-sde/iac-helm-secrets-distributor)
+* [ConfigMap Transformer Controller](https://github.com/lsc-sde/iac-helm-configmap-transformer-controller) - deprecated
+* [github-actions-runner](https://github.com/lsc-sde/iac-helm-github-actions-runner) - deprecated
 
 # Helm Repository
 The above charts are made available by github pages, which is configured against the main branch of this repository
