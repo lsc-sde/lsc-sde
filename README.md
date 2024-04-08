@@ -4,22 +4,10 @@ To checkout the repositories, run the following command in the integrated termin
 ## User Roles
 ```mermaid
 mindmap
-  root((User Roles))
-    Data Quality Engineer
-      Airlock
-      Guacamole
-        Browser
-          Airlock
-          JupyterHub
-    Data Analyst
-      Guacamole
-        Browser
-          Airlock
-          JupyterHub
-          OHDSI Atlas
-          OHDSI Hades
-    Systems Administrator
-      LSC SDE Management Portal    
+  root)User Roles(
+    (Data Quality Engineer)
+    (Data Analyst)
+    (Systems Administrator)
 ```
 
 ## Components
