@@ -1,5 +1,5 @@
 # Core Charts
-* [lscsde-flux](./lscsde-flux/)
+* [lscsde-flux](https://github.com/lsc-sde/iac-helm-lscsde-flux)
 
 # Application Charts
 * [Analytics Workspace Management](https://github.com/lsc-sde/iac-helm-analytics-workspace-management)
