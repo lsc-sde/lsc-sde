@@ -1,6 +1,25 @@
 # Lancashire and South Cumbria Secure Data Environment
 To checkout the repositories, run the following command in the integrated terminal:
 
+## User Roles
+```mermaid
+mindmap
+  root((User Roles))
+    Data Quality Engineer
+      Airlock
+      Guacamole
+        Browser
+          Airlock
+          JupyterHub
+    Data Analyst
+      Guacamole
+        Browser
+          Airlock
+          JupyterHub
+          OHDSI Atlas
+          OHDSI Hades
+    Systems Administrator
+      LSC SDE Management Portal    
 
 ## Components
 ```mermaid
