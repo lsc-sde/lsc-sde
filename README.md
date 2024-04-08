@@ -8,6 +8,7 @@ mindmap
   root((LSCSDE))
     (General)
       Secrets Distributor
+      ::icon(fas user-secret)
       Cert Manager
       Trust Manager
       Nginx
