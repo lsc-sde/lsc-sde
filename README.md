@@ -8,14 +8,16 @@ mindmap
   root((LSCSDE))
     (General)
       Secrets Distributor
-      ::icon(fa user-secret)
+      ::icon(fas user-secret)
       Cert Manager
-      ::icon(fa certificate)
+      ::icon(fas certificate)
       Trust Manager
-      ::icon(fa key)
+      ::icon(fas key)
       Nginx
-      ::icon(fa key)
+      ::icon(fas users)
       Keda
+      ::icon(fas exchange-alt)
+
     (Azure Specific)
       AKS DNS Operator
     (User Access)
