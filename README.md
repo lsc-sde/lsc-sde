@@ -84,4 +84,5 @@ HADES (previously the OHDSI METHODS LIBRARY) is a collection of open-source R pa
 
 * [Developers Starter Guide](./Developers.md)
 * [New Environment Guide](./New-Environment.md)
+* [Python Modules](./python-modules/)
 * [Infrastructure](./iac/)
