@@ -4,3 +4,8 @@ We currently implement the following components:
 * [Atlas](./OHDSI/Atlas.md)
 * [Hades](./OHDSI/Hades.md)
 * [WebAPI](./OHDSI/WebAPI.md)
+
+## Development
+The following repositories relate to our implementation of this component:
+* [Flux](https://github.com/lsc-sde/iac-flux-ohdsi)
+* [Helm](https://github.com/lsc-sde/iac-helm-ohdsi)
