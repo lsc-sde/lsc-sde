@@ -7,7 +7,7 @@ This service gives approved researchers with approved projects secure access to 
 * [Secure Virtual Desktop Infrastructure (VDI)](./Secure-Data-Environment/Secure-Virtual-Desktop-Infrastructure.md) 
 * [Data Analytics Programming Tools](./Secure-Data-Environment/Data-Analytics-Programming.md)
 * [Flexible Infrastructure](./Secure-Data-Environment/Infrastructure.md)
-* [Elastic Compute Resource](./Secure-Data-Environment/Elastic-Compute-Resource.md)
+* [Elastic Compute Resource](./Secure-Data-Environment/Infrastructure/Elastic-Compute-Resource.md)
 * [Secure Data Ingress and Egress](./Secure-Data-Environment/Secure-Data-Ingress-and-Egress.md)
 * [Roles Based Access Controls](./Secure-Data-Environment/Roles-Based-Access-Controls.md)
 
