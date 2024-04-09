@@ -10,6 +10,7 @@ This service gives approved researchers with approved projects secure access to 
 * [Elastic Compute Resource](./Secure-Data-Environment/Infrastructure/Elastic-Compute-Resource.md)
 * [Secure Data Ingress and Egress](./Secure-Data-Environment/Secure-Data-Ingress-and-Egress.md)
 * [Roles Based Access Controls](./Secure-Data-Environment/Roles-Based-Access-Controls.md)
+* [Analytics Component Applications](./Secure-Data-Environment/Components.md)
 
 ## Integration with the North West SDE (NWSDE)
 The Lancashire and South Cumbria Secure Data Environment integrates with the [North West SDE](./Community.md) allowing researchers using the NWSDE to easily access secure compute resources while allowing our system to integrate with some of the capabilities of the NWSDE such as:
