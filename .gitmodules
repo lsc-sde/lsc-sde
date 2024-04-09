@@ -149,3 +149,6 @@
 [submodule "docker/analytics-workspace-mgmt"]
 	path = docker/analytics-workspace-mgmt
 	url = https://github.com/lsc-sde/docker-analytics-workspace-mgmt.git
+[submodule "iac/terraform/azure"]
+	path = iac/terraform/azure
+	url = https://github.com/lsc-sde/iac-terraform-azure.git
