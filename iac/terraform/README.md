@@ -1,0 +1,1 @@
+[This page has moved to the new terraform page](../../about/Secure-Data-Environment/Infrastructure/IAC/Terraform.md)

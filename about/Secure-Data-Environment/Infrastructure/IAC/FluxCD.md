@@ -1,5 +1,5 @@
 # FluxCD
-The flux configurations used by the SDE environment
+[Flux](https://fluxcd.io/) is a set of continuous and progressive delivery solutions for Kubernetes that are open and extensible.
 
 ## Core Configurations
 * [lscsde](https://github.com/lsc-sde/iac-flux-lscsde)

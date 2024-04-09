@@ -1,3 +1,6 @@
+# Helm Charts
+[Helm](https://helm.sh/) is a package manager for Kubernetes.
+
 ## Core Charts
 * [lscsde-flux](https://github.com/lsc-sde/iac-helm-lscsde-flux)
 
