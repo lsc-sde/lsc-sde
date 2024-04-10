@@ -1,4 +1,6 @@
 # Analytics Workspace Bindings
+An Analytics Workspace Binding links a workspace to a user, effectively giving user access to that workspace. Each binding has an expiry date, which is taken into consideration when providing the user access to the workspace. 
+
 ## Custom Resource Definition
 The Lancashire and South Cumbria Secure Data Environment (LSC-SDE) [Analytics Workspace Management Solution](../../Analytics-Workspace-Management-Solution.md) (AWMS) leverages [Kubernetes Custom Resource Definitions](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) to store and manage workspace bindings
 
