@@ -34,6 +34,8 @@ mindmap
 * [Trust Manager](./Components/Trust-Manager.md)
 * [Nginx](./Components/Nginx.md)
 * [Keda](./Components/Keda.md)
+## Management
+* [Analytics-Workspace-Management-Solution](./Components/Analytics-Workspace-Management-Solution.md)
 ## User Access
 * [Apache Guacamole](./Components/Apache-Guacamole.md)
 ## Azure Specific Components
