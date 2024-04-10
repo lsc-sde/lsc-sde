@@ -1,6 +1,8 @@
 # Jupyter Hub Integration
 The Lancashire and South Cumbria Secure Data Environment (LSC-SDE) [Analytics Workspace Management Solution](../Analytics-Workspace-Management-Solution.md) (AWMS) integrates with [JupyterHub](https://jupyter.org/hub) in order to allow easy management of Analytics workspaces in Jupyter Hub. 
 
+This utilises a [customised docker image of jupyter hub](https://github.com/lsc-sde/docker-jupyterhub) that hooks up the kubespawner to the [workspace management python libraries](https://github.com/lsc-sde/py-lscsde-workspace-mgmt). These libraries utilise kubernetes custom resources which define how a [workspace](../Analytics-Workspace-Management-Solution/Resources/Analytics-Workspaces.md) is configured and who can access it via [bindings](../Analytics-Workspace-Management-Solution/Resources/Analytics-Workspace-Bindings.md)
+
 ```mermaid
 flowchart LR
  User --> AWMS
