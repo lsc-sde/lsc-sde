@@ -9,7 +9,6 @@ This service gives approved researchers with approved projects secure access to 
 * [Flexible Infrastructure](./Secure-Data-Environment/Infrastructure.md)
 * [Elastic Compute Resource](./Secure-Data-Environment/Infrastructure/Elastic-Compute-Resource.md)
 * [Secure Data Ingress and Egress](./Secure-Data-Environment/Secure-Data-Ingress-and-Egress.md)
-* [Roles Based Access Controls](./Secure-Data-Environment/Roles-Based-Access-Controls.md)
 * [Analytics Component Applications](./Secure-Data-Environment/Components.md)
 
 ## Integration with the North West SDE (NWSDE)

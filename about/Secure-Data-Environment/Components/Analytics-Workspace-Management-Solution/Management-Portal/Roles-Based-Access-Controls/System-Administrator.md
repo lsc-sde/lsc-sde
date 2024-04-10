@@ -8,3 +8,6 @@ mindmap
     Map Users to Workspace
     Approve Requests
 ```
+
+## Notice
+This is planned functionality, but not yet implemented

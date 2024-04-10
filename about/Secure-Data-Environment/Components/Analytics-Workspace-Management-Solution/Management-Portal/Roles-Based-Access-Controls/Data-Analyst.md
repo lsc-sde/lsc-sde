@@ -8,3 +8,6 @@ mindmap
     Request additional git forks
     Request push git branch
 ```
+
+## Notice
+This is planned functionality, but not yet implemented
