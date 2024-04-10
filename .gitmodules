@@ -1,6 +1,3 @@
-[submodule "iac/k8s"]
-	path = iac/k8s
-	url = https://github.com/lsc-sde/k8s-iac.git
 [submodule "iac/helm/keda"]
 	path = iac/helm/keda
 	url = https://github.com/lsc-sde/helm-keda.git
