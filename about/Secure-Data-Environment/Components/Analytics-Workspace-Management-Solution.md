@@ -1,8 +1,9 @@
 # Analytics Workspace Management Solution
-At present the LSC SDE Analytics Workspace Management Solution (AWMS) functions as an extension to Jupyter Hub, however it should be considered a standalone product that **can** interact with JupyterHub. This is because the intention is that we can use this product to manage all aspects of the Lancashire and South Cumbria Secure Data Environment. This therefore will make up a 
+At present the LSC SDE Analytics Workspace Management Solution (AWMS) functions as an extension to Jupyter Hub, however it should be considered a standalone product that **can** interact with JupyterHub. This is because the intention is that we can use this product to manage all aspects of the Lancashire and South Cumbria Secure Data Environment. This therefore is expected to make up a considerable part of the LSC-SDE estate.
 
 ## Features
 * [Management Portal](./Analytics-Workspace-Management-Solution/Management-Portal.md)
+* [Jupyter Integration](./Analytics-Workspace-Management-Solution/Jupyter-Integration.md)
 
 ## Resources
 * [Analytics Workspace](./Analytics-Workspace-Management-Solution/Resources/Analytics-Workspaces.md)
