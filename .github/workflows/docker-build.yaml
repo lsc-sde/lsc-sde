@@ -7,6 +7,9 @@ on:
       tag:
         required: true
         type: string
+      platforms: 
+        type: string
+        default: linux/amd64,linux/arm64
     secrets:
       DOCKERHUB_USERNAME:
         required: true
@@ -38,4 +41,4 @@ jobs:
       with:
         push: true
         tags: lscsde/${{ inputs.imageName }}:${{ inputs.tag }}
-        platforms: linux/amd64,linux/arm64
+        platforms: ${{ inputs.platforms }}

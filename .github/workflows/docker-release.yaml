@@ -9,6 +9,10 @@ on:
       directory:
         description: The directory under the submodule to update
         type: string
+      platforms: 
+        description: The platforms to build the docker images on 
+        type: string
+        default: linux/amd64,linux/arm64
 
 jobs:
   semver:
@@ -34,6 +38,7 @@ jobs:
     with:
       imageName: ${{ inputs.imageName }}
       tag: ${{ needs.semver.outputs.GitVersion_SemVer }}
+      platforms: ${{ inputs.platforms }}
     secrets: inherit
 
   submodule:
