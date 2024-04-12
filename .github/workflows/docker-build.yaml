@@ -103,7 +103,7 @@ jobs:
         name: Create manifest list and push
         working-directory: /tmp/digests
         run: |
-          TAGNAME="lscsde/{{ inputs.imageName }}:${{ inputs.tag }}"
+          TAGNAME="lscsde/${{ inputs.imageName }}:${{ inputs.tag }}"
           DATA=$(printf "lscsde/${{ inputs.imageName }}@sha256:%s\n" *)
           echo $DATA
           docker buildx imagetools create -t "${TAGNAME}" $(echo $DATA | xargs)
