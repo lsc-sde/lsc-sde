@@ -103,9 +103,6 @@ jobs:
         name: Create manifest list and push
         working-directory: /tmp/digests
         run: |
-          $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$  ") \
-            $(printf '${{ inputs.imageName }}@sha256:%s ' *) 
-
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$  ") \
             $(printf '${{ inputs.imageName }}@sha256:%s ' *)          
       -
