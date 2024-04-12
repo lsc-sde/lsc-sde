@@ -26,14 +26,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3      
-    
+
+    - name: Prepare
+      run: |
+        platform=${{ matrix.platform }}
+        echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
+
     - name: Docker meta
       id: meta
       uses: docker/metadata-action@v5
       with:
         images: lscsde/${{ inputs.imageName }}
         tags: |
-          type=raw,${{ inputs.tag }}
+          type=sha,format=long
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
