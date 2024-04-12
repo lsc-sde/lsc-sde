@@ -9,7 +9,7 @@ on:
         type: string
       platforms: 
         type: string
-        default: linux/amd64,linux/arm64
+        default: '[ "linux/amd64", "linux/arm64" ]'
     secrets:
       DOCKERHUB_USERNAME:
         required: true
@@ -19,8 +19,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ${{ fromJSON(inputs.platforms) }}
+
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3      
     
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
@@ -41,4 +46,4 @@ jobs:
       with:
         push: true
         tags: lscsde/${{ inputs.imageName }}:${{ inputs.tag }}
-        platforms: ${{ inputs.platforms }}
+        platforms: ${{ matrix.platform }}
