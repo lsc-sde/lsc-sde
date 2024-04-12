@@ -103,8 +103,7 @@ jobs:
         name: Create manifest list and push
         working-directory: /tmp/digests
         run: |
-          docker buildx imagetools create -t ${{ inputs.imageName }}:${{ inputs.tag }} \
-            $(printf '${{ inputs.imageName }}@sha256:%s\n' * | xargs)
+          docker buildx imagetools create -t ${{ inputs.imageName }}:${{ inputs.tag }} $(printf '${{ inputs.imageName }}@sha256:%s\n' * | xargs)
       -
         name: Inspect image
         run: |
