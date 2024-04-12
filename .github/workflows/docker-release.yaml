@@ -12,7 +12,7 @@ on:
       platforms: 
         description: The platforms to build the docker images on 
         type: string
-        default: '[ "linux/amd64", "linux/arm64" ]'
+        default: '[ "amd64", "arm64" ]'
 
 jobs:
   semver:

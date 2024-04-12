@@ -9,7 +9,7 @@ on:
         type: string
       platforms: 
         type: string
-        default: '[ "linux/amd64", "linux/arm64" ]'
+        default: '[ "amd64", "arm64" ]'
     secrets:
       DOCKERHUB_USERNAME:
         required: true
@@ -23,22 +23,16 @@ jobs:
       fail-fast: false
       matrix:
         platform: ${{ fromJSON(inputs.platforms) }}
-
+        os:
+        - linux
     steps:
     - uses: actions/checkout@v3      
-
-    - name: Prepare
-      run: |
-        platform=${{ matrix.platform }}
-        echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
 
     - name: Docker meta
       id: meta
       uses: docker/metadata-action@v5
       with:
         images: lscsde/${{ inputs.imageName }}
-        tags: |
-          type=sha,format=long
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
@@ -60,7 +54,7 @@ jobs:
       id: build
       uses: docker/build-push-action@v5
       with:
-        platforms: ${{ matrix.platform }}
+        platforms: ${{ matrix.os }}/${{ matrix.platform }}
         outputs: type=image,name=lscsde/${{ inputs.imageName }},push-by-digest=true,name-canonical=true,push=true
 
     - name: Export digest
@@ -109,7 +103,10 @@ jobs:
         name: Create manifest list and push
         working-directory: /tmp/digests
         run: |
-          docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
+          $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$  ") \
+            $(printf '${{ inputs.imageName }}@sha256:%s ' *) 
+
+          docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$  ") \
             $(printf '${{ inputs.imageName }}@sha256:%s ' *)          
       -
         name: Inspect image
