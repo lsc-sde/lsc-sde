@@ -16,9 +16,6 @@
 [submodule "docker/datascience-notebook"]
 	path = docker/datascience-notebook
 	url = https://github.com/lsc-sde/docker-datascience-notebook.git
-[submodule "docker/datascience-code-server"]
-	path = docker/datascience-code-server
-	url = https://github.com/lsc-sde/docker-datascience-code-server.git
 [submodule "docker/datascience-nlp"]
 	path = docker/datascience-nlp
 	url = https://github.com/lsc-sde/docker-datascience-nlp.git
