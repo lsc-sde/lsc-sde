@@ -16,9 +16,6 @@
 [submodule "docker/octave-notebook"]
 	path = docker/octave-notebook
 	url = https://github.com/lsc-sde/docker-octave-notebook.git
-[submodule "docker/lancuni-grp-prj-2021-notebook"]
-	path = docker/lancuni-grp-prj-2021-notebook
-	url = https://github.com/lsc-sde/docker-lancuni-grp-prj-2021-notebook.git
 [submodule "docker/scipy-code-server"]
 	path = docker/scipy-code-server
 	url = https://github.com/lsc-sde/docker-scipy-code-server.git
