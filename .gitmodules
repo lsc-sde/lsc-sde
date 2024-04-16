@@ -16,9 +16,6 @@
 [submodule "docker/octave-notebook"]
 	path = docker/octave-notebook
 	url = https://github.com/lsc-sde/docker-octave-notebook.git
-[submodule "docker/dfu-jupyterlab"]
-	path = docker/dfu-jupyterlab
-	url = https://github.com/lsc-sde/docker-dfu-jupyterlab.git
 [submodule "docker/fft-notebook"]
 	path = docker/fft-notebook
 	url = https://github.com/lsc-sde/docker-fft-notebook.git
