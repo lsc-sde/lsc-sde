@@ -7,9 +7,6 @@
 [submodule "iac/helm/prefect-server"]
 	path = iac/helm/prefect-server
 	url = https://github.com/lsc-sde/helm-prefect-server.git
-[submodule "docker/rstudio-notebook"]
-	path = docker/rstudio-notebook
-	url = https://github.com/lsc-sde/docker-rstudio-notebook.git
 [submodule "docker/datascience-notebook"]
 	path = docker/datascience-notebook
 	url = https://github.com/lsc-sde/docker-datascience-notebook.git
