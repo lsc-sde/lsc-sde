@@ -19,9 +19,6 @@
 [submodule "docker/datascience-code-server"]
 	path = docker/datascience-code-server
 	url = https://github.com/lsc-sde/docker-datascience-code-server.git
-[submodule "docker/beamtree-rstudio"]
-	path = docker/beamtree-rstudio
-	url = https://github.com/lsc-sde/docker-beamtree-rstudio.git
 [submodule "docker/datascience-nlp"]
 	path = docker/datascience-nlp
 	url = https://github.com/lsc-sde/docker-datascience-nlp.git
