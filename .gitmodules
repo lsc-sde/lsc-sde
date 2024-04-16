@@ -112,3 +112,6 @@
 [submodule "iac/terraform/azure"]
 	path = iac/terraform/azure
 	url = https://github.com/lsc-sde/iac-terraform-azure.git
+[submodule "iac/flux/secrets-distributor"]
+	path = iac/flux/secrets-distributor
+	url = https://github.com/lsc-sde/iac-flux-secrets-distributor.git
