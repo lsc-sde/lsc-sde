@@ -13,8 +13,6 @@
 [submodule "docker/scipy-code-server"]
 	path = docker/scipy-code-server
 	url = https://github.com/lsc-sde/docker-scipy-code-server.git
-[submodule "octave-notebook"]
-	url = https://github.com/lsc-sde/docker-octave-notebook.git
 [submodule "scipy-code-server"]
 	url = https://github.com/lsc-sde/docker-scipy-code-server.git
 [submodule "docker/aks-dns-operator"]
