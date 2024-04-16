@@ -13,9 +13,6 @@
 [submodule "docker/datascience-notebook"]
 	path = docker/datascience-notebook
 	url = https://github.com/lsc-sde/docker-datascience-notebook.git
-[submodule "docker/octave-notebook"]
-	path = docker/octave-notebook
-	url = https://github.com/lsc-sde/docker-octave-notebook.git
 [submodule "docker/scipy-code-server"]
 	path = docker/scipy-code-server
 	url = https://github.com/lsc-sde/docker-scipy-code-server.git
