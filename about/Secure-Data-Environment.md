@@ -8,6 +8,7 @@ This service gives approved researchers with approved projects secure access to 
 * [Data Analytics Programming Tools](./Secure-Data-Environment/Data-Analytics-Programming.md)
 * [Flexible Infrastructure](./Secure-Data-Environment/Infrastructure.md)
 * [Elastic Compute Resource](./Secure-Data-Environment/Infrastructure/Elastic-Compute-Resource.md)
+* [Secure Access for External Users](./Secure-Data-Environment/External-Access.md)
 * [Secure Data Ingress and Egress](./Secure-Data-Environment/Secure-Data-Ingress-and-Egress.md)
 * [Analytics Component Applications](./Secure-Data-Environment/Components.md)
 
