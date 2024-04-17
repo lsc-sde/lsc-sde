@@ -59,8 +59,8 @@ jobs:
     - submodule
     with:
       repository: lsc-sde/iac-flux-lscsde
-      path: "core/deployment-config.yaml"
-      yamlPath: ".data.${{ inputs.yamlPath }}"
+      path: "core/flux-config.yaml"
+      yamlPath: ".components.${{ inputs.yamlPath }}.repository.branch"
       newValue: "release/${{ needs.semver.outputs.GitVersion_SemVer }}"
     secrets: inherit
 

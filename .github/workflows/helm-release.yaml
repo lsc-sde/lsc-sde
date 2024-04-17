@@ -8,7 +8,7 @@ on:
       yamlFilePath:
         description: The file path of the yaml file to update 
         type: string
-        default: "core/deployment-config.yaml"
+        default: "core/helm-config.yaml"
 
       yamlPath:
         description: The name of the value in the yaml config (if present)
@@ -18,7 +18,14 @@ on:
       yamlPathPrefix:
         description: The prefix of the yaml in the yaml config
         type: string
-        default: ".data."
+        default: ".components."
+        
+      yamlPathSuffix:
+        description: The prefix of the yaml in the yaml config
+        type: string
+        default: ".chart_version"
+
+      
 
 jobs:
   semver:
@@ -69,6 +76,6 @@ jobs:
     with:
       repository: lsc-sde/iac-flux-lscsde
       path: "${{ inputs.yamlFilePath }}"
-      yamlPath: "${{ inputs.yamlPathPrefix }}${{ inputs.yamlPath }}"
+      yamlPath: "${{ inputs.yamlPathPrefix }}${{ inputs.yamlPath }}${{ inputs.yamlPathSuffix }}"
       newValue: "${{ needs.semver.outputs.GitVersion_SemVer }}"
     secrets: inherit
