@@ -12,6 +12,7 @@ IaC for the LSCSDE is split into 3 core types:
 * [Flux Charts](./IAC/FluxCD.md)
 * [Terraform](./IAC/Terraform.md)
 
+# GitOps Flow
 There is a chain of flux and helm charts that work together in order to deploy an environment
 
 ```mermaid
