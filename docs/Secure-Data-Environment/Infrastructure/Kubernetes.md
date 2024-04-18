@@ -18,9 +18,7 @@ mindmap
     NGINX
     Cert Manager
     Trust Manager
-    Provider Components
-        Azure
-            AKS DNS Operator
+    DNS Operator
     OHDSI
     AWMS
     JupyterHub
