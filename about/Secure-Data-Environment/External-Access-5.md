@@ -20,8 +20,8 @@ journey
         section Guacamole
             Login to Guacamole: 5: External User
             Select a Workspace: 5: External User
-        section Desktop
-            Connect to desktop: 4: External User
+        section Browser Pod
+            Connect: 4: External User
         section Jupyter
             Login to Jupyer: 3: External User, Internal User
             Select Workspace: 3: Internal User
@@ -99,7 +99,28 @@ When a workspace expires or is removed, the operator will detect this and remove
 #### Jupyter Hub
 Our custom image of Jupyter Hub will need to be adapted to identify the source of the request, if the user has come from a browser pod then it will only login the user to the workspace associated with that browser pod. 
 
+#### OHDSI Atlas
+If we can integrate Atlas into our Jupyter Notebooks then we can expose Atlas via jupyter hub, meaning that the user won't have to login again. 
+
 ## Improvements
 The current model does not pass down credentials to the host server, so if the user needs access to other resources that are authenticated using Entra ID they will need to login again.
 
+This will simplify the user journey greatly:
+
+```mermaid
+journey
+    title External User Access to workspace
+        section Initial Login
+            Go to browser: 6: External User
+            Browse to LSC-SDE: 6: External User
+        section Guacamole
+            Login to Guacamole: 5: External User
+            Select a Workspace: 5: External User
+        section Browser Pod
+            Connect: 4: External User
+        section Jupyter
+            Workspace Ready to use: 4: External User
+```
+
 There are a number of options on how we can address this, with benefits and drawbacks.
+

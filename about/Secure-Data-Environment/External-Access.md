@@ -127,7 +127,27 @@ When a workspace expires or is removed, the operator will detect this and remove
 #### Jupyter Hub
 Our custom image of Jupyter Hub will need to be adapted to identify the source of the request, if the user has come from a Workspace VM then it will only login the user to the workspace belonging to that workspace. 
 
+#### OHDSI Atlas
+If we can integrate Atlas into our Jupyter Notebooks then we can expose Atlas via jupyter hub, meaning that the user won't have to login again. 
+
 ## Improvements
 The current model does not pass down credentials to the host server, so if the user needs access to other resources that are authenticated using Entra ID they will need to login again.
+
+```mermaid
+journey
+    title External User Access to workspace
+        section Initial Login
+            Go to browser: 6: External User
+            Browse to LSC-SDE: 6: External User
+        section Guacamole
+            Login to Guacamole: 5: External User
+            Select a Workspace: 5: External User
+        section Desktop
+            Connect to desktop: 4: External User
+            Open Browser: 4: External User
+        section Jupyter
+            Browse to Jupyter: 4: External User
+            Workspace Ready to use: 4: External User
+```
 
 There are a number of options on how we can address this, with benefits and drawbacks.
