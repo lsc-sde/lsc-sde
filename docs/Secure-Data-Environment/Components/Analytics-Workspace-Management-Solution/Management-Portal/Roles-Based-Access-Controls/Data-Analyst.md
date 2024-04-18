@@ -1,3 +1,7 @@
+---
+layout: page
+---
+
 # Data Analyst
 The SDE Data Analyst is the role given to most users, in the management portal the user will be able to:
 

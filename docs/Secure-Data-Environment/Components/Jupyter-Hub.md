@@ -1,3 +1,9 @@
+---
+title: Jupyter Hub
+layout: page
+parent: Components
+---
+
 # Jupyter Hub
 [JupyterHub](https://jupyter.org/hub) brings the power of notebooks to groups of users. It gives users access to computational environments and resources without burdening the users with installation and maintenance tasks. Users - including students, researchers, and data scientists - can get their work done in their own workspaces on shared resources which can be managed efficiently by system administrators.
 

@@ -1,3 +1,7 @@
+---
+layout: page
+---
+
 # AKS DNS Operator
 The AKS DNS Operator is a controller that manages Private DNZ Zone entries from kubernetes, allowing the system to adjust DNS entries just using annotations against service or ingress resources in kubernetes.
 

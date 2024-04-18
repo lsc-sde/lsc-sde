@@ -1,3 +1,9 @@
+---
+title: Creating a New Environment
+layout: page
+parent: Developer Guide
+---
+
 # Creating a New Environment
 The following is a step-by-step guide to creating a new environment for the solution.
 

@@ -1,3 +1,9 @@
+---
+title: Python
+layout: page
+parent: Data Analytics
+---
+
 # Python
 Python is a incredibly popular high level programming language that allows and emphasises code readability. It relies heavily on the use of python modules which are typically made available by the community on [pypi.org](https://pypi.org). 
 

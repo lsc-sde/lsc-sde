@@ -1,3 +1,8 @@
+---
+title: Community
+layout: page
+---
+
 # Lancashire and South Cumbria ICB
 Since July 2022 NHS Lancashire and South Cumbria Integrated Care Board (ICB) has held responsibility for planning NHS services, including primary care, community pharmacy and those previously planned by clinical commissioning groups (CCGs). As well the chair and chief executive, membership of the board includes partner members drawn from local authorities, NHS trusts / foundation trusts and primary care. Accountable to the people of Lancashire and South Cumbria and in charge of NHS money, NHS Lancashire and South Cumbria ICB will ensure that the strategies developed by Lancashire and South Cumbria Integrated Care Partnership become a reality on the ground.
 

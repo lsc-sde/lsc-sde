@@ -1,9 +1,9 @@
-title: Lancashire and South Cumbria SDE
+title: LSC SDE
 description: Documentation for the Lancashire and South Cumbria Secure Data Environment.
 theme: just-the-docs
-markdown: kramdown
-plugins:
-  - jekyll-default-layout
 url: https://lsc-sde.github.io/lsc-sde
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  Source Repository: https://github.com/lsc-sde/lsc-sde
+input: Kramdown
+plugins:
+  - jekyll-relative-links

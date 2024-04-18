@@ -1,3 +1,9 @@
+---
+title: Keda
+layout: page
+parent: Components
+---
+
 # Keda
 [KEDA](https://keda.sh/) is a Kubernetes-based Event Driven Autoscaler. With KEDA, you can drive the scaling of any container in Kubernetes based on the number of events needing to be processed.
 

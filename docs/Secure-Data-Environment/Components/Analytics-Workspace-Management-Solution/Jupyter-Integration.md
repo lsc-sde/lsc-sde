@@ -1,3 +1,10 @@
+---
+title: Jupyter Hub Integration
+layout: page
+parent: AWMS
+grand_parent: Components
+---
+
 # Jupyter Hub Integration
 The Lancashire and South Cumbria Secure Data Environment (LSC-SDE) [Analytics Workspace Management Solution](../Analytics-Workspace-Management-Solution.md) (AWMS) integrates with [JupyterHub](https://jupyter.org/hub) in order to allow easy management of Analytics workspaces in Jupyter Hub. 
 

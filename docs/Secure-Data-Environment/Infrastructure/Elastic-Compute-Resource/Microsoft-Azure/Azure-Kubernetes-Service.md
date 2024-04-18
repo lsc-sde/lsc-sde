@@ -1,3 +1,7 @@
+---
+layout: page
+---
+
 # Azure Kubernetes Service
 [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-gb/products/kubernetes-service) is used to provide a managed kubernetes cluster inside of Azure.
 

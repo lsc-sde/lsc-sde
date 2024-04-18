@@ -1,3 +1,7 @@
+---
+layout: page
+---
+
 # System Administrator
 The SDE System Administrator is the most privileged user, in the management portal the user will be able to:
 

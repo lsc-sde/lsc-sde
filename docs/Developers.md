@@ -1,3 +1,9 @@
+---
+title: Developer Guide
+layout: page
+has_children: true
+has_toc: false
+---
 # Checking out the code
 ```bash
 git clone https://github.com/lsc-sde/lsc-sde.git --recurse-submodules
@@ -233,7 +239,7 @@ Installation for installing flux can be found on the flux website:
 
 https://fluxcd.io/flux/installation/
 
-Once installed you can then install the various components using the instructions present in [each flux repository](./iac/flux/). It is recommended that you install any components classified as core-components
+Once installed you can then install the various components using the instructions present in [each flux repository](./Secure-Data-Environment/Infrastructure/IAC/FluxCD.md). It is recommended that you install any components classified as core-components
 
 ## Azure CLI
 Instructions for installing the Azure CLI can be found on the azure website:

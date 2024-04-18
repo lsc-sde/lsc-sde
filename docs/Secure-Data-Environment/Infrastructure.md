@@ -1,3 +1,10 @@
+---
+title: Infrastructure
+layout: page
+has_toc: false
+has_children: true
+---
+
 # Infrastructure
 The Lancashire and South Cumbria Secure Data Environment is primarily designed to run on the cloud so that it can leverage [the elasticity of the cloud](./Infrastructure/Elastic-Compute-Resource.md), however we maintain the principles that the core solution should be able to run on any kubernetes cluster, even a bare metal implementations. Any components specific to azure (such as the AKS DNS Operator) should be interchangeable with equivalent components for other cloud solutions providers if someone would like to contribute an AWS, GCP or other version.
 

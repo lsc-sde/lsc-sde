@@ -1,3 +1,10 @@
+---
+title: Terraform
+layout: page
+parent: IAC
+grand_parent: Infrastructure
+---
+
 # Terraform
 [Terraform](https://www.terraform.io/) is used to provision the infrastructure on the various cloud environments.
 

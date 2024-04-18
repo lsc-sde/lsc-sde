@@ -1,3 +1,7 @@
+---
+layout: page
+---
+
 # Storage Accounts
 [Azure Storage Accounts](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) are used to provide storage used by [jupyter notebooks](../../Components/Jupyter-Hub.md) 
 

@@ -1,3 +1,10 @@
+---
+title: Management Portal
+layout: page
+parent: AWMS
+grand_parent: Components
+---
+
 # AWMS Portal
 The Lancashire and South Cumbria Secure Data Environment (LSC-SDE) [Analytics Workspace Management Solution](../Analytics-Workspace-Management-Solution.md) (AWMS) provides a portal to allow users to manage the various aspects of the LSC-SDE solution.
 

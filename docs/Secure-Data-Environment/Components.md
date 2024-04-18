@@ -1,3 +1,10 @@
+---
+title: Components
+layout: page
+has_toc: false
+has_children: true
+---
+
 # Components of LSC-SDE
 ```mermaid
 mindmap

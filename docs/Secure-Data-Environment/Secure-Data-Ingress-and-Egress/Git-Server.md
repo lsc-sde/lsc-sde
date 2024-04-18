@@ -1,3 +1,9 @@
+---
+title: Git Server
+layout: page
+parent: Secure Data Ingress and Egress
+---
+
 
 ### Git Server
 When a workspace is defined, a git server should be implemented that will fork any repositories that are needed for the research project.

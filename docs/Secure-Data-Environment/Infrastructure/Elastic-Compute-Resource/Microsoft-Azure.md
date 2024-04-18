@@ -1,3 +1,10 @@
+---
+title: Microsoft Azure
+layout: page
+parent: Elastic Compute Resource
+grand_parent: Infrastructure
+---
+
 # Microsoft Azure
 The Lancashire and South Cumbria Secure Data Environment leverages [Kubernetes](https://kubernetes.io/) on [Microsoft Azure](https://azure.microsoft.com/en-gb/products/kubernetes-service) to provide the Elasticity of the solution, it dynamically provisions additional nodes as required by individual workspaces. This allows us to quickly and easily dynamically provision compute, memory and GPU resource as is suitable for a specific resource project.
 

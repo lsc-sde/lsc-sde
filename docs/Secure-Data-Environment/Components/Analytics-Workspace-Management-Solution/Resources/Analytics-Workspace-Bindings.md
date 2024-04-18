@@ -1,3 +1,7 @@
+---
+layout: page
+---
+
 # Analytics Workspace Bindings
 An Analytics Workspace Binding links a workspace to a user, effectively giving user access to that workspace. Each binding has an expiry date, which is taken into consideration when providing the user access to the workspace. 
 

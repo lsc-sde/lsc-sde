@@ -1,3 +1,9 @@
+---
+title: What is the LSC SDE?
+layout: home
+nav_order: 1
+---
+
 # What is a Secure Data Environment (SDE)
 The Lancashire and South Cumbria Secure Data Environment is a secure research analysis platform.
 

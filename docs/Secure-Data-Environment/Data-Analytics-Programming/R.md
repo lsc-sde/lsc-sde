@@ -1,3 +1,9 @@
+---
+title: R
+layout: page
+parent: Data Analytics
+---
+
 # R 
 [R is a high level programming language](https://www.r-project.org/) for statistical computing and data visualization.
 

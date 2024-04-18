@@ -1,3 +1,7 @@
+---
+layout: page
+---
+
 # Analytics Workspaces
 An analytics workspace defines all the elements of an analytics workspaces so that Kubernetes and JupyterHub can provision these workspaces as required.
 

@@ -1,3 +1,10 @@
+---
+title: Secure Data Ingress and Egress
+layout: page
+has_children: true
+has_toc: false
+---
+
 # Secure Data Ingress and Egress
 The Lancashire and South Cumbria Secure Data Environment implements a secure data ingress and egress capability to ensure that data can be easily imported into the environment while ensuring that data can only be taken out of the environment through secure routes.
 
