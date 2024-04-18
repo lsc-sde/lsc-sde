@@ -1,2 +1,5 @@
 theme: just-the-docs
 markdown: kramdown
+plugins:
+  - jekyll-default-layout
+url: https://lsc-sde.github.io/lsc-sde
