@@ -22,8 +22,11 @@ mindmap
         Azure
             AKS DNS Operator
     OHDSI
+    AWMS
     JupyterHub
         Jupyter Notebooks
     Apache Guacamole
         Browser Container
 ```
+
+In addition to this the [Analytics Workspace Management Solution](../Components/Analytics-Workspace-Management-Solution.md) leverages [Custom Resource Definitions](./Kubernetes/Custom-Resource-Definitions.md) to allow us to define workspaces and user bindings.
