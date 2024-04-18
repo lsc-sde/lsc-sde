@@ -7,3 +7,4 @@ aux_links:
 input: Kramdown
 plugins:
   - jekyll-relative-links
+baseurl: /
