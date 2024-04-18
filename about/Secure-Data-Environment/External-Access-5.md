@@ -50,7 +50,6 @@ flowchart TB
           NGINX
           Operator1((AWMS Guacamole Operator))
           Operator2((AWMS Network Policy Operator))
-          BrowserAPI((Guacamole Browser API))
           Jupyter[Jupyter Hub] --> ATLAS[OHDSI Atlas]
           Guacamole[Apache Guacamole]
           DevVM[Browser Container]
