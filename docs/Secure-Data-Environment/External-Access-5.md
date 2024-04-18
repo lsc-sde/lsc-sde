@@ -1,3 +1,7 @@
+---
+layout: page
+---
+
 # External Access
 As many of our research partners are universities and other organisations outside of the NHS it is likely that some of the users will not have a connection into the private network where the LSC SDE is hosted. As a result we need to provide secure access to the platform for external users.
 
