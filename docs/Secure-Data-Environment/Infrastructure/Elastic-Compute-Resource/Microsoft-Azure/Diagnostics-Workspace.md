@@ -1,5 +1,7 @@
 ---
+title: Azure Diagnostics Workspace
 layout: page
+nav_exclude: true
 ---
 
 # Diagnostics Workspace

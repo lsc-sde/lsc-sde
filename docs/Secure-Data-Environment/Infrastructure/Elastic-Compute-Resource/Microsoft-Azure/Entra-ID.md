@@ -1,5 +1,7 @@
 ---
+title: Azure Entra
 layout: page
+nav_exclude: true
 ---
 
 # Entra ID

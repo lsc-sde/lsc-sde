@@ -1,5 +1,7 @@
 ---
+title: AKS
 layout: page
+nav_exclude: true
 ---
 
 # Azure Kubernetes Service

@@ -1,5 +1,7 @@
 ---
+title: Analytics Workspace Binding
 layout: page
+nav_exclude: true
 ---
 
 # Analytics Workspace Bindings

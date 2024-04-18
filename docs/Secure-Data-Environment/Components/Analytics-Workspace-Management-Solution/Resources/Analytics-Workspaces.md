@@ -1,5 +1,7 @@
 ---
+title: Analytics Workspaces
 layout: page
+nav_exclude: true
 ---
 
 # Analytics Workspaces

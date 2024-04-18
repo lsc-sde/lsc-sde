@@ -1,5 +1,7 @@
 ---
+title: Data Analyst
 layout: page
+nav_exclude: true
 ---
 
 # Data Analyst

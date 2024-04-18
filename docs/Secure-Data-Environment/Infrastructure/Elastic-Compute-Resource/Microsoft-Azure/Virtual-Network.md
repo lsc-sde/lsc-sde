@@ -1,5 +1,7 @@
 ---
+title: Azure Virtual Network
 layout: page
+nav_exclude: true
 ---
 
 # Virtual Network

@@ -1,5 +1,7 @@
 ---
+title: Azure Storage Accounts
 layout: page
+nav_exclude: true
 ---
 
 # Storage Accounts

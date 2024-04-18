@@ -1,5 +1,7 @@
 ---
+title: Data Quality Engineer
 layout: page
+nav_exclude: true
 ---
 
 # Data Quality Engineer

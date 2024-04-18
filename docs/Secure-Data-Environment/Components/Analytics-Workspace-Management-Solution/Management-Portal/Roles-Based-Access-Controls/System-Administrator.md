@@ -1,5 +1,7 @@
 ---
+title: System Administrator
 layout: page
+nav_exclude: true
 ---
 
 # System Administrator

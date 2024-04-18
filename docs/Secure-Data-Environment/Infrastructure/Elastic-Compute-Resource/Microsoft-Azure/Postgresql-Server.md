@@ -1,5 +1,7 @@
 ---
+title: Azure Postgres Server
 layout: page
+nav_exclude: true
 ---
 
 # Postgresql Server

@@ -11,5 +11,5 @@ The Lancashire and South Cumbria Secure Data Environment (LSC-SDE) leverages [Ku
 By using the CRD's in kubernetes these integrate seemlessly with the kubernetes and operator frameworks, this provides schema management, automatic API generation, API Security and audit mechanisms and via the operator framework a methodology to use these definitions to orchestrate functionality based on these definitions. 
 
 ## Available Custom Resource Definitions
-* [Analytics Workspaces](../../Components/Analytics-Workspace-Management-Solution/Analytics-Workspaces.md)
-* [Analytics Workspace Binding](../../Components/Analytics-Workspace-Management-Solution/Analytics-Workspace-Bindings.md)
+* [Analytics Workspaces](../../Components/Analytics-Workspace-Management-Solution/Resources/Analytics-Workspaces.md)
+* [Analytics Workspace Binding](../../Components/Analytics-Workspace-Management-Solution/Resources/Analytics-Workspace-Bindings.md)
