@@ -1,34 +1,30 @@
 # External Access
+As many of our research partners are universities and other organisations outside of the NHS it is likely that some of the users will not have a connection into the private network where the LSC SDE is hosted. As a result we need to provide secure access to the platform for external users.
+
+## Requirements
+The solution for external access must address the following requirements:
+* Provide Secure Access to the environment for researchers
+* Address the concerns of the majority of scenarios outlined in discussion #54
+* Make the user journey as reasonably simple as possible for the user
+* Apply appropriate roles based access controls
+
+Options have been discussed in #55
+
 ## User Journey
 ```mermaid
-flowchart TB
-    InternalUser([Internal User]) --> |VPN| LTH[LTH Network] --> AzureHubVNET[Azure Hub VNET]
-
-    subgraph azpublic [Azure: Publicly Accessible Resources]
-        Entra
-        LB
-    end
-    subgraph AzureHub [Azure Hub Network]
-        AzureHubVNET
-    end
-
-    subgraph LSCSDE [LSC SDE Network]
-       direction TB       
-       subgraph K8s[K8s Cluster]
-          Jupyter[Jupyter Hub] --> ATLAS[OHDSI Atlas]
-          Guacamole[Apache Guacamole]
-          DevVM[Browser Container]
-       end
-
-       K8s -.-|Peering| AzureVD 
-    end
-
-    AzureHubVNET --> Jupyter
-    DevVM --> |Browser| Jupyter
-    
-    ExternalUser([External User]) --> |Browser| LB[Load Balancer] --> Guacamole --> |RDP/VNC| DevVM
-    InternalUser --> Entra
-    ExternalUser --> Entra
+journey
+    title External User Access to workspace
+        section Initial Login
+            Go to browser: 6: Internal User, External User
+            Browse to LSC-SDE: 6: Internal User, External User
+        section Guacamole
+            Login to Guacamole: 5: External User
+            Select a Workspace: 5: External User
+        section Desktop
+            Connect to desktop: 4: External User
+        section Jupyter
+            Login to Jupyer: 3: External User, Internal User
+            Select Workspace: 3: External User, Internal User
 ```
 
 ## Components
