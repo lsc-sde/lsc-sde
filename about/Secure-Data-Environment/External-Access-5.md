@@ -97,7 +97,7 @@ When a workspace expires or is removed, the operator will detect this and remove
 
 ### Products
 #### Jupyter Hub
-Our custom image of Jupyter Hub will need to be adapted to identify the source of the request, if the user has come from a Workspace VM then it will only login the user to the workspace belonging to that workspace. 
+Our custom image of Jupyter Hub will need to be adapted to identify the source of the request, if the user has come from a browser pod then it will only login the user to the workspace associated with that browser pod. 
 
 ## Improvements
 The current model does not pass down credentials to the host server, so if the user needs access to other resources that are authenticated using Entra ID they will need to login again.
