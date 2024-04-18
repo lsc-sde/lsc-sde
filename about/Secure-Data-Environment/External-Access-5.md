@@ -24,7 +24,8 @@ journey
             Connect to desktop: 4: External User
         section Jupyter
             Login to Jupyer: 3: External User, Internal User
-            Select Workspace: 3: External User, Internal User
+            Select Workspace: 3: Internal User
+            Workspace Ready to use: 4: External User, Internal User
 ```
 
 ## Components
@@ -93,6 +94,10 @@ The AWMS Network Policy operator will watch for changes in  Analytics Workspaces
 When a workspace is created, a network policy is generated based on the spec for the pods in that workspace.
 
 When a workspace expires or is removed, the operator will detect this and remove the network policies relating to that workspace.
+
+### Products
+#### Jupyter Hub
+Our custom image of Jupyter Hub will need to be adapted to identify the source of the request, if the user has come from a Workspace VM then it will only login the user to the workspace belonging to that workspace. 
 
 ## Improvements
 The current model does not pass down credentials to the host server, so if the user needs access to other resources that are authenticated using Entra ID they will need to login again.
