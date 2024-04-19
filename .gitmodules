@@ -115,3 +115,6 @@
 [submodule "iac/flux/secrets-distributor"]
 	path = iac/flux/secrets-distributor
 	url = https://github.com/lsc-sde/iac-flux-secrets-distributor.git
+[submodule "iac/helm/lscsde-namespaces"]
+	path = iac/helm/lscsde-namespaces
+	url = https://github.com/lsc-sde/iac-helm-lscsde-namespaces.git
