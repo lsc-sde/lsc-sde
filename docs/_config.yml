@@ -3,6 +3,7 @@ description: Documentation for the Lancashire and South Cumbria Secure Data Envi
 theme: just-the-docs
 url: https://lsc-sde.github.io/lsc-sde
 aux_links:
+  Roadmap: https://github.com/orgs/lsc-sde/projects/8/views/1
   Source Repository: https://github.com/lsc-sde/lsc-sde
 input: Kramdown
 plugins:

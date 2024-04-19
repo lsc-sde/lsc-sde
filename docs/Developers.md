@@ -4,22 +4,23 @@ layout: page
 has_children: true
 has_toc: false
 ---
-# Checking out the code
+# Developer Guide
+## Checking out the code
 ```bash
 git clone https://github.com/lsc-sde/lsc-sde.git --recurse-submodules
 cd lsc-sde
 git submodule foreach "git switch main"
 ```
 
-# Development Principles / Best Practice
+## Development Principles / Best Practice
 Before you start developing on these projects, please take the time to read this section on best practice. These are not just about good practice but also about good security and so it is essential that every developer understands that it is their responsibility to upkeep the standards of these projects.
 
-## Everything Open Source
+### Everything Open Source
 A decision has been made that all components of this project will be made open source under an MIT License. Each repository should have this license in the top of the project. In addition to this all container images will be made available on docker hub as public repositories. The exceptions to this may occur when we are interacting with proprietry software provided by external providers as needed for the project, however preference should be given to secure open source software rather than proprietry software. 
 
 This allows us to maximise collaboration with other organisations and individuals in order to improve the services we're offering. 
 
-## Keeping things Generic
+### Keeping things Generic
 As we are developing open source solutions it is important that every service we build should be designed in a manner that is as generic as possible, meaning that it will work in any environment. As a result we should not put any environment specifics into any applications or services. Environment config should be handled by the deployment of it on its relevant cluster as close to the cluster configuration as possible.
 
 For example, if we are building a new service, such as the aks-dns-operator, this has code in the form of:
