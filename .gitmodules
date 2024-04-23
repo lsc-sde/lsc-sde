@@ -7,9 +7,6 @@
 [submodule "iac/helm/prefect-server"]
 	path = iac/helm/prefect-server
 	url = https://github.com/lsc-sde/helm-prefect-server.git
-[submodule "docker/datascience-notebook-default"]
-	path = docker/datascience-notebook-default
-	url = https://github.com/lsc-sde/docker-datascience-notebook-default.git
 [submodule "docker/aks-dns-operator"]
 	path = docker/aks-dns-operator
 	url = https://github.com/lsc-sde/docker-aks-dns-operator.git
