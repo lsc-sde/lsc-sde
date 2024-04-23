@@ -24,9 +24,17 @@ jobs:
     - name: Create Branch for ${{ inputs.environment }}
       run: |
         export FQ_BRANCH_NAME="${{ inputs.prefix }}/${{ inputs.symver }}"
-        echo "Creating Branch: ${FQ_BRANCH_NAME}"
         git config --global user.name 'lsc-sde'
         git config --global user.email 'shaun.turner1@nhs.net'
+
+        echo "Creating Branch: ${FQ_BRANCH_NAME}"
         git branch "${FQ_BRANCH_NAME}"
+
+        echo "Switching to branch: ${FQ_BRANCH_NAME}"
         git switch "${FQ_BRANCH_NAME}"
+
+        echo "Running Fetch"
+        git fetch
+
+        echo "Pushing to branch: ${FQ_BRANCH_NAME}"
         git push -u "origin" "${FQ_BRANCH_NAME}"
