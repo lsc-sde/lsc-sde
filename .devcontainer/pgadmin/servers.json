@@ -1,0 +1,13 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "ohdsi Server",
+            "Group": "ohdsi",
+            "Port": 5432,
+            "Username": "postgres",
+            "Host": "broadsea-atlasdb",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "postgres"
+        }
+    }
+}

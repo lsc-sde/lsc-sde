@@ -1,0 +1,35 @@
+{
+	"name": "lscsde",
+	"dockerComposeFile": "docker-compose.yaml",
+	"service": "devcontainer",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	
+	"mounts": [
+		"source=k3d-var-lib-docker,target=/var/lib/docker,type=volume",
+		"source=k3d-config,target=/home/${remoteUser}/.k3d,type=volume"
+	],
+	"overrideCommand": false,
+	
+	"features": {
+		"ghcr.io/devcontainers/features/terraform:1": {},
+		"ghcr.io/devcontainers/features/azure-cli:1": {}
+	},
+	"customizations": {
+		"vscode":{
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"ms-kubernetes-tools.vscode-kubernetes-tools"
+			]
+		}
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "kubectl version --client=true --output=yaml",
+
+	// Use 'postStartCommand' to run commands after the container is created like starting k3d.
+	"postStartCommand": "bash /lscsde/lsc-local-cluster.sh",
+
+	"remoteUser": "vscode"
+}
