@@ -1,0 +1,3 @@
+CREATE USER ohdsi WITH PASSWORD 'ohdsi';
+
+GRANT ALL PRIVILEGES ON DATABASE postgres TO ohdsi;

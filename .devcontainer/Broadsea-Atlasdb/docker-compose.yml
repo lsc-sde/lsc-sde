@@ -1,0 +1,26 @@
+version: '2.2'
+
+volumes:
+  atlasdb-postgres-data:
+    name: atlasdb-postgres-data
+
+services:
+
+  broadsea-atlasdb:
+    build: .
+    image: ohdsi/broadsea-atlasdb:2.0.0
+    container_name: broadsea-atlasdb
+    cpus: 2
+    mem_limit: "2G"
+    environment:
+      - POSTGRES_PASSWORD=mypass
+    ports:
+      - "5432:5432"
+    volumes:
+     - atlasdb-postgres-data:/var/lib/postgresql/data
+     - ./100_populate_source_source_daimon.sql:/docker-entrypoint-initdb.d/100_populate_source_source_daimon.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
