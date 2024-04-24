@@ -17,7 +17,7 @@ services:
   broadsea-atlasdb:
     build: ./Broadsea-Atlasdb
     image: ohdsi/broadsea-atlasdb:2.0.0
-    hostname: cluster.lsc-sde.local #broadsea-atlasdb
+    hostname: cluster.lsc-sde.local
     cpus: 2
     mem_limit: "2G"
     environment:
@@ -42,7 +42,8 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: postgres@postgres.com
       PGADMIN_DEFAULT_PASSWORD: mypass
-      PGADMIN_SERVER_JSON_FILE: ./pgadmin/servers.json
+      #PGADMIN_SERVER_JSON_FILE: ./pgadmin/servers.json
       
     volumes:
       - pgadmin-data:/var/lib/pgadmin
+      - ./pgadmin/servers.json:/pgadmin4/servers.json
