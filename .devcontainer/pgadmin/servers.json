@@ -7,7 +7,8 @@
             "Username": "postgres",
             "Host": "broadsea-atlasdb",
             "SSLMode": "prefer",
-            "MaintenanceDB": "postgres"
+            "MaintenanceDB": "postgres",
+            "PassFile": "/pgpass"
         }
     }
 }
