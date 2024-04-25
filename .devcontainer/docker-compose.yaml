@@ -1,8 +1,6 @@
 volumes:
   atlasdb-postgres-data:
     name: atlasdb-postgres-data
-  pgadmin-data:
-    name: pgadmin-data
 
 services:
   devcontainer:
@@ -34,6 +32,7 @@ services:
       retries: 10
   pgadmin:
     image: dpage/pgadmin4
+    user: root
     platform: linux/${arch}
     container_name: pgadmin4_container
     restart: always
@@ -45,6 +44,5 @@ services:
       #PGADMIN_SERVER_JSON_FILE: ./pgadmin/servers.json
       
     volumes:
-      - pgadmin-data:/var/lib/pgadmin
       - ./pgadmin/servers.json:/pgadmin4/servers.json
-      - ./pgadmin/pgpass:/var/lib/pgadmin/storage/postgres@postgres.com/pgpass
+      - ./pgadmin/pgpass:/var/lib/pgadmin/storage/postgres_postgres.com/pgpass
