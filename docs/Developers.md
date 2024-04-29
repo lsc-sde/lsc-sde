@@ -51,7 +51,7 @@ env:
   value: ${azure_tenant_id}
 
 - name: DNS_PREFIX
-  value: ${dns_prefix}
+  value: ${environment_dns_prefix}
 
 - name: AZ_SUBSCRIPTION_ID
   value: ${dns_subscription_id}
