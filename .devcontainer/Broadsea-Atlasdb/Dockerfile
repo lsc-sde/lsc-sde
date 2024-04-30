@@ -166,6 +166,7 @@ RUN ["sed", "-i", "s/exec \"$@\"/echo \"skipping...\"/", "/usr/local/bin/docker-
 # Pseudo branching logic - we run 2 stages, 1 for default password auth, the other for secrets auth
 FROM data-loader-image AS use-password-default
 ENV POSTGRES_PASSWORD=mypass
+
 RUN ["/usr/local/bin/docker-entrypoint.sh", "postgres"]
 
 FROM data-loader-image AS use-password-secret
@@ -177,6 +178,8 @@ RUN --mount=type=secret,id=ATLASDB_POSTGRES_PASSWORD \
 FROM use-password-${PASSWORD_METHOD} AS data-loader-image-final
 
 
+
 # run the postgres entrypoint script to run the SQL scripts and load the data but do not start the postgres daemon process
 FROM postgres:15.2-alpine
 COPY --from=data-loader-image-final /data $PGDATA
+
