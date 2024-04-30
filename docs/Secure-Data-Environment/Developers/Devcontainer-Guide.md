@@ -56,7 +56,7 @@ Currently, the lscsde requires the developer to make available a ‘secrets’ d
 
 ### Build & Deploy
 To build and run the container open the command palette (Fn + F1 on mac) and type ‘> Dev containers: Rebuild Container’ and Enter to build and run the devcontainer. On the first build, this can take upto 5-10 minutes but once built is much quicker. Monitor the terminal for build logs, once completed you should see a similar output shown below:
-![Decontainer log](img/cluster-log-complete.png)
+![Decontainer log](img/cluster-log-complete.png){: width="100%"}
 
 At this point the devcontainer environment is up and running with a k3d cluster and flux will begin to reconcile and deploy LSCSDE services and resources. It can take upto 10-15 minutes before the LSCSDE cluster stabilises.
 
@@ -72,7 +72,7 @@ echo '172.19.0.3 jupyter.cluster.lsc-sde.local ohdsi.cluster.lsc-sde.local' >> /
 ```
 
 To access web services from your host machine browser, go to the ports tab in vs code while the devcontainer is running and add port forwarding for the relevant services e.g.:
-![VS Code port forwarding](img/port-forwarding.png)
+![VS Code port forwarding](img/port-forwarding.png){: width="100%"}
 
 Once the devcontainer has been built and deployed you’ll have an isolated development environment with a running K8s cluster named ‘lscsde’ along with all lscsde components.
 
@@ -81,7 +81,8 @@ Run the command below to confirm all services are running:
 kubectl get pods -A
 ```
 The output should look similar to:
-![LSCSDE K8s pods](img/port-forwarding.png)
+
+![LSCSDE K8s pods](img/port-forwarding.png){: width="100%"}
 
 This initial version of the devcontainer automates all of the setup instructions outlined [here](./New-Environment.md) and installs all tooling discussed [here](../../Developers.md).
 
