@@ -21,7 +21,7 @@ The devcontainer for LSCSDE comprises three containers (see .devcontainer/docker
 - pgAdmin is a helper service that provides a web-based UI to manage the ohdsi database. It is preconfigured to load the ohdsi postgres server. Default pgAdmin user account credentials are:
 
 ```
-postgres@postgres.com : mypass. 
+postgres@postgres.com : mypass 
 ```
 
 The admin UI is accessible on http://localhost:8888. On first load when connecting to the ohdsi/postgres database you may be prompted for the postgres password.
@@ -40,8 +40,8 @@ If your local machine is unable to meet these requirements the LSCSDE cluster ca
 ### Environmental Settings
 Before building and attaching to the devcontainer, you have a small number of default environment variables that can adjusted to your specific needs.
 In the .devcontainer/ directory in the root lscsde repository there are two files that can be configured:
-- The .env file specifies the architecture (e.g.  arch=arm64 or arch=amd64) for building the pgadmin container. This defaults to amd64 but can be changed to arm64 if required.
-- The lsc-local-cluster.sh performs creation and configuration of the k3d local cluster including the installation and deployment of flux components along with LSCSDE specific cluster services (e.g. calico for networking policies and metallb as the required load balancer). The following variables can be changed to point flux to the preferred git repository for flux. These default to:
+- The **.env** file specifies the architecture (e.g.  arch=arm64 or arch=amd64) for building the pgadmin container. This defaults to amd64 but can be changed to arm64 if required.
+- The **lsc-local-cluster.sh** performs creation and configuration of the k3d local cluster including the installation and deployment of flux components along with LSCSDE specific cluster services (e.g. calico for networking policies and metallb as the required load balancer). The following variables can be changed to point flux to the preferred git repository for flux. These default to:
 
 ```bash
 LSCSDE_FLUX_REPO_URL="https://github.com/lsc-sde/iac-flux-lscsde"
