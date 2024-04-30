@@ -82,7 +82,7 @@ kubectl get pods -A
 ```
 The output should look similar to:
 
-![LSCSDE K8s pods](img/port-forwarding.png){: width="100%"}
+![LSCSDE K8s pods](img/k8s-pods.png){: width="100%"}
 
 This initial version of the devcontainer automates all of the setup instructions outlined [here](./New-Environment.md) and installs all tooling discussed [here](../../Developers.md).
 
