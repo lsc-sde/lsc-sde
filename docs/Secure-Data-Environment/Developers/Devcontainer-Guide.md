@@ -55,10 +55,30 @@ All variable defaults can be keep and the devcontainer will still build. Althoug
 Currently, the lscsde requires the developer to make available a ‘secrets’ directory that contains files which include credentials to allow deployed k8s services to authenticate and communicate. The developer must request access to this directory and place it in the directory .devcontainer/k3d-volume once they have pulled the root lsc-side repository to their local machine which must be named “secrets” aka .devcontainer/k3d-volume/secrets. The devcontainer looks for this directory on startup and attempts to mount it into the devcontainer for the secrets-distributor to consume.
 
 ### Build & Deploy
-To build and run the container open the command palette (Fn + F1 on mac) and type ‘> Dev containers: Rebuild Container’ and Enter to build and run the devcontainer. On the first build, this can take upto 5-10 minutes but once built is much quicker. Monitor the terminal for build logs, once completed you should see a similar output shown below:
+To build and run the container locally, open the command palette (Fn + F1 on mac) and type ‘> Dev containers: Rebuild Container’ and Enter to build and run the devcontainer. On the first build, this can take upto 5-10 minutes but once built is much quicker. Monitor the terminal for build logs, once completed you should see a similar output shown below:
 ![Decontainer log](img/cluster-log-complete.png){: width="100%"}
 
-At this point the devcontainer environment is up and running with a k3d cluster and flux will begin to reconcile and deploy LSCSDE services and resources. It can take upto 10-15 minutes before the LSCSDE cluster stabilises.
+#### Codespaces from VS Code
+You can also deploy the devcontainer into a remote Github Codespaces environment from your local VS Code IDE. To do so:
+- Install the GitHub Codespaces Extension: First, you need to install the GitHub Codespaces extension in your local VS Code instance. You can find this extension in the Visual Studio Code Marketplace. Install it and follow any setup instructions.
+
+- Sign in to GitHub: Make sure you're signed in to your GitHub account within VS Code.
+
+- Open Command Palette: Open the command palette in VS Code by pressing Ctrl + Shift + P (Windows/Linux) or Cmd + Shift + P (Mac).
+
+- Connect to a Codespace: In the command palette, type "Codespaces: Connect to a Codespace" and select it. This will prompt you to choose a GitHub repository that has Codespaces enabled.
+
+- Select a Codespace: After selecting the repository, you'll see a list of available Codespaces associated with that repository. Choose the Codespace you want to connect to.
+
+- Wait for the Connection: VS Code will now connect to the selected Codespace. This may take a few minutes
+
+- Work in Codespace: Once connected, you can start working in the Codespace directly from your local VS Code instance.
+
+- Save Changes: Any changes you make will be reflected in the Codespace, and you can commit, push, and pull changes as usual.
+
+- Disconnect: When you're finished working, you can disconnect from the Codespace by running the "Codespaces: Disconnect from Codespace" command from the command palette. 
+
+Whether deploying locally or in Codespaces, at this point the devcontainer environment is up and running with a k3d cluster and flux will begin to reconcile and deploy LSCSDE services and resources. It can take upto 10-15 minutes before the LSCSDE cluster stabilises.
 
 In the meantime, ensure that cluster applications are accessible from the devcontainer. For ohdsi and jupyter services ensure that the /etc/hosts file on the devcontainer instance includes relevant hostname mappings to the loadbalancer IP. To find the loadbalancer IP call:
 
