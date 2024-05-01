@@ -9,17 +9,18 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ../..:/workspaces:cached      
+      - ../..:/workspaces:cached    
     network_mode: service:broadsea-atlasdb
     command: sleep infinity
   broadsea-atlasdb:
     build: ./Broadsea-Atlasdb
     image: ohdsi/broadsea-atlasdb:2.0.0
     hostname: cluster.lsc-sde.local
-    cpus: 2
-    mem_limit: "2G"
+    cpus: 1
+    mem_limit: "1G"
     environment:
       - POSTGRES_PASSWORD=mypass
+      - POSTGRES_USER=postgres
     ports:
       - "5432:5432"
     volumes:
