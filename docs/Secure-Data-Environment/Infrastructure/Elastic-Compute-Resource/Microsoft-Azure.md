@@ -10,6 +10,8 @@ The Lancashire and South Cumbria Secure Data Environment leverages [Kubernetes](
 
 [Infrastructure in Azure is provisioned using terraform](https://github.com/lsc-sde/iac-terraform-azure)
 
+![LSCSDE on Azure](./Microsoft-Azure/LSCSDE-Azure.png)
+
 ## Components
 ```mermaid
 mindmap
