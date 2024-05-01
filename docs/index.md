@@ -9,6 +9,15 @@ The Lancashire and South Cumbria Secure Data Environment is a secure research an
 
 This service gives approved researchers with approved projects secure access to NHS healthcare data. All patient information in the SDE is pseudonymised, which means that any identifying (or personal) information such as names, addresses or NHS numbers are replaced with artificial, or ‘pseudo’, information.
 
+```mermaid
+mindmap
+  root)LSC SDE(
+    Jupyter Hub
+    OHDSI
+    Data Shield
+    AWMS
+```
+
 ## Features of our SDE
 * [Secure Virtual Desktop Infrastructure (VDI)](./Secure-Data-Environment/Secure-Virtual-Desktop-Infrastructure.md) 
 * [Data Analytics Programming Tools](./Secure-Data-Environment/Data-Analytics-Programming.md)
