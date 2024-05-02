@@ -32,6 +32,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Run CRD Model Generation
         run: |
+          export pwd=$(pwd)
           read CRD_SRC_ARGS < <(echo '${{ inputs.crds }}' | perl -ne 'print join " ", map {"-u ${pwd}/$_"} split /,/')
           test -z ${{ inputs.crdApiGroupPrefix }} || export CRD_API_GROUP_ARGS="-n ${{ inputs.crdApiGroupPrefix }}"
           echo "CRD Src Args: ${CRD_SRC_ARGS}"
@@ -42,14 +43,14 @@ jobs:
           docker run \
             --rm \
             -v /var/run/docker.sock:/var/run/docker.sock \
-            -v "$(pwd)":"$(pwd)" \
+            -v "${pwd}":"${pwd}" \
             --network host \
             ${IMAGE_NAME}:${IMAGE_TAG} \
             /generate.sh \
             ${CRD_SRC_ARGS} \
             ${CRD_API_GROUP_ARGS} \
             -p ${{ inputs.generatingJavaPackage }} \
-            -o "$(pwd)/${GEN_DIR}"
+            -o "${pwd}/${GEN_DIR}"
           ls -lh ${GEN_DIR}
       - uses: actions/upload-artifact@v4
         with:
