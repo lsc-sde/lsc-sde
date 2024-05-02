@@ -32,10 +32,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Run CRD Model Generation
         run: |
-          read CRD_SRC_ARGS < <(echo '${{ inputs.crds }}' | perl -ne 'print join " ", map {"-u $_"} split /,/')
+          read CRD_SRC_ARGS < <(echo '${{ inputs.crds }}' | perl -ne 'print join " ", map {"-u ${pwd}/$_"} split /,/')
           test -z ${{ inputs.crdApiGroupPrefix }} || export CRD_API_GROUP_ARGS="-n ${{ inputs.crdApiGroupPrefix }}"
           echo "CRD Src Args: ${CRD_SRC_ARGS}"
           echo "CRD Api Group Prefix Args: ${CRD_API_GROUP_ARGS}"
+          echo "PWD: ${pwd}"
+          echo "GEN_DIR: ${GEN_DIR}"
           mkdir -p ${GEN_DIR}
           docker run \
             --rm \
