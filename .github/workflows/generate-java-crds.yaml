@@ -14,7 +14,6 @@ on:
         type: string
         required: false
         description: 'The prefix of the target CRDs api group to generate. (Optional)'
-        default: uk.nhs.xlscsde
 
 env:
   IMAGE_NAME: ghcr.io/kubernetes-client/java/crd-model-gen
@@ -33,7 +32,7 @@ jobs:
       - name: Run CRD Model Generation
         run: |
           export pwd=$(pwd)
-          read CRD_SRC_ARGS < <(echo '${{ inputs.crds }}' | perl -ne 'print join " ", map {"-u ${pwd}/$_"} split /,/')
+          read CRD_SRC_ARGS < <(echo '${{ inputs.crds }}' | perl -ne 'print join " ", map {"-u $ENV{pwd}/$_"} split /,/')
           test -z ${{ inputs.crdApiGroupPrefix }} || export CRD_API_GROUP_ARGS="-n ${{ inputs.crdApiGroupPrefix }}"
           echo "CRD Src Args: ${CRD_SRC_ARGS}"
           echo "CRD Api Group Prefix Args: ${CRD_API_GROUP_ARGS}"
