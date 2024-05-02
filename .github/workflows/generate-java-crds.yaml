@@ -2,6 +2,10 @@ name: CRD Java Model Generate
 on:
   workflow_call:
     inputs:
+      repository:
+        type: string
+        required: true
+        description: 'The repository where the files are to be exported'
       crds:
         type: string
         required: true
@@ -56,3 +60,20 @@ jobs:
           name: generated-java-crd-model
           path: |
             ${{ env.GEN_DIR }}
+            
+  update-repository:
+    runs-on: ubuntu-latest
+    needs: generate
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ inputs.repository }}
+        token: ${{ secrets.REPOS_RW_TOKEN }}
+
+    - uses: actions/download-artifact@v4
+      with:
+        name: generated-java-crd-model
+        
+    - name: Display structure of downloaded files
+      run: ls -R
