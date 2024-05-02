@@ -71,9 +71,21 @@ jobs:
         repository: ${{ inputs.repository }}
         token: ${{ secrets.REPOS_RW_TOKEN }}
 
+
+    - name: Prepare Repository
+      run: |
+        git config --global user.name 'lsc-sde'
+        git config --global user.email 'shaun.turner1@nhs.net'
+        git switch "main"
+        git fetch
+
     - uses: actions/download-artifact@v4
       with:
         name: generated-java-crd-model
         
-    - name: Display structure of downloaded files
-      run: ls -R
+    - name: Update Markdown and check-in changes
+      run: |
+        echo "This repository was last updated by ${GITHUB_ACTION}/${GITHUB_JOB} on ${GITHUB_REPOSITORY}" > Auto-Generated.md
+        git add *
+        git commit -m "updated by ${GITHUB_ACTION}/${GITHUB_JOB} on ${GITHUB_REPOSITORY}"
+        git push -u "origin" "main"
