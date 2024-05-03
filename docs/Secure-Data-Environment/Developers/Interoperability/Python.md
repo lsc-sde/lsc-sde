@@ -1,6 +1,10 @@
 ---
+title: Python Interoperability
 layout: page
+parent: Interoperability
+grand_parent: Developer Guide
 ---
+
 # Python Interoperability
 The following libraries have been created to enable interoperability from python applications to the kubernetes control plane for the custom resources defined by the analytics workspace management solution such as [AnalyticsWorkspaces](../../Components/Analytics-Workspace-Management-Solution/Resources/Analytics-Workspaces.md) and [AnalyticsWorkspaceBindings](../../Components/Analytics-Workspace-Management-Solution/Resources/Analytics-Workspace-Bindings.md).
 
