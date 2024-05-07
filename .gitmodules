@@ -130,3 +130,9 @@
 [submodule "products/sde-3rd-party/guacamole/helm"]
 	path = products/sde-3rd-party/guacamole/helm
 	url = https://github.com/lsc-sde/iac-helm-guacamole.git
+[submodule "products/sde-3rd-party/guacamole/iac-helm-guacamole"]
+	path = products/sde-3rd-party/guacamole/iac-helm-guacamole
+	url = https://github.com/lsc-sde/iac-helm-guacamole.git
+[submodule "products/sde-3rd-party/guacamole/iac-flux-guacamole"]
+	path = products/sde-3rd-party/guacamole/iac-flux-guacamole
+	url = https://github.com/lsc-sde/iac-flux-guacamole.git
