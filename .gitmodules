@@ -49,9 +49,6 @@
 [submodule "docker/datascience-notebook-default"]
 	path = docker/datascience-notebook-default
 	url = https://github.com/lsc-sde/docker-datascience-notebook-default.git
-[submodule "iac/helm/guacamole"]
-	path = iac/helm/guacamole
-	url = https://github.com/lsc-sde/iac-helm-guacamole.git
 [submodule "iac/helm/ohsdi"]
 	path = iac/helm/ohsdi
 	url = https://github.com/lsc-sde/iac-helm-ohdsi.git
@@ -124,12 +121,6 @@
 [submodule "products/sde/analytics-workspace-management/java/k8s-api"]
 	path = products/sde/analytics-workspace-management/java/k8s-api
 	url = https://github.com/lsc-sde/java-analytics-workspace-management-k8s-api.git
-[submodule "products/sde-3rd-party/guacamole/flux"]
-	path = products/sde-3rd-party/guacamole/flux
-	url = https://github.com/lsc-sde/iac-flux-guacamole.git
-[submodule "products/sde-3rd-party/guacamole/helm"]
-	path = products/sde-3rd-party/guacamole/helm
-	url = https://github.com/lsc-sde/iac-helm-guacamole.git
 [submodule "products/sde-3rd-party/guacamole/iac-helm-guacamole"]
 	path = products/sde-3rd-party/guacamole/iac-helm-guacamole
 	url = https://github.com/lsc-sde/iac-helm-guacamole.git
