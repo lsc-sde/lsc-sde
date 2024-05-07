@@ -127,3 +127,9 @@
 [submodule "products/sde-3rd-party/guacamole/iac-flux-guacamole"]
 	path = products/sde-3rd-party/guacamole/iac-flux-guacamole
 	url = https://github.com/lsc-sde/iac-flux-guacamole.git
+[submodule "products/sde/aks-dns-operator/iac-helm-aks-dns-operator"]
+	path = products/sde/aks-dns-operator/iac-helm-aks-dns-operator
+	url = https://github.com/lsc-sde/iac-helm-aks-dns-operator.git
+[submodule "products/sde/aks-dns-operator/iac-flux-aks-dns-operator"]
+	path = products/sde/aks-dns-operator/iac-flux-aks-dns-operator
+	url = https://github.com/lsc-sde/iac-flux-aks-dns-operator.git
