@@ -1,9 +1,10 @@
 ---
-title: External Access
+title: External Access - Option 6
 layout: page
+nav_exclude: true
 ---
 
-# External Access - Option 5
+# External Access - Option 6
 As many of our research partners are universities and other organisations outside of the NHS it is likely that some of the users will not have a connection into the private network where the LSC SDE is hosted. As a result we need to provide secure access to the platform for external users.
 
 ## Requirements
@@ -22,12 +23,14 @@ journey
         section Initial Login
             Go to browser: 6: Internal User, External User
             Browse to LSC-SDE: 6: Internal User, External User
-        section Guacamole
-            Login to Guacamole: 5: External User
+        section Public JupyterHub
+            Login to JupyterHub: 5: External User
             Select a Workspace: 5: External User
         section Browser Pod
-            Connect: 4: External User
-        section Jupyter
+            Connect to desktop: 4: External User
+            Open Browser: 4: External User
+        section Private Jupyter
+            Browse to Jupyter: 4: External User
             Login to Jupyer: 3: External User, Internal User
             Select Workspace: 3: Internal User
             Workspace Ready to use: 4: External User, Internal User
@@ -50,11 +53,14 @@ flowchart TB
        direction TB       
        subgraph K8s[K8s Cluster]
           NGINX
-          Operator1((AWMS Guacamole Operator))
+          Operator1((Kubespawner Operator))
           Operator2((AWMS Network Policy Operator))
-          Jupyter[Jupyter Hub] --> ATLAS[OHDSI Atlas]
-          Guacamole[Apache Guacamole]
-          DevVM[Browser Container]
+          JupyterPub[Jupyter Hub: Public]
+          Jupyter[Jupyter Hub: Private] --> ATLAS[OHDSI Atlas]
+          subgraph BrowserPod[Browser Pod]
+            Guacamole[Apache Guacamole]
+            DevVM[Browser Container]
+          end
        end
 
     end
@@ -62,9 +68,10 @@ flowchart TB
     AzureHubVNET --> Jupyter
     DevVM --> |Browser| Jupyter
     
-    ExternalUser([External User]) --> |Browser| AppGW --> |HTTPS| LB --> |HTTPS| NGINX--> |HTTPS|Guacamole --> |RDP/VNC| DevVM
+    ExternalUser([External User]) --> |Browser| AppGW --> |HTTPS| LB --> |HTTPS| NGINX--> |HTTPS| JupyterPub --> |HTTPS|Guacamole --> |RDP/VNC| DevVM
     ExternalUser --> Entra
 ```
+
 
 ### Workflow Components
 #### Azure App Gateway Service
@@ -81,17 +88,11 @@ Apache Guacamole is the first application hit by external users, once logged in 
 
 It is even possible to configure Apache Guacamole to record user sessions so that they can be reviewed later.
 
-We will customise the Apache Guacamole instance to call the kubernetes API to spin up the browser container if it is not already up and running and wait for the container to report it has started before opening a VNC connection to the container. This will add a few seconds to the connection but will mean that we can scale to zero when a container is not being used.
+We will need to configure the Apache Guacamole operator to use Jupyter Hub's authentication / authorisation.
 
 ### Supporting Components
-#### AWMS Guacamole Operator
-The AWMS guacamole operator will watch for changes in Analytics Workspaces and Analytics Workspace Bindings, it will update the database with connection information for a user relevant to the workspaces they have access to.
-
-When a binding is created or updated, the operator should update the guacamole database to create a connection to the browser container.
-
-When a binding expires or is removed, the operator should detect that this has occurred and remove the relevant connections from the guacamole database.
-
-In addition to this the Guacamole operator will monitor the database and when the VNC connection goes stale for a configurable amount of time, then guacamole will scale the container to zero.
+#### Kubespawner Operator
+[A proposed change to the way that the current kubespawner works has been proposed](https://github.com/jupyterhub/kubespawner/issues/839) which will use a kubernetes operator approach to provisioning jupyter notebooks. This should ideally be implemented in order to support this workstream. We can then have two separate jupyter hub instances using the same operator and we can use this to provision jupyter notebooks.
 
 #### AWMS Network Policy Operator
 The AWMS Network Policy operator will watch for changes in  Analytics Workspaces and create network policies based on the definition of the workspace.
@@ -118,12 +119,13 @@ journey
         section Initial Login
             Go to browser: 6: External User
             Browse to LSC-SDE: 6: External User
-        section Guacamole
-            Login to Guacamole: 5: External User
+        section Public Jupyter Hub
+            Login to Public Jupyter Hub: 5: External User
             Select a Workspace: 5: External User
+            Load Browser Pod: 5: External User
         section Browser Pod
             Connect: 4: External User
-        section Jupyter
+        section Private Jupyter Hub
             Workspace Ready to use: 4: External User
 ```
 
