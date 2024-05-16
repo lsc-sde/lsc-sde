@@ -136,3 +136,6 @@
 [submodule "products/sde/aks-dns-operator/docker-aks-dns-operator"]
 	path = products/sde/aks-dns-operator/docker-aks-dns-operator
 	url = https://github.com/lsc-sde/docker-aks-dns-operator.git
+[submodule "products/sde/analytics-workspace-management/iac-flux-workspace-definitions"]
+	path = products/sde/analytics-workspace-management/iac-flux-workspace-definitions
+	url = https://github.com/lsc-sde/iac-flux-workspace-definitions.git
