@@ -1,0 +1,13 @@
+{
+    "id": "metallb",
+    "version": "0.1.0",
+    "name": "metallb",
+    "documentationURL": "https://github.com/lsc-sde/lsc-sde/features/tree/main/features/metallb",
+    "description": "Installs MetalLB onto the devcontainer",
+    "options": {
+    },
+    "installsAfter" :[
+        "./features/k3d"
+    ],
+	"postCreateCommand": "setup-metallb.sh"
+}

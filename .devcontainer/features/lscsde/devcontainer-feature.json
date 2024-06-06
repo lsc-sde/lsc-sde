@@ -1,0 +1,30 @@
+{
+    "id": "lscsde",
+    "version": "0.1.0",
+    "name": "lscsde",
+    "documentationURL": "https://github.com/lsc-sde/lsc-sde/features/tree/main/features/lscsde",
+    "description": "Installs lscsde onto the devcontainer",
+    "options": {
+        "fluxRepoUrl" : {
+            "type": "string",
+            "default": "https://github.com/lsc-sde/iac-flux-lscsde"
+        },
+        "fluxRepoBranch" : {
+            "type": "string",
+            "default": "main"
+        },
+        "fluxRepoPath" : {
+            "type": "string",
+            "default" : "./clusters/devcontainer-local"
+        },
+        "secretsPath" : {
+            "type" : "string",
+            "default" : "/workspaces/lsc-sde/.devcontainer/k3d/volume/secrets"
+        }
+    },
+    "installsAfter" :[
+        "./features/k3d",
+        "./features/metallb",
+        "./features/fluxcd"
+    ]
+}

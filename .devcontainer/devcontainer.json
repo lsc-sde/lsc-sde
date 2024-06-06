@@ -1,35 +1,28 @@
 {
-	"name": "lscsde",
-	"dockerComposeFile": "docker-compose.yaml",
-	"service": "devcontainer",
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-	
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
+	"features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2" : {},
+		"ghcr.io/devcontainers/features/terraform:1": {},
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+		"./features/k3d" : {},
+		"./features/fluxcd" : {},
+		"./features/metallb" : {},
+		"./features/lscsde" : {}
+	},
 	"mounts": [
 		"source=k3d-var-lib-docker,target=/var/lib/docker,type=volume",
-		"source=k3d-config,target=/home/${remoteUser}/.k3d,type=volume"
+		"source=${localWorkspaceFolder}/.devcontainer/k3d/volume,target=/var/lib/rancher/k3s/storage,type=bind"
 	],
-	"overrideCommand": false,
-	
-	"features": {
-		"ghcr.io/devcontainers/features/terraform:1": {},
-		"ghcr.io/devcontainers/features/azure-cli:1": {}
-	},
+	"postCreateCommand": "npm install -g @devcontainers/cli",
+	"postStartCommand": "git config --global --add safe.directory \"*\"",
 	"customizations": {
-		"vscode":{
+		"vscode": {
 			"extensions": [
-				"ms-azuretools.vscode-docker",
-				"ms-kubernetes-tools.vscode-kubernetes-tools"
+				"mads-hartmann.bash-ide-vscode",
+				"dbaeumer.vscode-eslint",
+				"editorconfig.editorconfig"
 			]
 		}
-	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "kubectl version --client=true --output=yaml",
-
-	// Use 'postStartCommand' to run commands after the container is created like starting k3d.
-	"postStartCommand": "bash /lscsde/lsc-local-cluster.sh",
-
-	"remoteUser": "vscode"
+	}
 }

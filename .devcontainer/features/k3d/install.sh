@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cp ./bin/* /bin/
+
+mkdir -p /etc/k3d/setup
+
+cp ./etc/k3d/setup/calico.yaml /etc/k3d/setup/calico.yaml
+
+cat <<EOF > /etc/k3d/setup/environment
+HOSTVOLUMEPATH="${HOSTVOLUMEPATH}"
+SECRETSPATH="${SECRETSPATH}"
+INSTALLCALICO="${INSTALLCALICO}"
+CLUSTERNAME="${CLUSTERNAME}"
+DISABLETRAEFIK="${DISABLETRAEFIK}"
+DISABLEFLANNEL="${DISABLEFLANNEL}"
+DISABLELOADBALANCER="${DISABLELOADBALANCER}"
+BASE_PATH="${BASE_PATH}"
+EOF
+
+exit 0
