@@ -97,6 +97,29 @@ spec:
     image: lscsde/datascience-notebook-default:0.1.0
     persistentVolumeClaim: 
       name: jupyter-default-generic-workspace
+---
+apiVersion: xlscsde.nhs.uk/v1
+kind: AnalyticsWorkspace
+metadata:
+  name: test-workspace
+  namespace: jh-test
+  annotations:
+    kustomize.toolkit.fluxcd.io/prune: disabled
+spec:
+  displayName: Test Workspace
+  description: |
+    A workspace designed to test the capabilities
+    of the AnalyticsWorkspace api's. This will be similar 
+    to the default generic workspace workspace, but will 
+    have slightly different parameters to ensure that 
+    individual functionality of the system is working.
+  
+  validity:
+    availableFrom: "2024-01-01"
+    expires: "2025-01-01"
+  
+  jupyterWorkspace:
+    image: lscsde/datascience-notebook-default:0.1.0
 EOF
 kubectl apply -f workspaces.yaml
 
@@ -112,6 +135,18 @@ spec:
   workspace: default-generic-workspace
   username: "jovyan"
   expires: "2030-01-01"
+---
+apiVersion: xlscsde.nhs.uk/v1
+kind: AnalyticsWorkspaceBinding
+metadata:
+  name: test-workspace-jovyan
+  namespace: jh-test
+  annotations:
+    kustomize.toolkit.fluxcd.io/prune: disabled
+spec:
+  workspace: test-workspace
+  username: "jovyan"
+  expires: "2029-01-01"
 EOF
 kubectl apply -f workspace-bindings.yaml
 
