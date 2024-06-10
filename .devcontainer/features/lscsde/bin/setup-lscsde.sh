@@ -2,6 +2,10 @@
 
 . /etc/lscsde/setup/environment
 
+WORKING_FOLDER=$(pwd)
+cd "${CORE_FLUX_WORKSPACE_FOLDER}"
+FLUX_REPO_BRANCH=$(git branch --show-current)
+cd "${WORKING_FOLDER}"
 
 if [ ! -d "${SECRETS_PATH}" ]; then
   echo "ERROR: ${SECRETS_PATH} is missing. Ensure that you have included the lscsde secrets directory in .devcontainer/k3d/volume"

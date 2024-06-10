@@ -5,11 +5,26 @@
 		"ghcr.io/devcontainers/features/terraform:1": {},
 		"ghcr.io/devcontainers/features/azure-cli:1": {},
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+		"ghcr.io/devcontainers/features/python:1" : {},
 		"./features/k3d" : {},
 		"./features/fluxcd" : {},
-		"./features/metallb" : {},
-		"./features/lscsde" : {}
+		//"./features/metallb" : {},
+		"./features/jupyterhub" : {
+			"hubDockerImageDefinition" : "${containerWorkspaceFolder}/docker/jupyterhub",
+			"analyticsWorkspaceHelmChart" : "${containerWorkspaceFolder}/iac/helm/analytics-workspace-management"
+		},
+		"./features/ohdsi" : {
+			"pathToHelmChart" : "${containerWorkspaceFolder}/iac/helm/ohsdi"
+		},
+		"./features/lscsde" : {
+			"secretsPath" : "${containerWorkspaceFolder}/.devcontainer/k3d/volume/secrets",
+			"coreFluxWorkspaceFolder" : "${containerWorkspaceFolder}/iac/flux/lscsde"
+		}
 	},
+	"forwardPorts" : [
+		"8080:80", 
+		"8443:443"
+	],
 	"mounts": [
 		"source=k3d-var-lib-docker,target=/var/lib/docker,type=volume",
 		"source=${localWorkspaceFolder}/.devcontainer/k3d/volume,target=/var/lib/rancher/k3s/storage,type=bind"
@@ -19,6 +34,7 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"ms-python.python",
 				"mads-hartmann.bash-ide-vscode",
 				"dbaeumer.vscode-eslint",
 				"editorconfig.editorconfig"

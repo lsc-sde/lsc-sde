@@ -1,0 +1,22 @@
+{
+    "id": "ohdsi",
+    "version": "0.1.0",
+    "name": "ohdsi",
+    "documentationURL": "https://github.com/lsc-sde/lsc-sde/features/tree/main/features/ohdsi",
+    "description": "Installs the OHDSI into the devcontainer's k3s cluster",
+    "options": {
+        "pathToHelmChart" : {
+            "type" : "string",
+            "default" : "/workspaces/lsc-sde/iac/helm/ohdsi"
+        },
+        "ohdsiNamespace" : {
+            "type" : "string",
+            "default" : "ohdsi"
+        }
+    },
+    "installsAfter" :[
+        "./features/k3d",
+        "./features/metallb",
+        "./features/fluxcd"
+    ]
+}

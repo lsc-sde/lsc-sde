@@ -4,10 +4,6 @@
 
 CONFIG_CALICO="/etc/k3d/setup/calico.yaml"
 
-configure_docker() {
-    cat "${SECRETSPATH}/GitHubPatToken" | docker login --username $(cat "${SECRETSPATH}/GitHubUser") --password-stdin
-}
-
 configure_kalico() {
     if [ "${INSTALLCALICO}" == "true" ]; then
         if [ ! -f "${CONFIG_CALICO}" ]; then
@@ -23,13 +19,29 @@ install_k3d() {
 
 create_k3d_cluster() {
     configure_kalico
-    k3d registry delete --all
-    k3d cluster delete --all
+    
+    #k3d registry delete --all
+    #k3d cluster delete --all
+    
+    echo "Looking for k3d-${CLUSTERNAME}-registry.local entry in /etc/hosts"
+    HOSTS_ENTRY=$(cat /etc/hosts | grep "k3d-${CLUSTERNAME}-registry.local")
+
+    if [ -z "${HOSTS_ENTRY}" ]; then
+        echo "entry not found, creating"
+        sudo /bin/bash -c "echo \"127.0.0.1 k3d-${CLUSTERNAME}-registry.local\" >> /etc/hosts"
+    else
+        echo "entry already exists"
+    fi
+    
+
 
     mkdir -p /var/lib/rancher/k3s/storage
 
+    k3d_registry_cmd=(k3d registry create ${CLUSTERNAME}-registry.local --port ${REGISTRY_PORT})
+    
     k3d_install_cmd=(k3d cluster create ${CLUSTERNAME})
-    k3d_install_cmd+=( --registry-create "${CLUSTERNAME}-registry" )
+    k3d_install_cmd+=( --registry-use "k3d-${CLUSTERNAME}-registry.local:${REGISTRY_PORT}" )
+    
     k3d_install_cmd+=( -v "${HOSTVOLUMEPATH}:/var/lib/rancher/k3s/storage@all" )
 
 
@@ -51,11 +63,22 @@ create_k3d_cluster() {
 
     k3d_install_cmd+=( --wait )
 
-    echo "Executing ${k3d_install_cmd[@]}"
-    ${k3d_install_cmd[@]}
+    REGISTRY_LIST=$(k3d registry list "${CLUSTERNAME}-registry.local")
+    if [ $? -ne 0 ]; then
+        echo "Executing ${k3d_registry_cmd[@]}"
+        ${k3d_registry_cmd[@]}
+    fi
+
+    CLUSTER_LIST=$(k3d cluster list "${CLUSTERNAME}")
+    if [ $? -ne 0 ]; then
+        echo "Executing ${k3d_install_cmd[@]}"
+        ${k3d_install_cmd[@]}
+    else
+        echo "${CLUSTERNAME} Cluster already exists, merging kubeconfig and switching context"
+        k3d kubeconfig merge ${CLUSTERNAME} -d -s
+    fi
 }
 
-configure_docker
 install_k3d
 create_k3d_cluster
 exit $?

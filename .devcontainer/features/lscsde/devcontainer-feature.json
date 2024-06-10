@@ -9,10 +9,6 @@
             "type": "string",
             "default": "https://github.com/lsc-sde/iac-flux-lscsde"
         },
-        "fluxRepoBranch" : {
-            "type": "string",
-            "default": "main"
-        },
         "fluxRepoPath" : {
             "type": "string",
             "default" : "./clusters/devcontainer-local"
@@ -20,6 +16,10 @@
         "secretsPath" : {
             "type" : "string",
             "default" : "/workspaces/lsc-sde/.devcontainer/k3d/volume/secrets"
+        },
+        "coreFluxWorkspaceFolder" : {
+            "type": "string",
+            "default" : "/workspaces/lsc-sde/iac/flux/lscsde"
         }
     },
     "installsAfter" :[

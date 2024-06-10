@@ -1,0 +1,46 @@
+{
+    "id": "jupyterhub",
+    "version": "0.1.0",
+    "name": "jupyterhub",
+    "documentationURL": "https://github.com/lsc-sde/lsc-sde/features/tree/main/features/jupyterhub",
+    "description": "Installs the JupyterHub into the devcontainer's k3s cluster",
+    "options": {
+        "helmRepository" : {
+            "type" : "string",
+            "default" : "https://jupyterhub.github.io/helm-chart/"
+        },
+        "chartName" : {
+            "type" : "string",
+            "default" : "jupyterhub"
+        },
+        "chartVersion" : {
+            "type" : "string",
+            "default" : "3.2.1"
+        },
+        "namespace" : {
+            "type" : "string",
+            "default" : "jh-test"
+        },
+        "imageName" : {
+            "type" : "string",
+            "default" : "k3d-devcontainer-registry.local:36471/jupyterhub"
+        },
+        "imageTag" : {
+            "type" : "string",
+            "default" : "local"
+        },
+        "hubDockerImageDefinition" : {
+            "type" : "string",
+            "default" : "/workspaces/lsc-sde/docker/jupyterhub"
+        },
+        "analyticsWorkspaceHelmChart" : {
+            "type" : "string",
+            "default" : "/workspaces/lsc-sde/iac/helm/analytics-workspace-management/"
+        }
+    },
+    "installsAfter" :[
+        "./features/k3d",
+        "./features/metallb",
+        "./features/fluxcd"
+    ]
+}

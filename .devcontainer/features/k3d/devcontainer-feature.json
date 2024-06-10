@@ -31,7 +31,11 @@
         },
         "disableLoadBalancer" : {
             "type": "boolean",
-            "default": true
+            "default": false
+        },
+        "registryPort" : {
+            "type" : "integer",
+            "default" : 36471
         }
     },
     "installsAfter" :[
