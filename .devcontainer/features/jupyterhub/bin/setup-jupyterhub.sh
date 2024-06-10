@@ -21,6 +21,18 @@ echo "Installing Helm Chart ${CHART_NAME}:${CHART_VERSION} from ${HELM_REPOSITOR
 helm repo add jupyterhub "${HELM_REPOSITORY}"
 helm repo update
 
+cat <<EOF > ./jupyterhub.values.yaml
+hub:
+  image:
+    name: ${IMAGE_NAME}
+    tag: ${IMAGE_TAG}
+    pullPolicy: Always
+  extraEnv:
+    DEFAULT_STORAGE_CLASS: "jupyter-default"
+    DEFAULT_STORAGE_ACCESS_MODES: "ReadWriteOnce"
+    DEFAULT_STORAGE_CAPACITY: "1Gi"
+EOF
+
 
 install_cmd=( helm upgrade -i )
 install_cmd+=( -n "${NAMESPACE}" )
@@ -28,9 +40,7 @@ install_cmd+=( jh-test )
 install_cmd+=( "jupyterhub/${CHART_NAME}" )
 install_cmd+=( --version ${CHART_VERSION} )
 install_cmd+=( --create-namespace )
-install_cmd+=( --set hub.image.name="${IMAGE_NAME}")
-install_cmd+=( --set hub.image.tag="${IMAGE_TAG}")
-install_cmd+=( --set hub.image.pullPolicy="Always")
+install_cmd+=( -f ./jupyterhub.values.yaml )
 echo "Executing ${install_cmd[@]}"
 ${install_cmd[@]}
 
