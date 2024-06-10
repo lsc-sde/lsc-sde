@@ -105,7 +105,7 @@ spec:
 EOF
 kubectl apply -f workspace-bindings.yaml
 
-nohup kubectl port-forward svc/proxy-public -n jh-test 80:80 &
+nohup kubectl port-forward svc/proxy-public -n jh-test 8080:80 &
 cd "${CURRENT_FOLDER}"
 
 kubectl rollout restart -n jh-test deployments/hub

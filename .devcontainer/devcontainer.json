@@ -1,6 +1,9 @@
 {
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
 	"features": {
+		"ghcr.io/devcontainers/features/go:1.3.0": {
+			"version": "1.18"
+		},
         "ghcr.io/devcontainers/features/docker-in-docker:2" : {},
 		"ghcr.io/devcontainers/features/terraform:1": {},
 		"ghcr.io/devcontainers/features/azure-cli:1": {},
@@ -22,8 +25,6 @@
 		}
 	},
 	"forwardPorts" : [
-		"8080:80", 
-		"8443:443"
 	],
 	"mounts": [
 		"source=k3d-var-lib-docker,target=/var/lib/docker,type=volume",
