@@ -30,6 +30,8 @@
 		"source=k3d-var-lib-docker,target=/var/lib/docker,type=volume",
 		"source=${localWorkspaceFolder}/.devcontainer/k3d/volume,target=/var/lib/rancher/k3s/storage,type=bind"
 	],
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/lsc-sde,type=bind",
+	"workspaceFolder": "/workspaces/lsc-sde",
 	"postCreateCommand": "npm install -g @devcontainers/cli",
 	"postStartCommand": "git config --global --add safe.directory \"*\"",
 	"customizations": {

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cp ./bin/setup-lscsde.sh /bin/
+cp ./bin/setup-terminal-lscsde.sh /bin/
 
 mkdir -p /etc/lscsde/setup
 

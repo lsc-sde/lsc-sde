@@ -26,5 +26,6 @@
         "./features/k3d",
         "./features/metallb",
         "./features/fluxcd"
-    ]
+    ],
+	"postStartCommand": "setup-terminal-lscsde.sh"
 }
