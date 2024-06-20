@@ -11,6 +11,7 @@
 		"ghcr.io/devcontainers/features/python:1" : {},
 		"./features/k3d" : {},
 		"./features/fluxcd" : {},
+		"./features/aks-tools" : {},
 		//"./features/metallb" : {},
 		"./features/jupyterhub" : {
 			"hubDockerImageDefinition" : "${containerWorkspaceFolder}/docker/jupyterhub",

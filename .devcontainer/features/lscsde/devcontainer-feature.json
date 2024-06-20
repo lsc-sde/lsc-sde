@@ -25,7 +25,8 @@
     "installsAfter" :[
         "./features/k3d",
         "./features/metallb",
-        "./features/fluxcd"
+        "./features/fluxcd",
+        "./features/aks-tools"
     ],
-	"postStartCommand": "setup-terminal-lscsde.sh"
+    "postCreateCommand" : "setup-bash-lscsde"
 }

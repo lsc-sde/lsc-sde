@@ -1,0 +1,16 @@
+{
+    "id": "aks-tools",
+    "version": "0.1.0",
+    "name": "aks-tools",
+    "documentationURL": "https://github.com/lsc-sde/lsc-sde/features/tree/main/features/aks-tools",
+    "description": "Installs aks-tools onto the devcontainer",
+    "options": {
+        "clusterName" : {
+            "type": "string",
+            "default": "devcontainer"
+        }
+    },
+    "installsAfter" :[
+        "./features/k3d"
+    ]
+}

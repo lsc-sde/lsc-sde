@@ -1,0 +1,22 @@
+#!/bin/bash
+
+. /etc/k3d/setup/environment
+
+SWITCH_TO_CONTEXT="k3d-${CLUSTERNAME}"
+
+if [ -n "$1" ]; then 
+    SWITCH_TO_CONTEXT="$1"
+fi
+
+
+for CLUSTER_CONFIG in $(az aks list | jq '.[] | {"name":.name, "resourceGroup":.resourceGroup}' -c -r); do
+    AKS_CLUSTER_NAME=$(echo "${CLUSTER_CONFIG}" | jq '.name' -r)
+    AKS_RESOURCE_GROUP=$(echo "${CLUSTER_CONFIG}" | jq '.resourceGroup' -r)
+    if [ -z "$1" ] || [[ "${AKS_CLUSTER_NAME}" == "$1" ]]; then 
+        echo "Adding ${AKS_CLUSTER_NAME} in ${AKS_RESOURCE_GROUP}"
+
+        az aks get-credentials --name $AKS_CLUSTER_NAME --resource-group $AKS_RESOURCE_GROUP --overwrite-existing
+    fi
+done
+
+kubectl config use-context "${SWITCH_TO_CONTEXT}"
