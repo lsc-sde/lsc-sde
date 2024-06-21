@@ -27,5 +27,5 @@
         "./features/metallb",
         "./features/fluxcd"
     ],
-	"postStartCommand": "setup-terminal-lscsde.sh"
+	"postStartCommand": "setup-terminal-lscsde"
 }
