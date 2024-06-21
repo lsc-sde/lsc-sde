@@ -1,0 +1,4 @@
+#!/bin/bash
+
+kubectl delete kustomizations -n lscsde --all
+kubectl delete helmrelease -A --all

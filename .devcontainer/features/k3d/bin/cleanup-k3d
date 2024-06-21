@@ -1,0 +1,9 @@
+#!/bin/bash
+
+. /etc/k3d/setup/environment
+
+CLUSTER_LIST=$(k3d cluster list "${CLUSTERNAME}")
+if [ $? -eq 0 ]; then
+    echo "${CLUSTERNAME} Cluster exists, deleting"
+    k3d cluster delete "${CLUSTERNAME}"
+fi

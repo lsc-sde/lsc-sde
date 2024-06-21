@@ -9,5 +9,5 @@
     "installsAfter" :[
         "./features/k3d"
     ],
-	"postCreateCommand": "setup-fluxcd.sh"
+	"postCreateCommand": "setup-fluxcd"
 }
