@@ -1,0 +1,65 @@
+#!/bin/bash
+
+. /etc/lscsde/setup/environment
+
+echo "Setting up secrets for LSC-SDE"
+if [ ! -d "${SECRETS_PATH}" ]; then
+    echo "Warning!: Secrets folder is not present, this should be located in ./.devcontainer/k3d/volume/secrets"
+fi
+
+if [ ! -f "${SECRETS_PATH}/HadesPassword" ]; then
+    echo "Generating HadesPassword"
+    generate-password-lscsde -m 12 > "${SECRETS_PATH}/HadesPassword"
+else 
+    echo "HadesPassword Already Exists"
+fi
+
+if [ ! -f "${SECRETS_PATH}/JupyterCookieSecret" ]; then
+    echo "Generating JupyterCookieSecret"
+    generate-password-lscsde -m 12 -h > "${SECRETS_PATH}/JupyterCookieSecret"
+else 
+    echo "JupyterCookieSecret Already Exists"
+fi
+
+if [ ! -f "${SECRETS_PATH}/OhdsiDbPassword" ]; then
+    echo "Generating OhdsiDbPassword"
+    generate-password-lscsde > "${SECRETS_PATH}/OhdsiDbPassword"
+else 
+    echo "OhdsiDbPassword Already Exists"
+fi
+
+if [ ! -f "${SECRETS_PATH}/WildcardCertificate" ]; then
+    echo "Generating WildcardCertificate"
+    cd "${SECRETS_PATH}"
+    openssl req -x509 -newkey rsa:4096 -keyout WildcardCertificateKey -out WildcardCertificate -sha256 -days 3650 -nodes -subj "/CN=*.lsc-sde.local"
+else 
+    echo "WildcardCertificate Already Exists"
+fi
+
+if [ ! -f "${SECRETS_PATH}/JupyterAppRegistrationClientSecret" ]; then
+    echo "Warning!: Secret JupyterAppRegistrationClientSecret is not present, please ensure that it is present in the secrets folder"
+fi
+
+if [ ! -f "${SECRETS_PATH}/PrimaryStorageAccountName" ]; then
+    echo "Warning!: Secret PrimaryStorageAccountName is not present, please ensure that it is present in the secrets folder"
+fi
+
+if [ ! -f "${SECRETS_PATH}/PrimaryStorageAccountKey" ]; then
+    echo "Warning!: Secret PrimaryStorageAccountKey is not present, please ensure that it is present in the secrets folder"
+fi
+
+if [ ! -f "${SECRETS_PATH}/OhdsiAppRegistrationClientSecret" ]; then
+    echo "Warning!: Secret OhdsiAppRegistrationClientSecret is not present, please ensure that it is present in the secrets folder"
+fi
+
+if [ ! -f "${SECRETS_PATH}/JupyterAppRegistrationClientSecret" ]; then
+    echo "Warning!: Secret JupyterAppRegistrationClientSecret is not present, please ensure that it is present in the secrets folder"
+fi
+
+if [ ! -f "${SECRETS_PATH}/PatToken" ]; then
+    echo "Warning!: Secret PatToken is not present, please ensure that it is present in the secrets folder"
+fi
+PAT_TOKEN=$(cat "${SECRETS_PATH}/PatToken")
+cat <<EOF >> ~/.bashrc
+export TF_VAR_pat_token="${PAT_TOKEN}"
+EOF

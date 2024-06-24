@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo chmod 0777 /var/lib/rancher/k3s/storage
+
 . /etc/k3d/setup/environment
 
 CONFIG_CALICO="/etc/k3d/setup/calico.yaml"

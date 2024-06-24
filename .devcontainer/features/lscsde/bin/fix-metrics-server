@@ -1,0 +1,16 @@
+#!/bin/bash
+
+kubectl label ClusterRole/system:metrics-server app.kubernetes.io/managed-by=Helm
+kubectl annotate ClusterRole/system:metrics-server meta.helm.sh/release-name=metrics-server meta.helm.sh/release-namespace=metrics-server
+
+kubectl label ClusterRoleBinding/system:metrics-server app.kubernetes.io/managed-by=Helm
+kubectl annotate ClusterRoleBinding/system:metrics-server meta.helm.sh/release-name=metrics-server meta.helm.sh/release-namespace=metrics-server
+
+kubectl label ClusterRoleBinding/metrics-server:system:auth-delegator app.kubernetes.io/managed-by=Helm
+kubectl annotate ClusterRoleBinding/metrics-server:system:auth-delegator meta.helm.sh/release-name=metrics-server meta.helm.sh/release-namespace=metrics-server
+
+kubectl label -n kube-system RoleBinding/metrics-server-auth-reader app.kubernetes.io/managed-by=Helm
+kubectl annotate -n kube-system RoleBinding/metrics-server-auth-reader meta.helm.sh/release-name=metrics-server meta.helm.sh/release-namespace=metrics-server
+
+kubectl label APIService/v1beta1.metrics.k8s.io app.kubernetes.io/managed-by=Helm
+kubectl annotate APIService/v1beta1.metrics.k8s.io meta.helm.sh/release-name=metrics-server meta.helm.sh/release-namespace=metrics-server

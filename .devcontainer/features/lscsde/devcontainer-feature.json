@@ -28,5 +28,9 @@
         "./features/fluxcd",
         "./features/aks-tools"
     ],
+<<<<<<< HEAD
     "postCreateCommand" : "setup-bash-lscsde"
+=======
+	"postStartCommand": "setup-terminal-lscsde"
+>>>>>>> aabdc7a6ce8ab6ea5b3bedd9d74ac9df5edc32fc
 }

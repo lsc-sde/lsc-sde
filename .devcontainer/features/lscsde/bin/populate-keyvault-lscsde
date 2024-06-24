@@ -1,0 +1,42 @@
+#!/bin/bash
+
+. /etc/lscsde/setup/environment
+
+usage() { echo "Usage: $0 -v <vault name> -e <environment name>" 1>&2; exit 1; }
+
+while getopts ":v:e:" o; do
+    case "${o}" in
+        v)
+            VAULT_NAME=${OPTARG}
+            ;;
+        e)
+            ENVIRONMENT_NAME=${OPTARG}
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+if [ -z "${VAULT_NAME}" ] || [ -z "${ENVIRONMENT_NAME}" ]; then
+    usage
+fi
+
+for FILE_PATH in ${SECRETS_PATH}/*; do
+    if [[ $FILE_PATH != *\~ ]] && [ ! -d $FILE_PATH ]; then
+        FILE_NAME=$(basename $FILE_PATH)
+        echo "Checking ${FILE_NAME}"
+        VALUE_FILE=$FILE_PATH        
+        ENV_FILE_NAME="${SECRETS_PATH}/${ENVIRONMENT_NAME}/${FILE_NAME}"
+        if [ -f "${ENV_FILE_NAME}" ]; then
+            VALUE_FILE="${ENV_FILE_NAME}"
+        fi
+
+        ENTRY_EXISTS=$(az keyvault secret list --vault-name "${VAULT_NAME}" | jq ".[] | select(.name == \"${FILE_NAME}\") | .name" -r)
+        if [ $? -eq 0 ] && [ -n "${ENTRY_EXISTS}" ]; then
+            echo "Using value for secret \"${FILE_PATH}\" from ${VALUE_FILE}"
+            az keyvault secret set --vault-name "${VAULT_NAME}" --name "${FILE_NAME}" --file "${VALUE_FILE}" -o none
+        fi
+    fi
+done

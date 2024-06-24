@@ -41,5 +41,5 @@
     "installsAfter" :[
         "ghcr.io/devcontainers/features/docker-in-docker"
     ],
-	"postCreateCommand": "setup-k3d.sh"
+	"postCreateCommand": "setup-k3d"
 }
