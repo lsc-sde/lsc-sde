@@ -4,13 +4,22 @@
 
 usage() { echo "Usage: $0 -v <vault name> -e <environment name>" 1>&2; exit 1; }
 
-while getopts ":v:e:" o; do
+SECRET_NAME="*"
+FORCE_UPDATE=0
+
+while getopts ":v:e:n:f" o; do
     case "${o}" in
         v)
             VAULT_NAME=${OPTARG}
             ;;
         e)
             ENVIRONMENT_NAME=${OPTARG}
+            ;;
+        n)
+            SECRET_NAME=${OPTARG}
+            ;;
+        f)
+            FORCE_UPDATE=1
             ;;
         *)
             usage
@@ -23,10 +32,10 @@ if [ -z "${VAULT_NAME}" ] || [ -z "${ENVIRONMENT_NAME}" ]; then
     usage
 fi
 
-for FILE_PATH in ${SECRETS_PATH}/*; do
+for FILE_PATH in ${SECRETS_PATH}/${SECRET_NAME}; do
     if [[ $FILE_PATH != *\~ ]] && [ ! -d $FILE_PATH ]; then
         FILE_NAME=$(basename $FILE_PATH)
-        echo "Checking ${FILE_NAME}"
+        echo "Checking ${FILE_NAME} in vault ${VAULT_NAME}"
         VALUE_FILE=$FILE_PATH        
         ENV_FILE_NAME="${SECRETS_PATH}/${ENVIRONMENT_NAME}/${FILE_NAME}"
         if [ -f "${ENV_FILE_NAME}" ]; then
@@ -35,7 +44,10 @@ for FILE_PATH in ${SECRETS_PATH}/*; do
 
         ENTRY_EXISTS=$(az keyvault secret list --vault-name "${VAULT_NAME}" | jq ".[] | select(.name == \"${FILE_NAME}\") | .name" -r)
         if [ $? -eq 0 ] && [ -z "${ENTRY_EXISTS}" ]; then
-            echo "Using value for secret \"${FILE_PATH}\" from ${VALUE_FILE}"
+            echo "Using value for secret \"${FILE_NAME}\" from ${VALUE_FILE}"
+            az keyvault secret set --vault-name "${VAULT_NAME}" --name "${FILE_NAME}" --file "${VALUE_FILE}" -o none
+        elif [ $FORCE_UPDATE -eq 1 ]; then 
+            echo "Forcing update of \"${FILE_NAME}\" using value from ${VALUE_FILE}"
             az keyvault secret set --vault-name "${VAULT_NAME}" --name "${FILE_NAME}" --file "${VALUE_FILE}" -o none
         else
             echo "Entry for ${FILE_NAME} already exists"

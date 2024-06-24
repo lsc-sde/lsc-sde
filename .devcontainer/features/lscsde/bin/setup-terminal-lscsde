@@ -14,6 +14,13 @@ else
     echo "HadesPassword Already Exists"
 fi
 
+if [ ! -f "${SECRETS_PATH}/GuacDbPassword" ]; then
+    echo "Generating GuacDbPassword"
+    generate-password-lscsde -m 12 > "${SECRETS_PATH}/GuacDbPassword"
+else 
+    echo "GuacDbPassword Already Exists"
+fi
+
 if [ ! -f "${SECRETS_PATH}/JupyterCookieSecret" ]; then
     echo "Generating JupyterCookieSecret"
     generate-password-lscsde -m 12 -h > "${SECRETS_PATH}/JupyterCookieSecret"
