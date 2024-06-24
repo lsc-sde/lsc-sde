@@ -34,9 +34,11 @@ for FILE_PATH in ${SECRETS_PATH}/*; do
         fi
 
         ENTRY_EXISTS=$(az keyvault secret list --vault-name "${VAULT_NAME}" | jq ".[] | select(.name == \"${FILE_NAME}\") | .name" -r)
-        if [ $? -eq 0 ] && [ -n "${ENTRY_EXISTS}" ]; then
+        if [ $? -eq 0 ] && [ -z "${ENTRY_EXISTS}" ]; then
             echo "Using value for secret \"${FILE_PATH}\" from ${VALUE_FILE}"
             az keyvault secret set --vault-name "${VAULT_NAME}" --name "${FILE_NAME}" --file "${VALUE_FILE}" -o none
+        else
+            echo "Entry for ${FILE_NAME} already exists"
         fi
     fi
 done
