@@ -42,7 +42,8 @@
 				"mads-hartmann.bash-ide-vscode",
 				"dbaeumer.vscode-eslint",
 				"editorconfig.editorconfig",
-				"ms-vscode.powershell"
+				"ms-vscode.powershell",
+				"hashicorp.terraform"
 			]
 		}
 	}
