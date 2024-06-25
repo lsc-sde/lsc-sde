@@ -54,3 +54,13 @@ for FILE_PATH in ${SECRETS_PATH}/${SECRET_NAME}; do
         fi
     fi
 done
+
+for SECRET in $(az keyvault secret list --vault-name lscsdestg-kvlt | jq ".[].name" -r); do
+    ENV_FILE_NAME="${SECRETS_PATH}/${ENVIRONMENT_NAME}/${SECRET}"
+    if [ ! -f "${ENV_FILE_NAME}" ]; then
+        echo "Downloading ${SECRET} to local configuration"
+        az keyvault secret show --vault-name "${VAULT_NAME}" --name "${SECRET}" | jq '.value' -j > $ENV_FILE_NAME
+    else
+        echo "Secret ${SECRET} already exists in local configuration"
+    fi
+done
