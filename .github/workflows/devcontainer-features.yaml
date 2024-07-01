@@ -1,0 +1,26 @@
+name: Deploy DevContainer Features
+
+on:
+  push:
+    branches: 
+      - "main"
+      - "issues/sjt/refactor-devcontainers"
+    paths:
+      - ".devcontainer/features/**"    
+      
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Publish Features"
+      uses: devcontainers/action@v1
+      with:
+        publish-features: "true"
+        base-path-to-features: "./.devcontainer/features"
