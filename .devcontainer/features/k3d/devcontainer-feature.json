@@ -34,8 +34,8 @@
             "default": false
         },
         "registryPort" : {
-            "type" : "integer",
-            "default" : 36471
+            "type" : "string",
+            "default" : "36471"
         }
     },
     "installsAfter" :[
