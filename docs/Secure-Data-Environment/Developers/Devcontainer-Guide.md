@@ -6,6 +6,18 @@ parent: Developer Guide
 # Devcontainer Guide
 The LSC devcontainer provides a consistent and reproducible development environment that removes the need to go through the process of preparing a local development machine with tooling and configuration specific to LSCSDE. In addition, it enables development from GitHub Codespaces as well as a local machine with the use of VS Code and Docker Desktop (see [here](https://code.visualstudio.com/docs/devcontainers/containers) for more details).
 
+### Devcontainer Features
+
+The following is a list of devcontainer features offered by the LSC-SDE:
+| Name | Description |
+| --- | --- |
+| [k3d](./Devcontainer/Features/k3d.md) | Implementation of k3d on top of docker-in-docker the allows for running a kubernetes instance from within the devcontainer |
+| [fluxcd](./Devcontainer/Features/fluxcd.md) | Implementation of fluxcd that runs on top of k3d in the devcontainer |
+| [aks-tools](./Devcontainer/Features/aks-tools.md) | A collection of tools and scripts designed to make it easier to interop with Azure Resource Manager and AKS |
+| [jupyterhub](./Devcontainer/Features/jupyterhub.md) | Install tools and scripts that allow a standalone version of jupyterhub to be installed alongside all of the tools needed for the LSC-SDE's Analytics workspace management solution, allowing us to rapidly develop and test new features for both tools inside of the devcontainer |
+| [ohdsi](./Devcontainer/Features/ohdsi.md) | A collection of tools and scripts designed to make it easier to implement a standalone version of the OHDInetes implementation that will run on top of k3s inside of the devcontainer |
+| [lscsde](./Devcontainer/Features/lscsde.md) | A collection of tools and scripts designed to allow development and deployment of the LSCSDE in various environments allowing LSCSDE developers, testers and release managers to work on this project with all the tools needed at their disposal. |
+
 ### Devcontainer Services
 The devcontainer for LSCSDE comprises three containers (see .devcontainer/docker-compose.yaml):
 - devcontainer includes a docker instance that follows a docker-in-docker (dind) model for deploying a K8s cluster using K3d. In addition, it includes required lscsde cli tools:
