@@ -43,7 +43,8 @@
 				"dbaeumer.vscode-eslint",
 				"editorconfig.editorconfig",
 				"ms-vscode.powershell",
-				"hashicorp.terraform"
+				"hashicorp.terraform",
+				"github.vscode-github-actions"
 			]
 		}
 	}
