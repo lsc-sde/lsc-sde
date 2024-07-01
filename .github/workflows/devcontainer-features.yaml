@@ -7,6 +7,7 @@ on:
       - "issues/sjt/refactor-devcontainers"
     paths:
       - ".devcontainer/features/**"    
+      - ".github/workflows/devcontainer-features.yaml"
       
   workflow_dispatch:
 
@@ -19,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v3      
+
     - name: "Publish Features"
       uses: devcontainers/action@v1
       with:
