@@ -33,7 +33,7 @@
 	],
 	"workspaceMount": "source=lscsde-workspace,target=/workspaces,type=volume",
 	"workspaceFolder": "/workspaces",
-	"postCreateCommand": "npm install -g @devcontainers/cli && sudo chmod 0777 /workspaces && git clone https://github.com/lsc-sde/lsc-sde.git --recurse-submodules",
+	"postCreateCommand": "npm install -g @devcontainers/cli && sudo chmod 0777 /var/lib/rancher/k3s/storage && sudo chmod 0777 /workspaces && if [ ! -d \"/workspaces/lsc-sde\" ]; then git clone https://github.com/lsc-sde/lsc-sde.git --recurse-submodules; fi",
 	"postStartCommand": "git config --global --add safe.directory \"*\"",
 	"customizations": {
 		"vscode": {
