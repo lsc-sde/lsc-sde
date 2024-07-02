@@ -20,8 +20,7 @@ The following is a list of devcontainer features offered by the LSC-SDE:
 | [lscsde](./Devcontainer/Features/lscsde.md) | A collection of tools and scripts designed to allow development and deployment of the LSCSDE in various environments allowing LSCSDE developers, testers and release managers to work on this project with all the tools needed at their disposal. |
 
 ### Devcontainer Services
-The devcontainer for LSCSDE comprises three containers (see .devcontainer/docker-compose.yaml):
-- devcontainer includes a docker instance that follows a docker-in-docker (dind) model for deploying a K8s cluster using K3d. In addition, it includes required lscsde cli tools:
+The devcontainer for LSCSDE consists of a docker-in-docker instance that is running a k3d registry and a k3d cluster on which all the components for the LSCSDE can be installed, it also provides supporting tools such as:
     - Terraform
     - Helm
     - Azure-cli
@@ -29,15 +28,9 @@ The devcontainer for LSCSDE comprises three containers (see .devcontainer/docker
     - Kubectl
     - FluxCD 2
     - Docker
+    - Python and relevant modules
 
-- Broadsea-atlasdb is a postgres service that prepares the ohdsi database along with synthetic medical data. It is configured with the hostname (cluster.lsc-sde.local) on the same network as the devcontainer so devcontainer containers and internal devcontainer services (i.e. K3d cluster) can connect. This service adds additional users and permissions (i.e. ohdsi@cluster.lsc-sde.local) required by LSCSDE services to access the database. 
-- pgAdmin is a helper service that provides a web-based UI to manage the ohdsi database. It is preconfigured to load the ohdsi postgres server. Default pgAdmin user account credentials are:
-
-```
-postgres@postgres.com : mypass 
-```
-
-The admin UI is accessible on http://localhost:8888. On first load when connecting to the ohdsi/postgres database you may be prompted for the postgres password.
+The features also provide a collection of commands and shortcuts to allow rapid management, development and testing of environments.
 
 ### K8s Local Cluster
 The devcontainer creates and provisions a local K8s cluster using K3s - a lightweight Kubernetes distribution for resource-constrained environments (e.g.  IoT/edge devices). K3s optimises for a low memory footprint (similar to microK8s) and runs on various OSs and architectures (i.e. Linux and Windows, arm64/amd64). K3d acts as a utility tool that facilitates the creation of K8s clusters using K3s inside Docker containers. The devcontainer uses K3d to create a lightweight cluster (lscsde) running in a docker-in-docker (dind) container. For more details on K3d see [here](https://k3d.io/v5.6.3/). In addition, kubectl is also made available to manage the local cluster.
@@ -48,26 +41,13 @@ To get started with the devcontainer, open VS Code and clone the lsc-sde root re
 - 16 Core CPU
 - 6GB RAM
 - 200GB virtual disk allocation
-If your local machine is unable to meet these requirements the LSCSDE cluster can become unstable and result in K8s pod evictions. Therefore, choose to deploy the devcontainer within a Github Codespaces environment from your local VS Code environment (more details [here](https://docs.github.com/en/codespaces/developing-in-a-codespace/using-github-codespaces-in-visual-studio-code)).
 
-### Environmental Settings
-Before building and attaching to the devcontainer, you have a small number of default environment variables that can adjusted to your specific needs.
-In the .devcontainer/ directory in the root lscsde repository there are two files that can be configured:
-- The **.env** file specifies the architecture (e.g.  arch=arm64 or arch=amd64) for building the pgadmin container. This defaults to amd64 but can be changed to arm64 if required.
-- The **lsc-local-cluster.sh** performs creation and configuration of the k3d local cluster including the installation and deployment of flux components along with LSCSDE specific cluster services (e.g. calico for networking policies and metallb as the required load balancer). The following variables can be changed to point flux to the preferred git repository for flux. These default to:
-
-```bash
-LSCSDE_FLUX_REPO_URL="https://github.com/lsc-sde/iac-flux-lscsde"
-LSCSDE_FLUX_REPO_BRANCH="release/<version_here>"
-LSCSDE_FLUX_REPO_CLUSTER_PATH="./clusters/devcontainer-local"
-```
-
-All variable defaults can be keep and the devcontainer will still build. Although ensure that the correct branch you will develop towards is set e.g. ‘release/0.1.338’ or  ‘hotfix/my-new-feature’.
+If your local machine is unable to meet these requirements the LSCSDE cluster can become unstable and result in K8s pod evictions. In this case, choose instead to deploy the devcontainer within a Github Codespaces environment from your local VS Code environment (more details [here](https://docs.github.com/en/codespaces/developing-in-a-codespace/using-github-codespaces-in-visual-studio-code)).
 
 ### Secrets Distributor
-Currently, the lscsde requires the developer to make available a ‘secrets’ directory that contains files which include credentials to allow deployed k8s services to authenticate and communicate. The developer must request access to this directory and place it in the directory .devcontainer/k3d/volume once they have pulled the root lsc-side repository to their local machine which must be named “secrets” aka .devcontainer/k3d/volume/secrets. The devcontainer looks for this directory on startup and attempts to mount it into the devcontainer for the secrets-distributor to consume.
+Currently, the lscsde requires the developer to make available a ‘secrets’ directory that contains files which include credentials to allow deployed k8s services to authenticate and communicate. The developer must request access to this directory and place it in the directory .devcontainer/k3d/volume once they have pulled the root lsc-side repository to their local machine which must be named “secrets” aka .devcontainer/k3d/volume/secrets. The devcontainer looks for this directory on startup and attempts to mount it into the devcontainer for the secrets-distributor to consume. If the folder is empty it will attempt to create the secrets using random values to allow you to get started.
 
-### Build & Deploy
+### Running the devcontainer
 To build and run the container locally, open the command palette (Fn + F1 on mac) and type ‘> Dev containers: Rebuild Container’ and Enter to build and run the devcontainer. On the first build, this can take upto 5-10 minutes but once built is much quicker. Monitor the terminal for build logs, once completed you should see a similar output shown below:
 ![Decontainer log](img/cluster-log-complete.png){: width="100%"}
 
@@ -119,5 +99,19 @@ The output should look similar to:
 
 This initial version of the devcontainer automates all of the setup instructions outlined [here](./New-Environment.md) and installs all tooling discussed [here](../../Developers.md).
 
-## Devcontainer Restart
+### Devcontainer Restart
 On re-connecting to the devcontainer, any previous cluster will be deleted and a clean cluster will be initialised by default.
+## Important Notes
+### Workspace Volume
+For performance reasons, the devcontainer mounts an empty volume for the source code, the code will then be checked out from the main branch of the core repository automatically when the container first starts. This means that your local source code may be out of sync with the source code inside of the devcontainer, so be sure to keep these in sync before making changes to the devcontainer configuration itself on your local machine.
+
+## Develop against specific components
+The LSC-SDE is made up of a number of components which work together to provide the solution, installing all components and running these locally all the time creates a lot of pressure on dev machines and the updating of these can be slow development, as a result we have provided a number of scripts for each component which will do a barebones install to allow you to see how your changes have impacted on the solution.
+
+For example, if you run the command:
+
+```bash
+setup-jupyterhub
+```
+
+The solution will build the various libraries, the docker images and deploy an instance of jupyter hub to jh-test along with all the supporting components (including the Analytics Workspace Management Solution). This allows you to test how the service reacts to the changes you've made on your local environment without having to deploy everything.
