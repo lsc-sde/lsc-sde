@@ -14,7 +14,7 @@ This feature includes a collection of tools and scripts designed to make it easi
 {
     "features": {
         ...
-		"ghcr.io/lsc-sde/devcontainer-features/fluxcd:0.1.1" : {}
+		"ghcr.io/lsc-sde/devcontainer-features/aks-tools:0.1.1" : {}
     }
 }
 ```
