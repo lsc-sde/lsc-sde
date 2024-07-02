@@ -142,3 +142,5 @@
 [submodule "products/sde/analytics-workspace-management/iac-flux-example-workspace-definitions"]
 	path = products/sde/analytics-workspace-management/iac-flux-example-workspace-definitions
 	url = https://github.com/lsc-sde/iac-flux-example-workspace-definitions.git
+[submodule "products/sde/devcontainer-features"]
+	path = products/sde/devcontainer-features

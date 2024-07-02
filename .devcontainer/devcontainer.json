@@ -9,18 +9,18 @@
 		"ghcr.io/devcontainers/features/azure-cli:1": {},
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
 		"ghcr.io/devcontainers/features/python:1" : {},
-		"./features/k3d" : {},
-		"./features/fluxcd" : {},
-		"./features/aks-tools" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/k3d:0.1.1" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/fluxcd:0.1.1" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/aks-tools:0.1.1" : {},
 		//"./features/metallb" : {},
-		"./features/jupyterhub" : {
+		"ghcr.io/lsc-sde/devcontainer-features/jupyterhub:0.1.1" : {
 			"hubDockerImageDefinition" : "${containerWorkspaceFolder}/docker/jupyterhub",
 			"analyticsWorkspaceHelmChart" : "${containerWorkspaceFolder}/iac/helm/analytics-workspace-management"
 		},
-		"./features/ohdsi" : {
+		"ghcr.io/lsc-sde/devcontainer-features/ohdsi:0.1.1" : {
 			"pathToHelmChart" : "${containerWorkspaceFolder}/iac/helm/ohsdi"
 		},
-		"./features/lscsde" : {
+		"ghcr.io/lsc-sde/devcontainer-features/lscsde:0.1.1" : {
 			"secretsPath" : "${containerWorkspaceFolder}/.devcontainer/k3d/volume/secrets",
 			"coreFluxWorkspaceFolder" : "${containerWorkspaceFolder}/iac/flux/lscsde"
 		}
