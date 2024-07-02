@@ -1,35 +1,51 @@
 {
-	"name": "lscsde",
-	"dockerComposeFile": "docker-compose.yaml",
-	"service": "devcontainer",
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-	
-	"mounts": [
-		"source=k3d-var-lib-docker,target=/var/lib/docker,type=volume",
-		"source=k3d-config,target=/home/${remoteUser}/.k3d,type=volume"
-	],
-	"overrideCommand": false,
-	
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
 	"features": {
+		"ghcr.io/devcontainers/features/go:1.3.0": {
+			"version": "1.18"
+		},
+        "ghcr.io/devcontainers/features/docker-in-docker:2" : {},
 		"ghcr.io/devcontainers/features/terraform:1": {},
-		"ghcr.io/devcontainers/features/azure-cli:1": {}
-	},
-	"customizations": {
-		"vscode":{
-			"extensions": [
-				"ms-azuretools.vscode-docker",
-				"ms-kubernetes-tools.vscode-kubernetes-tools"
-			]
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+		"ghcr.io/devcontainers/features/python:1" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/k3d:0.1.1" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/fluxcd:0.1.1" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/aks-tools:0.1.1" : {},
+		//"./features/metallb" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/jupyterhub:0.1.1" : {
+			"hubDockerImageDefinition" : "${containerWorkspaceFolder}/docker/jupyterhub",
+			"analyticsWorkspaceHelmChart" : "${containerWorkspaceFolder}/iac/helm/analytics-workspace-management"
+		},
+		"ghcr.io/lsc-sde/devcontainer-features/ohdsi:0.1.1" : {
+			"pathToHelmChart" : "${containerWorkspaceFolder}/iac/helm/ohsdi"
+		},
+		"ghcr.io/lsc-sde/devcontainer-features/lscsde:0.1.1" : {
+			"secretsPath" : "${containerWorkspaceFolder}/.devcontainer/k3d/volume/secrets",
+			"coreFluxWorkspaceFolder" : "${containerWorkspaceFolder}/iac/flux/lscsde"
 		}
 	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "kubectl version --client=true --output=yaml",
-
-	// Use 'postStartCommand' to run commands after the container is created like starting k3d.
-	"postStartCommand": "bash /lscsde/lsc-local-cluster.sh",
-
-	"remoteUser": "vscode"
+	"forwardPorts" : [
+	],
+	"mounts": [
+		"source=k3d-var-lib-docker,target=/var/lib/docker,type=volume",
+		"source=${localWorkspaceFolder}/.devcontainer/k3d/volume,target=/var/lib/rancher/k3s/storage,type=bind"
+	],
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/lsc-sde,type=bind",
+	"workspaceFolder": "/workspaces/lsc-sde",
+	"postCreateCommand": "npm install -g @devcontainers/cli",
+	"postStartCommand": "git config --global --add safe.directory \"*\"",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"mads-hartmann.bash-ide-vscode",
+				"dbaeumer.vscode-eslint",
+				"editorconfig.editorconfig",
+				"ms-vscode.powershell",
+				"hashicorp.terraform",
+				"github.vscode-github-actions"
+			]
+		}
+	}
 }

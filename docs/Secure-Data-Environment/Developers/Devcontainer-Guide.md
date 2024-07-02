@@ -6,6 +6,18 @@ parent: Developer Guide
 # Devcontainer Guide
 The LSC devcontainer provides a consistent and reproducible development environment that removes the need to go through the process of preparing a local development machine with tooling and configuration specific to LSCSDE. In addition, it enables development from GitHub Codespaces as well as a local machine with the use of VS Code and Docker Desktop (see [here](https://code.visualstudio.com/docs/devcontainers/containers) for more details).
 
+### Devcontainer Features
+
+The following is a list of devcontainer features offered by the LSC-SDE:
+| Name | Description |
+| --- | --- |
+| [k3d](./Devcontainer/Features/k3d.md) | Implementation of k3d on top of docker-in-docker the allows for running a kubernetes instance from within the devcontainer |
+| [fluxcd](./Devcontainer/Features/fluxcd.md) | Implementation of fluxcd that runs on top of k3d in the devcontainer |
+| [aks-tools](./Devcontainer/Features/aks-tools.md) | A collection of tools and scripts designed to make it easier to interop with Azure Resource Manager and AKS |
+| [jupyterhub](./Devcontainer/Features/jupyterhub.md) | Install tools and scripts that allow a standalone version of jupyterhub to be installed alongside all of the tools needed for the LSC-SDE's Analytics workspace management solution, allowing us to rapidly develop and test new features for both tools inside of the devcontainer |
+| [ohdsi](./Devcontainer/Features/ohdsi.md) | A collection of tools and scripts designed to make it easier to implement a standalone version of the OHDInetes implementation that will run on top of k3s inside of the devcontainer |
+| [lscsde](./Devcontainer/Features/lscsde.md) | A collection of tools and scripts designed to allow development and deployment of the LSCSDE in various environments allowing LSCSDE developers, testers and release managers to work on this project with all the tools needed at their disposal. |
+
 ### Devcontainer Services
 The devcontainer for LSCSDE comprises three containers (see .devcontainer/docker-compose.yaml):
 - devcontainer includes a docker instance that follows a docker-in-docker (dind) model for deploying a K8s cluster using K3d. In addition, it includes required lscsde cli tools:
@@ -52,7 +64,7 @@ LSCSDE_FLUX_REPO_CLUSTER_PATH="./clusters/devcontainer-local"
 All variable defaults can be keep and the devcontainer will still build. Although ensure that the correct branch you will develop towards is set e.g. ‘release/0.1.338’ or  ‘hotfix/my-new-feature’.
 
 ### Secrets Distributor
-Currently, the lscsde requires the developer to make available a ‘secrets’ directory that contains files which include credentials to allow deployed k8s services to authenticate and communicate. The developer must request access to this directory and place it in the directory .devcontainer/k3d-volume once they have pulled the root lsc-side repository to their local machine which must be named “secrets” aka .devcontainer/k3d-volume/secrets. The devcontainer looks for this directory on startup and attempts to mount it into the devcontainer for the secrets-distributor to consume.
+Currently, the lscsde requires the developer to make available a ‘secrets’ directory that contains files which include credentials to allow deployed k8s services to authenticate and communicate. The developer must request access to this directory and place it in the directory .devcontainer/k3d/volume once they have pulled the root lsc-side repository to their local machine which must be named “secrets” aka .devcontainer/k3d/volume/secrets. The devcontainer looks for this directory on startup and attempts to mount it into the devcontainer for the secrets-distributor to consume.
 
 ### Build & Deploy
 To build and run the container locally, open the command palette (Fn + F1 on mac) and type ‘> Dev containers: Rebuild Container’ and Enter to build and run the devcontainer. On the first build, this can take upto 5-10 minutes but once built is much quicker. Monitor the terminal for build logs, once completed you should see a similar output shown below:
