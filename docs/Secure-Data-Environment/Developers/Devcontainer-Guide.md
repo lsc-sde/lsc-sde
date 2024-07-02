@@ -9,6 +9,7 @@ The LSC devcontainer provides a consistent and reproducible development environm
 ### Devcontainer Features
 
 The following is a list of devcontainer features offered by the LSC-SDE:
+
 | Name | Description |
 | --- | --- |
 | [k3d](./Devcontainer/Features/k3d.md) | Implementation of k3d on top of docker-in-docker the allows for running a kubernetes instance from within the devcontainer |
