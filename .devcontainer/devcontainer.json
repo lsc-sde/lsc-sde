@@ -14,26 +14,26 @@
 		"ghcr.io/lsc-sde/devcontainer-features/aks-tools:0.1.1" : {},
 		//"./features/metallb" : {},
 		"ghcr.io/lsc-sde/devcontainer-features/jupyterhub:0.1.1" : {
-			"hubDockerImageDefinition" : "${containerWorkspaceFolder}/docker/jupyterhub",
-			"analyticsWorkspaceHelmChart" : "${containerWorkspaceFolder}/iac/helm/analytics-workspace-management"
+			"hubDockerImageDefinition" : "${containerWorkspaceFolder}/lsc-sde/docker/jupyterhub",
+			"analyticsWorkspaceHelmChart" : "${containerWorkspaceFolder}/lsc-sde/iac/helm/analytics-workspace-management"
 		},
 		"ghcr.io/lsc-sde/devcontainer-features/ohdsi:0.1.1" : {
-			"pathToHelmChart" : "${containerWorkspaceFolder}/iac/helm/ohsdi"
+			"pathToHelmChart" : "${containerWorkspaceFolder}/lsc-sde/iac/helm/ohsdi"
 		},
 		"ghcr.io/lsc-sde/devcontainer-features/lscsde:0.1.1" : {
-			"secretsPath" : "${containerWorkspaceFolder}/.devcontainer/k3d/volume/secrets",
-			"coreFluxWorkspaceFolder" : "${containerWorkspaceFolder}/iac/flux/lscsde"
+			"secretsPath" : "${containerWorkspaceFolder}/lsc-sde/.devcontainer/k3d/volume/secrets",
+			"coreFluxWorkspaceFolder" : "${containerWorkspaceFolder}/lsc-sde/iac/flux/lscsde"
 		}
 	},
 	"forwardPorts" : [
 	],
 	"mounts": [
 		"source=k3d-var-lib-docker,target=/var/lib/docker,type=volume",
-		"source=${localWorkspaceFolder}/.devcontainer/k3d/volume,target=/var/lib/rancher/k3s/storage,type=bind"
+		"source=${localWorkspaceFolder}/lsc-sde/.devcontainer/k3d/volume,target=/var/lib/rancher/k3s/storage,type=bind"
 	],
-	"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/lsc-sde,type=bind",
-	"workspaceFolder": "/workspaces/lsc-sde",
-	"postCreateCommand": "npm install -g @devcontainers/cli",
+	"workspaceMount": "source=lscsde-workspace,target=/workspaces,type=volume",
+	"workspaceFolder": "/workspaces",
+	"postCreateCommand": "npm install -g @devcontainers/cli && sudo chmod 0777 /workspaces && git clone https://github.com/lsc-sde/lsc-sde.git --recurse-submodules",
 	"postStartCommand": "git config --global --add safe.directory \"*\"",
 	"customizations": {
 		"vscode": {

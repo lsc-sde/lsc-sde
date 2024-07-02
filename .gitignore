@@ -6,3 +6,5 @@ docs/.jekyll-cache
 jupyterhub.values.yaml
 tmp/
 output/
+WildcardCertificate
+WildcardCertificateKey
