@@ -1,0 +1,21 @@
+#!/bin/bash
+
+cat <<EOF > /workspaces/lsc-sde/tmp/$2.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: $2
+  namespace: jupyterhub
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: jupyter-default
+  volumeMode: Filesystem
+  volumeName: $1
+EOF
+
+kubectl patch pv $1 -p '{"spec":{"claimRef": null}}'
+kubectl apply -f /workspaces/lsc-sde/tmp/$2.yaml
