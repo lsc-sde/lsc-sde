@@ -21,7 +21,7 @@
 			"pathToHelmChart" : "${containerWorkspaceFolder}/lsc-sde/iac/helm/ohsdi"
 		},
 		"ghcr.io/lsc-sde/devcontainer-features/lscsde:0.1.1" : {
-			"secretsPath" : "${containerWorkspaceFolder}/lsc-sde/.devcontainer/k3d/volume/secrets",
+			"secretsPath" : "/var/lib/rancher/k3s/storage/secrets",
 			"coreFluxWorkspaceFolder" : "${containerWorkspaceFolder}/lsc-sde/iac/flux/lscsde"
 		}
 	},
