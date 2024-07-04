@@ -145,3 +145,6 @@
 [submodule "products/sde/devcontainer-features"]
 	path = products/sde/devcontainer-features
 	url = https://github.com/lsc-sde/devcontainer-features.git
+[submodule "products/sde-3rd-party/superset/docker-apache-superset"]
+	path = products/sde-3rd-party/superset/docker-apache-superset
+	url = https://github.com/lsc-sde/docker-apache-superset.git
