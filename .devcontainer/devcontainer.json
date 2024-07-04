@@ -29,7 +29,7 @@
 	],
 	"mounts": [
 		"source=k3d-var-lib-docker,target=/var/lib/docker,type=volume",
-		"source=${localWorkspaceFolder}/lsc-sde/.devcontainer/k3d/volume,target=/var/lib/rancher/k3s/storage,type=bind"
+		"source=${localWorkspaceFolder}/.devcontainer/k3d/volume,target=/var/lib/rancher/k3s/storage,type=bind"
 	],
 	"workspaceMount": "source=lscsde-workspace,target=/workspaces,type=volume",
 	"workspaceFolder": "/workspaces",
