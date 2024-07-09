@@ -151,3 +151,6 @@
 [submodule "products/sde-3rd-party/superset/iac-flux-apache-superset"]
 	path = products/sde-3rd-party/superset/iac-flux-apache-superset
 	url = https://github.com/lsc-sde/iac-flux-apache-superset.git
+[submodule "docker/datascience-jupyter-omop"]
+	path = docker/datascience-jupyter-omop
+	url = https://github.com/lsc-sde/docker-datascience-jupyter-omop.git
