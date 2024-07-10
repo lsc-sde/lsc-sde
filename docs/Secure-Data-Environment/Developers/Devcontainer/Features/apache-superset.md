@@ -6,7 +6,7 @@ grand_parent: Developer Guide
 nav_exclude: true
 ---
 
-This feature includes a collection of tools and scripts designed to make it easier to interop with Azure Resource Manager and AKS.
+ A collection of tools and scripts designed to make it easier to implement a standalone version of Apache Superset
 
 ### Usage
 
