@@ -13,6 +13,7 @@ The following is a list of devcontainer features offered by the LSC-SDE:
 | Name | Description |
 | --- | --- |
 | [k3d](./Devcontainer/Features/k3d.md) | Implementation of k3d on top of docker-in-docker the allows for running a kubernetes instance from within the devcontainer |
+| [apache-superset](./Devcontainer/Features/apache-superset.md) | A collection of tools and scripts designed to make it easier to implement a standalone version of Apache Superset |
 | [fluxcd](./Devcontainer/Features/fluxcd.md) | Implementation of fluxcd that runs on top of k3d in the devcontainer |
 | [aks-tools](./Devcontainer/Features/aks-tools.md) | A collection of tools and scripts designed to make it easier to interop with Azure Resource Manager and AKS |
 | [jupyterhub](./Devcontainer/Features/jupyterhub.md) | Install tools and scripts that allow a standalone version of jupyterhub to be installed alongside all of the tools needed for the LSC-SDE's Analytics workspace management solution, allowing us to rapidly develop and test new features for both tools inside of the devcontainer |
