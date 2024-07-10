@@ -24,7 +24,7 @@
 			"secretsPath" : "/var/lib/rancher/k3s/storage/secrets",
 			"coreFluxWorkspaceFolder" : "${containerWorkspaceFolder}/lsc-sde/iac/flux/lscsde"
 		},
-		"ghcr.io/lsc-sde/devcontainer-features/apache-superset:latest": {}
+		"ghcr.io/lsc-sde/devcontainer-features/apache-superset:0.1.0": {}
 	},
 	"forwardPorts" : [
 	],
