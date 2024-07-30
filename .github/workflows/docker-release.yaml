@@ -48,6 +48,9 @@ jobs:
       imageName: ${{ inputs.imageName }}
       tag: ${{ needs.semver.outputs.GitVersion_SemVer }}
       platforms: ${{ inputs.platforms }}
+      tagPrefix: ${{ inputs.tagPrefix }}
+      buildArgs: ${{ inputs.buildArgs }}
+
     secrets: inherit
 
   submodule:
