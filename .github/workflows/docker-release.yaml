@@ -50,7 +50,6 @@ jobs:
       platforms: ${{ inputs.platforms }}
       tagPrefix: ${{ inputs.tagPrefix }}
       buildArgs: ${{ inputs.buildArgs }}
-
     secrets: inherit
 
   submodule:

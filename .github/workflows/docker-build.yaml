@@ -32,7 +32,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: ${{ fromJSON(inputs.platforms) }}
+        platform:  ${{ fromJSON(inputs.platforms) }}
+        buildArgs: ${{ fromJSON(inputs.buildArgs) }}
         os:
         - linux
     steps:
@@ -57,15 +58,27 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
 
-
     #- uses: docker/build-push-action@v5.1.0
+    - name: Build Args JSON to List Output
+      id: parse_build_args
+      env:
+       JSON_ARGS: ${{ toJSON(matrix.buildArgs) }}
+      run: |
+        echo $JSON_ARGS | jq -r 'to_entries | map("\(.key)=\(.value)") | join("\n")' | tee build_args.txt
+        echo "build_args<<EOF" >> $GITHUB_OUTPUT
+        cat build_args.txt >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
 
     - name: Build and push
       id: build
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       with:
         platforms: ${{ matrix.os }}/${{ matrix.platform }}
         outputs: type=image,name=lscsde/${{ inputs.imageName }},push-by-digest=true,name-canonical=true,push=true
+        build-args: |
+          <<EOF
+          ${{ steps.parse_build_args.outputs.build_args }}
+          EOF
 
     - name: Export digest
       run: |
