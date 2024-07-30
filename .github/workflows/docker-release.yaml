@@ -13,7 +13,16 @@ on:
         description: The platforms to build the docker images on 
         type: string
         default: '[ "amd64", "arm64" ]'
-
+      tagPrefix:
+        description: Optional tag prefix to release semver tag
+        type: string
+        required: false
+        default: ''
+      buildArgs:
+        description: Optional JSON array of build arguments
+        type: string
+        required: false
+        default: '[{"KEY":"VALUE"}]'
 jobs:
   semver:
     uses: lsc-sde/lsc-sde/.github/workflows/semver.yaml@main
