@@ -40,7 +40,7 @@ jobs:
     secrets: inherit
 
   buildandpush:
-    uses: lsc-sde/lsc-sde/.github/workflows/docker-build.yaml@main
+    uses: lsc-sde/lsc-sde/.github/workflows/docker-build.yaml@mph/integrate-omop
     needs: 
     - semver
     - branch

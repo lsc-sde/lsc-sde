@@ -10,6 +10,16 @@ on:
       platforms: 
         type: string
         default: '[ "amd64", "arm64" ]'
+      tagPrefix:
+        description: Optional tag prefix to release semver tag
+        type: string
+        required: false
+        default: ''
+      buildArgs:
+        description: Optional JSON array of build arguments
+        type: string
+        required: false
+        default: '[{"KEY":"VALUE"}]'
     secrets:
       DOCKERHUB_USERNAME:
         required: true
