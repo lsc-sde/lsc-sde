@@ -33,7 +33,7 @@ jobs:
       matrix:
         platform:  ${{ fromJSON(inputs.platforms) }}
         buildArgs: ${{ fromJSON(inputs.buildArgs) }}
-        target: ${{ fromJSON(inputs.targets) || '[""]' }}
+        target: ${{ fromJSON(inputs.targets || '["null"]' ) }}
         os:
         - linux
     steps:
@@ -75,7 +75,7 @@ jobs:
       with:
         platforms: ${{ matrix.os }}/${{ matrix.platform }}
         outputs: type=image,name=lscsde/${{ inputs.imageName }},push-by-digest=true,name-canonical=true,push=true
-        target: ${{ matrix.target }}
+        target: ${{ matrix.target != 'null' && matrix.target || 'null' }}
         build-args: |
           <<EOF
           ${{ steps.parse_build_args.outputs.build_args }}
