@@ -35,7 +35,7 @@ jobs:
       fail-fast: false
       matrix:
         platform:  ${{ fromJSON(inputs.platforms) }}
-        buildArgs: ${{ fromJSON(inputs.buildArgs) || '[{"null":"null"}]' }}
+        buildArgs: ${{ fromJSON(inputs.buildArgs || '[{"null":"null"}]' ) }}
         target: ${{ fromJSON(inputs.targets || '["null"]' ) }}
         os:
         - linux
