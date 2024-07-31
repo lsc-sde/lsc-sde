@@ -23,8 +23,6 @@ on:
         required: true
       DOCKERHUB_TOKEN:
         required: true
-      PAT_TOKEN:
-        required: false
 
 jobs:
   build:
