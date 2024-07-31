@@ -13,11 +13,10 @@ on:
         description: The platforms to build the docker images on 
         type: string
         default: '[ "amd64", "arm64" ]'
-      tagPrefix:
-        description: Optional tag prefix to release semver tag
+      targets:
+        description: Optional var to allow creation of multiple stage targets defined in image Dockerfile
         type: string
         required: false
-        default: ''
       buildArgs:
         description: Optional JSON array of build arguments
         type: string
@@ -48,7 +47,7 @@ jobs:
       imageName: ${{ inputs.imageName }}
       tag: ${{ needs.semver.outputs.GitVersion_SemVer }}
       platforms: ${{ inputs.platforms }}
-      tagPrefix: ${{ inputs.tagPrefix }}
+      targets: ${{ inputs.targets }}
       buildArgs: ${{ inputs.buildArgs }}
     secrets: inherit
 

@@ -10,11 +10,10 @@ on:
       platforms: 
         type: string
         default: '[ "amd64", "arm64" ]'
-      tagPrefix:
-        description: Optional tag prefix to release semver tag
+      targets:
+        description: Optional var to allow creation of multiple stage targets defined in image Dockerfile
         type: string
         required: false
-        default: ''
       buildArgs:
         description: Optional JSON array of build arguments
         type: string
@@ -34,6 +33,7 @@ jobs:
       matrix:
         platform:  ${{ fromJSON(inputs.platforms) }}
         buildArgs: ${{ fromJSON(inputs.buildArgs) }}
+        target: ${{ fromJSON(inputs.targets) }}
         os:
         - linux
     steps:
@@ -75,6 +75,7 @@ jobs:
       with:
         platforms: ${{ matrix.os }}/${{ matrix.platform }}
         outputs: type=image,name=lscsde/${{ inputs.imageName }},push-by-digest=true,name-canonical=true,push=true
+        target: ${{ matrix.target }}
         build-args: |
           <<EOF
           ${{ steps.parse_build_args.outputs.build_args }}
@@ -98,19 +99,19 @@ jobs:
     needs:
       - build
     steps:
-      - 
-       name: Modify 'tag' if 'tagPrefix' is not empty
-       id: revised_tag
-       env:
-        tag: ${{ inputs.tag }}
-        tagPrefix: ${{ inputs.tagPrefix }}
-       run: |
-         echo "$tag"
-         echo "$tagPrefix"
-         if [ -n "$tagPrefix" ]; then
-          tag="${tagPrefix}-${tag}"
-         fi
-         echo "::set-output name=revised_tag::$tag"
+      # - 
+      #  name: Modify 'tag' if 'tagPrefix' is not empty
+      #  id: revised_tag
+      #  env:
+      #   tag: ${{ inputs.tag }}
+      #   tagPrefix: ${{ inputs.tagPrefix }}
+      #  run: |
+      #    echo "$tag"
+      #    echo "$tagPrefix"
+      #    if [ -n "$tagPrefix" ]; then
+      #     tag="${tagPrefix}-${tag}"
+      #    fi
+      #    echo "::set-output name=revised_tag::$tag"
       -
         name: Download digests
         uses: actions/download-artifact@v4
@@ -128,7 +129,7 @@ jobs:
         with:
           images: lscsde/${{ inputs.imageName }}
           tags: |
-            type=raw,${{ steps.revised_tag.outputs.revised_tag }}
+            type=raw,${{ inputs.tag }}
       -
         name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -139,7 +140,7 @@ jobs:
         name: Create manifest list and push
         working-directory: /tmp/digests
         run: |
-          TAGNAME="lscsde/${{ inputs.imageName }}:${{ steps.revised_tag.outputs.revised_tag }}"
+          TAGNAME="lscsde/${{ inputs.imageName }}:${{ inputs.tag }}"
           DATA=$(printf "lscsde/${{ inputs.imageName }}@sha256:%s\n" *)
           echo $DATA
           docker buildx imagetools create -t "${TAGNAME}" $(echo $DATA | xargs)
