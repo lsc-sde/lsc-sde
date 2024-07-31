@@ -98,7 +98,7 @@ jobs:
         if-no-files-found: error
         retention-days: 1
     - run: |
-        find -follow /tmp/digests
+        find /tmp/digests
        
   merge:
     runs-on: ubuntu-latest
