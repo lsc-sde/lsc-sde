@@ -21,7 +21,10 @@ on:
         description: Optional JSON array of build arguments
         type: string
         required: false
-        default: '[{"KEY":"VALUE"}]'
+      includeTagPrefix:
+        description: Specify whether a TAG_PREFIX ke/value is set in optional build args should be prefixed to semver tag  
+        type: boolean
+        required: false
 jobs:
   semver:
     uses: lsc-sde/lsc-sde/.github/workflows/semver.yaml@main
@@ -49,6 +52,7 @@ jobs:
       platforms: ${{ inputs.platforms }}
       targets: ${{ inputs.targets }}
       buildArgs: ${{ inputs.buildArgs }}
+      includeTagPrefix: ${{ inputs.includeTagPrefix }}
     secrets: inherit
 
   submodule:
