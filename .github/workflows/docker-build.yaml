@@ -33,7 +33,7 @@ jobs:
       matrix:
         platform:  ${{ fromJSON(inputs.platforms) }}
         buildArgs: ${{ fromJSON(inputs.buildArgs) }}
-        target: ${{ fromJSON(inputs.targets || '[""]') }}
+        target: ${{ fromJSON(inputs.targets) || '[""]' }}
         os:
         - linux
     steps:
