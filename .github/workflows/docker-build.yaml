@@ -15,7 +15,7 @@ on:
         type: string
         required: false
       buildArgs:
-        description: Optional JSON array of build arguments
+        description: Optional JSON array of docker target build arguments
         type: string
         required: false
     secrets:
@@ -24,7 +24,7 @@ on:
       DOCKERHUB_TOKEN:
         required: true
       PAT_TOKEN:
-          required: true
+        required: true
 
 jobs:
   build:
@@ -122,7 +122,7 @@ jobs:
         id: concatenate
         run: |
           digest_url="${{ matrix.target }}/${{ matrix.buildArgs.TARGET_VERSION != null && matrix.buildArgs.TARGET_VERSION  || '' }}"
-          tag_prefix="${{ matrix.target != 'null' && matrix.target  || '' }}${{ matrix.buildArgs.TARGET_VERSION != null && matrix.buildArgs.TARGET_VERSION && '-'  || '' }}"
+          tag_prefix="${{ matrix.target != 'null' && matrix.target  || '' }}${{ matrix.buildArgs.TARGET_VERSION != null && format('{0}-', matrix.buildArgs.TARGET_VERSION) || '' }}"
           echo "digest_url=$digest_url" >> $GITHUB_OUTPUT
           echo "tag_prefix=$tag_prefix" >> $GITHUB_OUTPUT
       -
