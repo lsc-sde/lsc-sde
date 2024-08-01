@@ -157,7 +157,7 @@ jobs:
           DATA=$(printf "lscsde/${{ inputs.imageName }}@sha256:%s\n" *)
           echo $DATA
           docker buildx imagetools create -t "${TAGNAME}" $(echo $DATA | xargs)
-      #-
-      #  name: Inspect image
-      #  run: |
-      #    docker buildx imagetools inspect lscsde/${{ inputs.imageName }}:${{ steps.meta.outputs.version }} 
+      -
+        name: Inspect image
+        run: |
+          docker buildx imagetools inspect lscsde/${{ inputs.imageName }}:${{ steps.meta.outputs.version }} 
