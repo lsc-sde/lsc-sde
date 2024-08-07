@@ -11,7 +11,7 @@ on:
         type: string
         default: '[ "amd64", "arm64" ]'
       targets:
-        description: Optional var to allow creation of multiple stage targets defined in image Dockerfile
+        description: Optional input to allow creation of multiple stage targets defined in image Dockerfile
         type: string
         required: false
       buildArgs:
