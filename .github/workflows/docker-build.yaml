@@ -10,10 +10,20 @@ on:
       platforms: 
         type: string
         default: '[ "amd64", "arm64" ]'
+      targets:
+        description: Optional input to allow creation of multiple stage targets defined in image Dockerfile
+        type: string
+        required: false
+      buildArgs:
+        description: Optional JSON array of docker target build arguments
+        type: string
+        required: false
     secrets:
       DOCKERHUB_USERNAME:
         required: true
       DOCKERHUB_TOKEN:
+        required: true
+      PAT_TOKEN:
         required: true
 
 jobs:
@@ -22,7 +32,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: ${{ fromJSON(inputs.platforms) }}
+        platform:  ${{ fromJSON(inputs.platforms) }}
+        buildArgs: ${{ fromJSON(inputs.buildArgs || '[{"null":"null"}]' ) }}
+        target: ${{ fromJSON(inputs.targets || '["null"]' ) }}
         os:
         - linux
     steps:
@@ -47,39 +59,77 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
 
-
     #- uses: docker/build-push-action@v5.1.0
+    - name: Build Args JSON to List Output
+      id: parse_build_args
+      env:
+       JSON_ARGS: ${{ toJSON(matrix.buildArgs) }}
+      run: |
+        echo $JSON_ARGS | jq -r 'to_entries | map("\(.key)=\(.value)") | join("\n")' | tee build_args.txt
+        echo "build_args<<EOF" >> $GITHUB_OUTPUT
+        cat build_args.txt >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
 
     - name: Build and push
       id: build
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       with:
         platforms: ${{ matrix.os }}/${{ matrix.platform }}
         outputs: type=image,name=lscsde/${{ inputs.imageName }},push-by-digest=true,name-canonical=true,push=true
+        target: ${{ matrix.target != 'null' && matrix.target || null }}
+        secrets: |
+          PAT_TOKEN=${{ secrets.PAT_TOKEN }}
+        build-args: |
+          <<EOF
+          ${{ steps.parse_build_args.outputs.build_args }}
+          EOF
+
+    - 
+      name: Build digest url
+      id: concatenate
+      run: |
+        digest_url="${{ matrix.target }}/${{ matrix.buildArgs.TARGET_VERSION != null && matrix.buildArgs.TARGET_VERSION  || '' }}"
+        echo "digest_url=$digest_url" >> $GITHUB_OUTPUT
 
     - name: Export digest
       run: |
-        mkdir -p /tmp/digests
+        mkdir -p /tmp/digests/${{ steps.concatenate.outputs.digest_url }}
         digest="${{ steps.build.outputs.digest }}"
-        touch "/tmp/digests/${digest#sha256:}" 
+        touch "/tmp/digests/${{ steps.concatenate.outputs.digest_url  }}/${digest#sha256:}" 
 
     - name: Upload digest
       uses: actions/upload-artifact@v4
       with:
         name: digests-${{ matrix.os }}-${{ matrix.platform }}
-        path: /tmp/digests/*
+        path: /tmp/digests/${{ steps.concatenate.outputs.digest_url }}/*
         if-no-files-found: error
         retention-days: 1
+    - run: |
+        find /tmp/digests
+       
   merge:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        buildArgs: ${{ fromJSON(inputs.buildArgs || '[{"null":"null"}]' ) }}
+        target: ${{ fromJSON(inputs.targets || '["null"]' ) }}
     needs:
       - build
     steps:
+      - 
+        name: Concatenate dynamic tag and digest variables
+        id: concatenate
+        run: |
+          digest_url="${{ matrix.target }}/${{ matrix.buildArgs.TARGET_VERSION != null && matrix.buildArgs.TARGET_VERSION  || '' }}"
+          tag_prefix="${{ matrix.target != 'null' && matrix.target  || '' }}${{ matrix.buildArgs.TARGET_VERSION != null && format('{0}-', matrix.buildArgs.TARGET_VERSION) || '' }}"
+          echo "digest_url=$digest_url" >> $GITHUB_OUTPUT
+          echo "tag_prefix=$tag_prefix" >> $GITHUB_OUTPUT
       -
         name: Download digests
         uses: actions/download-artifact@v4
         with:
-          path: /tmp/digests
+          path: /tmp/digests/${{ steps.concatenate.outputs.digest_url }}
           pattern: digests-*
           merge-multiple: true
       -
@@ -92,7 +142,7 @@ jobs:
         with:
           images: lscsde/${{ inputs.imageName }}
           tags: |
-            type=raw,${{ inputs.tag }}
+            type=raw,${{ steps.concatenate.outputs.tag_prefix }}${{ inputs.tag }}
       -
         name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -101,9 +151,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Create manifest list and push
-        working-directory: /tmp/digests
+        working-directory: /tmp/digests/${{ steps.concatenate.outputs.digest_url }}
         run: |
-          TAGNAME="lscsde/${{ inputs.imageName }}:${{ inputs.tag }}"
+          TAGNAME="lscsde/${{ inputs.imageName }}:${{ steps.concatenate.outputs.tag_prefix }}${{ inputs.tag }}"
           DATA=$(printf "lscsde/${{ inputs.imageName }}@sha256:%s\n" *)
           echo $DATA
           docker buildx imagetools create -t "${TAGNAME}" $(echo $DATA | xargs)

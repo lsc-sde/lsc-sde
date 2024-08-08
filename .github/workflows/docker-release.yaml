@@ -13,7 +13,14 @@ on:
         description: The platforms to build the docker images on 
         type: string
         default: '[ "amd64", "arm64" ]'
-
+      targets:
+        description: Optional var to allow creation of multiple stage targets defined in image Dockerfile
+        type: string
+        required: false
+      buildArgs:
+        description: Optional JSON array of build arguments
+        type: string
+        required: false
 jobs:
   semver:
     uses: lsc-sde/lsc-sde/.github/workflows/semver.yaml@main
@@ -39,6 +46,8 @@ jobs:
       imageName: ${{ inputs.imageName }}
       tag: ${{ needs.semver.outputs.GitVersion_SemVer }}
       platforms: ${{ inputs.platforms }}
+      targets: ${{ inputs.targets }}
+      buildArgs: ${{ inputs.buildArgs }}
     secrets: inherit
 
   submodule:
