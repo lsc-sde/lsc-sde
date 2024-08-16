@@ -38,6 +38,10 @@ jobs:
         os:
         - linux
     steps:
+    - name: Check number of CPU cores
+      run: |
+        echo "Runner cores:$(nproc)"
+        
     - uses: actions/checkout@v3      
 
     - name: Docker meta
