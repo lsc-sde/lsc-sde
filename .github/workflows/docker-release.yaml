@@ -13,6 +13,10 @@ on:
         description: The platforms to build the docker images on 
         type: string
         default: '[ "amd64", "arm64" ]'
+      runnerType: 
+        type: string
+        default: ubuntu-latest
+        required: false
       targets:
         description: Optional var to allow creation of multiple stage targets defined in image Dockerfile
         type: string
@@ -48,6 +52,7 @@ jobs:
       platforms: ${{ inputs.platforms }}
       targets: ${{ inputs.targets }}
       buildArgs: ${{ inputs.buildArgs }}
+      runnerType: ${{ inputs.runnerType }}
     secrets: inherit
 
   submodule:

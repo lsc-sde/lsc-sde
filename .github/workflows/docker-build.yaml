@@ -10,6 +10,10 @@ on:
       platforms: 
         type: string
         default: '[ "amd64", "arm64" ]'
+      runnerType: 
+        type: string
+        default: ubuntu-latest
+        required: false
       targets:
         description: Optional input to allow creation of multiple stage targets defined in image Dockerfile
         type: string
@@ -28,7 +32,7 @@ on:
 
 jobs:
   build:
-    runs-on: 8x-linux-x64
+    runs-on: ${{ inputs.runnerType }} 
     strategy:
       fail-fast: false
       matrix:
@@ -41,7 +45,7 @@ jobs:
     - name: Check number of CPU cores
       run: |
         echo "Runner cores:$(nproc)"
-        
+
     - uses: actions/checkout@v3      
 
     - name: Docker meta
@@ -112,7 +116,7 @@ jobs:
         find /tmp/digests
        
   merge:
-    runs-on: 8x-linux-x64
+    runs-on: ${{ inputs.runnerType }}
     strategy:
       fail-fast: false
       matrix:
