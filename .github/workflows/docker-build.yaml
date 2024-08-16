@@ -27,7 +27,7 @@ on:
         required: true
       DOCKERHUB_TOKEN:
         required: true
-      GH_PACKAGE_TOKEN:
+      PAT_TOKEN:
         required: true
 
 jobs:
@@ -86,7 +86,7 @@ jobs:
         outputs: type=image,name=lscsde/${{ inputs.imageName }},push-by-digest=true,name-canonical=true,push=true
         target: ${{ matrix.target != 'null' && matrix.target || null }}
         secrets: |
-          PAT_TOKEN=${{ secrets.GH_PACKAGE_TOKEN }}
+          PAT_TOKEN=${{ secrets.PAT_TOKEN }}
         build-args: |
           <<EOF
           ${{ steps.parse_build_args.outputs.build_args }}
