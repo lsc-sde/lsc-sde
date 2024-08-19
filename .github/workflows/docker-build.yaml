@@ -108,7 +108,7 @@ jobs:
     - name: Upload digest
       uses: actions/upload-artifact@v4
       with:
-        name: digests-${{ matrix.os }}-${{ matrix.platform }}
+        name: digests-${{ matrix.os }}-${{ matrix.platform }}-${{ steps.concatenate.outputs.digest_url }}
         path: /tmp/digests/${{ steps.concatenate.outputs.digest_url }}/*
         if-no-files-found: error
         retention-days: 1
