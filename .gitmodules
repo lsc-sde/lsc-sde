@@ -157,3 +157,6 @@
 [submodule "iac/flux/iac-flux-observability-metrics"]
 	path = iac/flux/iac-flux-observability-metrics
 	url = https://github.com/lsc-sde/iac-flux-observability-metrics.git
+[submodule "iac/flux/iac-flux-rabbitmq"]
+	path = iac/flux/iac-flux-rabbitmq
+	url = https://github.com/lsc-sde/iac-flux-rabbitmq.git
