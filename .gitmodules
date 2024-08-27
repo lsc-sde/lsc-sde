@@ -154,3 +154,6 @@
 [submodule "docker/datascience-jupyter-omop"]
 	path = docker/datascience-jupyter-omop
 	url = https://github.com/lsc-sde/docker-datascience-jupyter-omop.git
+[submodule "iac/flux/iac-flux-observability-metrics"]
+	path = iac/flux/iac-flux-observability-metrics
+	url = https://github.com/lsc-sde/iac-flux-observability-metrics.git
