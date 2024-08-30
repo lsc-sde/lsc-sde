@@ -160,3 +160,6 @@
 [submodule "iac/flux/iac-flux-rabbitmq"]
 	path = iac/flux/iac-flux-rabbitmq
 	url = https://github.com/lsc-sde/iac-flux-rabbitmq.git
+[submodule "products/sde-3rd-party/keycloak/awms-keycloak-extensions"]
+	path = products/sde-3rd-party/keycloak/awms-keycloak-extensions
+	url = https://github.com/lsc-sde/awms-keycloak-extensions.git
