@@ -22,17 +22,35 @@ How to create and allocate service dev repo within lscsde framework
     - add as submodule to lscsde (flux typically goes in iac/flux - link to suggested design)
 
 ### GitOps & Cluster Deployment
-Steps to integrate a microservice into lscsde gitops/flux model and target cluster
-* iac-flux-lscsde
-    * important info about branching for dev, staging, prod clusters
-    * flux-config.yaml entries needed
-* iac-helm-lscsde
+At present, lscsde deployment is managed through a central [Flux repository](https://github.com/lsc-sde/iac-flux-lscsde)  along with two helm charts, one for provisioning the [components/microservices](https://github.com/lsc-sde/iac-helm-lscsde-flux) that make up the SDE and another for provisioning related k8s [namespaces](https://github.com/lsc-sde/iac-helm-lscsde-namespaces).
 
-The lscsde helm chart template amongst other things specifies the mircroservices which should be deployed and the associated configuration values for each microservice. To quickly add your new service, you must do the following:
- * Go to iac-helm-lscsde-flux repo
- * Under templates directory edit:
- * **deployment-configuration.yaml** to set up chart version and repo branch config variables specified in the values.yaml, for example:
+To integrate and test a microservice within the lscsde framework, these repositories require several modifications so that the flux configuration repository you've created for your microservice is included and provisioned when deployed to a particular cluster. Some of this configuration can be handled by the flux (i.e. [flux-release.yaml](https://github.com/lsc-sde/lsc-sde/blob/main/.github/workflows/flux-release.yaml)) and helm (i.e.[helm-release.yaml](https://github.com/lsc-sde/lsc-sde/blob/main/.github/workflows/helm-release.yaml)) release CICD workflows defined in the overaching [lsc-sde repository](https://github.com/lsc-sde/lsc-sde). However, such automated configurations are applied on the main branch only of the central flux and helm repositories. Therefore, given the branching strategy currently in use, if you want to provision your service on a development cluster, manual changes must be made to the central flux and helm repositories on the 'dev' branch.
 
+#### LSCSDE Flux
+To include your service flux configuration into the development cluster:
+1. Checkout the [central flux configuration repository](https://github.com/lsc-sde/iac-flux-lscsde) dev branch
+2. Edit/ensure the core/flux-config.yaml file includes a reference to your component that is similar to:
+```yaml
+  superset:
+    repository:
+      branch: release/0.1.16
+  rabbitmq:
+    repository:
+      branch: release/0.1.18
+```   
+This configuration tells flux which branch of your flux configuration git repository to use for deployment. Once deployed, it's possible to confirm the correct branch is in use on the chosen development k8s cluster by running:
+```bash
+kubectl get gitrepository -n lscsde-config
+``` 
+
+It is also possible to specify helm chart versions to be used if needed in the core/helm-config,yaml. In both cases, these config files are used to create ConfigMap objects to support the configuration of subsequent flux repositories.
+
+#### LSCSDE Helm
+
+The central lscsde helm chart primarily specifies the components which should be deployed and the associated configuration properties for each. To quickly add your new service, you must do the following:
+ * Checkout the [central flux helm repo](https://github.com/lsc-sde/iac-helm-lscsde-flux) on main branch (Note: we may want to establish a similar branching strategy to the flux-lscsde repo in future)
+ * Under the templates/ directory:
+ * Edit **deployment-configuration.yaml** to set up your services chart version and repo branch config variables specified in the values.yaml, for example:
 
 {% raw %}
 ```yaml
@@ -41,13 +59,13 @@ rabbitmq_branch: {{ .Values.components.rabbitmq.repository.branch }}
 ```
 {% endraw %}
 
- * **deployment-namespaces.yaml** to define the namespce config variable specified in the values.yaml. This is used during deployment to create the namespace where the microservice components will be deployed into, for example:
-
-````yaml
+ * Edit **deployment-namespaces.yaml** to define the namespace config variable specified in this charts values.yaml. This is used during deployment to create the namespace where the microservice components will be deployed into, for example:
+{% raw %}
+```yaml
 rabbitmq_namespace: {{ .Values.components.rabbitmq.namespace }}
-```` 
-
- * **values.yaml** with an entry for the mircoservice which includes config values used when customising the microservice during cluster installation of the lscsde chart, for example:
+``` 
+{% endraw %}
+ * Edit **values.yaml** in the root directory with an entry for the mircoservice. This should include values for variables used when customising the microservice during installation of the lscsde chart, for example:
 ```yaml
    rabbitmq:
      state: "enabled"
