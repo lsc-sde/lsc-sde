@@ -81,6 +81,19 @@ rabbitmq_namespace: {{ .Values.components.rabbitmq.namespace }}
          passwordKey: ""
 ```
 
+#### LSCSDE Helm Namespaces
+ file
+In the [lscsde helm library namespaces](https://github.com/lsc-sde/iac-helm-lscsde-namespaces) repo edit the values.yaml to include your component similar to:
+```yaml
+  rabbitmq:
+    state: "enabled"
+    namespace: rabbitmq
+    injectCertificates: true
+```
+
+XXX
+
+
 ### Service Kustomizations & Overlays
     - Managing and structuring dependencies
 
