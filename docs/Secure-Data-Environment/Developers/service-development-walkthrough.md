@@ -33,10 +33,13 @@ The lscsde helm chart template amongst other things specifies the mircroservices
  * Under templates directory edit:
  * **deployment-configuration.yaml** to set up chart version and repo branch config variables specified in the values.yaml, for example:
 
-````yaml
+
+{% raw %}
+```yaml
 rabbitmq_chart_version: {{ .Values.components.rabbitmq.chart_version }}
 rabbitmq_branch: {{ .Values.components.rabbitmq.repository.branch }}
-````
+```
+{% endraw %}
 
  * **deployment-namespaces.yaml** to define the namespce config variable specified in the values.yaml. This is used during deployment to create the namespace where the microservice components will be deployed into, for example:
 
