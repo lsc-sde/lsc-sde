@@ -24,8 +24,8 @@ How to create and allocate service dev repo within lscsde framework
 ### GitOps & Cluster Deployment
 Steps to integrate a microservice into lscsde gitops/flux model and target cluster
 * iac-flux-lscsde
- * important info about branching for dev, staging, prod clusters
- * flux-config.yaml entries needed
+    * important info about branching for dev, staging, prod clusters
+    * flux-config.yaml entries needed
 * iac-helm-lscsde
 
 The lscsde helm chart template amongst other things specifies the mircroservices which should be deployed and the associated configuration values for each microservice. To quickly add your new service, you must do the following:
@@ -33,12 +33,12 @@ The lscsde helm chart template amongst other things specifies the mircroservices
  * Under templates directory edit:
  * **deployment-configuration.yaml** to set up chart version and repo branch config variables specified in the values.yaml, for example:
 ```yaml
-rabbitmq_chart_version: "{{ .Values.components.rabbitmq.chart_version }}"
-rabbitmq_branch: "{{ .Values.components.rabbitmq.repository.branch }}"
+rabbitmq_chart_version: "\{\{ .Values.components.rabbitmq.chart_version \}\}"
+rabbitmq_branch: `{{ .Values.components.rabbitmq.repository.branch }}`
 ```
  * **deployment-namespaces.yaml** to define the namespce config variable specified in the values.yaml. This is used during deployment to create the namespace where the microservice components will be deployed into, for example:
 ```yaml
-rabbitmq_namespace: {{ .Values.components.rabbitmq.namespace }}
+rabbitmq_namespace: \{{ .Values.components.rabbitmq.namespace }}
 ``` 
  * **values.yaml** with an entry for the mircoservice which includes config values used when customising the microservice during cluster installation of the lscsde chart, for example:
 ```yaml
