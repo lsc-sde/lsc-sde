@@ -41,7 +41,17 @@ To include your service flux configuration into the development cluster:
 This configuration tells flux which branch of your flux configuration git repository to use for deployment. Once deployed, it's possible to confirm the correct branch is in use on the chosen development k8s cluster by running:
 ```bash
 kubectl get gitrepository -n lscsde-config
-``` 
+```
+3. In a few steps time you will likely modify the lscsde namespaces helm chart. To ensure the flux config is using the latest version of that chart, you will need to edit the [core/release-namespaces.yaml](https://github.com/lsc-sde/iac-flux-lscsde/blob/main/core/release-namespaces.yaml) file here:
+```yaml
+spec:
+  targetNamespace: lscsde-config
+  releaseName: lscsde-namespaces
+  chart:
+    spec:
+      chart: lscsde-namespaces
+      version: 0.1.11
+```
 
 It is also possible to specify helm chart versions to be used if needed in the core/helm-config,yaml. In both cases, these config files are used to create ConfigMap objects to support the configuration of subsequent flux repositories.
 
