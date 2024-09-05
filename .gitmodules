@@ -163,3 +163,6 @@
 [submodule "products/sde-3rd-party/keycloak/awms-keycloak-extensions"]
 	path = products/sde-3rd-party/keycloak/awms-keycloak-extensions
 	url = https://github.com/lsc-sde/awms-keycloak-extensions.git
+[submodule "products/sde/analytics-workspace-management/awms-guacamole-operator"]
+	path = products/sde/analytics-workspace-management/awms-guacamole-operator
+	url = https://github.com/lsc-sde/awms-guacamole-operator.git
