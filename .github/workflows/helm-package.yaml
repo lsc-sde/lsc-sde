@@ -13,6 +13,21 @@ on:
         description: The directory under the submodule to update
         type: string
         default: /
+
+      update_yaml_file:
+        description: The YAML File to be updated
+        type: string
+        default: ""
+
+      update_yaml_field:
+        description: The field in the YAML file to be updated
+        type: string
+        default: ".image"
+      
+      update_yaml_value:
+        description: The value to update the field in the YAML file
+        type: string
+        default: ""
       
 jobs:
   package:
@@ -30,6 +45,8 @@ jobs:
         repository: 'lsc-sde/iac-helm-repository'
         path: './iac/helm/repository'
         token: ${{ secrets.REPOS_RW_TOKEN }}
+
+        
 
     - name: Install Helm
       run: |
@@ -54,6 +71,13 @@ jobs:
         git switch main
         git fetch
         git pull
+
+    - name: Update YAML File
+      if: ${{ inputs.update_yaml_file }} != ""
+      working-directory: "${GITHUB_WORKSPACE}/${{ inputs.directory }}${{ inputs.subdirectory }}"
+      run: |
+        yq e -i '${{ inputs.update_yaml_field }} = "${{ inputs.update_yaml_value}}"' ${{ inputs.update_yaml_value }}
+        cat ${{ inputs.update_yaml_value }}
 
     - name: Helm Package
       working-directory: "./iac/helm/repository"
