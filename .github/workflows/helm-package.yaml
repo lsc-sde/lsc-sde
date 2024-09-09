@@ -76,8 +76,8 @@ jobs:
       if: ${{ inputs.update_yaml_file }} != ""
       working-directory: "${{ inputs.directory }}${{ inputs.subdirectory }}"
       run: |
-        yq e -i '${{ inputs.update_yaml_field }} = "${{ inputs.update_yaml_value}}"' ${{ inputs.update_yaml_value }}
-        cat ${{ inputs.update_yaml_value }}
+        yq e -i '${{ inputs.update_yaml_field }} = "${{ inputs.update_yaml_value}}"' ${{ inputs.update_yaml_file }}
+        cat ${{ inputs.update_yaml_file }}
 
     - name: Helm Package
       working-directory: "./iac/helm/repository"
