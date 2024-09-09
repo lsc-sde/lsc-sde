@@ -74,7 +74,7 @@ jobs:
 
     - name: Update YAML File
       if: ${{ inputs.update_yaml_file }} != ""
-      working-directory: "${GITHUB_WORKSPACE}/${{ inputs.directory }}${{ inputs.subdirectory }}"
+      working-directory: "${{ inputs.directory }}${{ inputs.subdirectory }}"
       run: |
         yq e -i '${{ inputs.update_yaml_field }} = "${{ inputs.update_yaml_value}}"' ${{ inputs.update_yaml_value }}
         cat ${{ inputs.update_yaml_value }}
