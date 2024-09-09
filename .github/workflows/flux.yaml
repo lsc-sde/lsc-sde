@@ -10,11 +10,18 @@ on:
       prefix:
         description: The prefix to add to the branch name
         type: string
+    outputs:
+      FQ_BRANCH_NAME:
+        description: Fully qualified branch name
+        value: ${{ jobs.createbranch.outputs.FQ_BRANCH_NAME }}
+
       
 jobs:
   createbranch:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
+    outputs:
+      FQ_BRANCH_NAME: ${{ steps.branch.outputs.FQ_BRANCH_NAME }}
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -22,6 +29,7 @@ jobs:
         token: ${{ secrets.REPOS_RW_TOKEN }}
 
     - name: Create Branch for ${{ inputs.environment }}
+      id: branch
       run: |
         export FQ_BRANCH_NAME="${{ inputs.prefix }}/${{ inputs.symver }}"
         git config --global user.name 'lsc-sde'
@@ -38,3 +46,5 @@ jobs:
 
         echo "Pushing to branch: ${FQ_BRANCH_NAME}"
         git push -u "origin" "${FQ_BRANCH_NAME}"
+
+        echo "FQ_BRANCH_NAME=${FQ_BRANCH_NAME}" >> $GITHUB_OUTPUT
