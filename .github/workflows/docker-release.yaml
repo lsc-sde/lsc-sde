@@ -25,6 +25,15 @@ on:
         description: Optional JSON array of build arguments
         type: string
         required: false
+        
+    outputs:
+      GitVersion_SemVer:
+        description: "The first output string"
+        value: ${{ jobs.semver.outputs.GitVersion_SemVer }}
+      FQ_BRANCH_NAME:
+        description: "Fully qualified branch name"
+        value: ${{ jobs.branch.outputs.FQ_BRANCH_NAME }}
+
 jobs:
   semver:
     uses: lsc-sde/lsc-sde/.github/workflows/semver.yaml@main
