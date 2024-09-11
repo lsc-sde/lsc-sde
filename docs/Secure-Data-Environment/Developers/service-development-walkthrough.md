@@ -20,22 +20,23 @@ Prior to development, it is important to assess what type of service resources a
 4. Note, iac/flux is the current placeholder for flux configuration repositories. However, this may change over time. Track the discussion on submodule structuring for flux, docker, helm and terraform [here](https://github.com/lsc-sde/lsc-sde/issues/62).
 
 5. Each developed component must follow a release strategy that ensures new versions are packaged and prepared on a release branch that uses a semantic version (semver) approach. To simplify this, the primary lsc-sde repo includes a number of reusable github actions that any microservice flux repository can use to initiate a new release. To do this, add a .github/workflows directory into your repo and include a workflow call similar to the following:
-  ```yaml
-  name: Create Release Branch from Main
 
-  on:
-    workflow_dispatch:
-    push:
-      branches:
-      - 'main'
-  jobs:
-    package:
-      uses: lsc-sde/lsc-sde/.github/workflows/flux-release.yaml@main
-      with:
-        directory: iac/flux/iac-flux-rabbitmq
-        yamlPath: rabbitmq
-      secrets: inherit
-  ```
+```yaml
+name: Create Release Branch from Main
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - 'main'
+jobs:
+  package:
+    uses: lsc-sde/lsc-sde/.github/workflows/flux-release.yaml@main
+    with:
+      directory: iac/flux/iac-flux-rabbitmq
+      yamlPath: rabbitmq
+    secrets: inherit
+```
 
 Now we have the base of our flux repository associated with the primary lsc-sde repo and supporting github actions for releases we need to define some flux code to perform the installation of the official rabbitmq helm chart along with any additional adaptations we may require. At this point, if your understandng of FluxCD is limited, [go and learn](https://fluxcd.io/flux/concepts/) more before proceeding, specifically the role of the Kustomize and Helm controllers and custom resource definitions (CRDs) (HelmRepsitory, HelmRelease, Kustomization, GitRepository) that run within the target cluster to realise resources specified within a flux configuration repo. In our case, that will be config for initialising RMQ via the 'rabbitmq-cluster-operator' Helm chart from the [bitami](https://charts.bitnami.com/bitnami) helm repository!
 
