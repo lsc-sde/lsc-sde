@@ -85,10 +85,11 @@ To integrate and test a microservice within the lscsde framework, these reposito
 To integrate your service flux configuration into the development cluster:
 1. Checkout the [central flux configuration repository](https://github.com/lsc-sde/iac-flux-lscsde) 'dev' branch
 2. Edit/ensure the core/flux-config.yaml file includes a reference to your component that is similar to:
+
 ```yaml
-  rabbitmq:
-    repository:
-      branch: release/0.1.18
+rabbitmq:
+  repository:
+    branch: release/0.1.18
 ```   
 This configuration tells flux which branch of your flux configuration git repository to use for deployment. Once deployed, it's possible to confirm the correct branch is in use on the chosen development k8s cluster by running:
 ```bash
