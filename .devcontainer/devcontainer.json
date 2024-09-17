@@ -47,7 +47,8 @@
 				"editorconfig.editorconfig",
 				"ms-vscode.powershell",
 				"hashicorp.terraform",
-				"github.vscode-github-actions"
+				"github.vscode-github-actions",
+				"vscjava.vscode-java-pack"
 			]
 		}
 	}
