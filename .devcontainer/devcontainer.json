@@ -29,11 +29,11 @@
 			"analyticsWorkspaceHelmChart" : "${containerWorkspaceFolder}/lsc-sde/iac/helm/analytics-workspace-management"
 		},
 		
-		"ghcr.io/lsc-sde/devcontainer-features/ohdsi:0.1.1" : {
+		"ghcr.io/lsc-sde/devcontainer-features/ohdsi:0.1.2" : {
 			"pathToHelmChart" : "${containerWorkspaceFolder}/lsc-sde/iac/helm/ohsdi"
 		},
 		"ghcr.io/lsc-sde/devcontainer-features/apache-superset:0.1.0": {},
-		"ghcr.io/lsc-sde/devcontainer-features/apache-guacamole:0.1.0" : {}
+		"ghcr.io/lsc-sde/devcontainer-features/apache-guacamole:0.1.2" : {}
 		
 	},
 	"forwardPorts" : [
