@@ -33,7 +33,7 @@
 			"pathToHelmChart" : "${containerWorkspaceFolder}/lsc-sde/iac/helm/ohsdi"
 		},
 		"ghcr.io/lsc-sde/devcontainer-features/apache-superset:0.1.2": {},
-		"ghcr.io/lsc-sde/devcontainer-features/apache-guacamole:0.1.2" : {}
+		"ghcr.io/lsc-sde/devcontainer-features/apache-guacamole:0.1.3" : {}
 		
 	},
 	"forwardPorts" : [
