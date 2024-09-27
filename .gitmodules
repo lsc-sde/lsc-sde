@@ -166,3 +166,6 @@
 [submodule "products/sde/analytics-workspace-management/awms-guacamole-operator"]
 	path = products/sde/analytics-workspace-management/awms-guacamole-operator
 	url = https://github.com/lsc-sde/awms-guacamole-operator.git
+[submodule "products/sde-3rd-party/keycloak/iac-flux-keycloak"]
+	path = products/sde-3rd-party/keycloak/iac-flux-keycloak
+	url = https://github.com/lsc-sde/iac-flux-keycloak.git
