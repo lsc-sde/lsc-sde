@@ -16,7 +16,7 @@
 		"ghcr.io/lsc-sde/devcontainer-features/temurin:0.1.1" : {},
 		"ghcr.io/lsc-sde/devcontainer-features/nginx:0.1.1" : {},
 		"ghcr.io/lsc-sde/devcontainer-features/postgres-on-k3d:0.1.6": {},
-		"ghcr.io/lsc-sde/devcontainer-features/keycloak:0.1.1": {},
+		"ghcr.io/lsc-sde/devcontainer-features/keycloak:0.1.2": {},
 		"ghcr.io/lsc-sde/devcontainer-features/trust-manager:0.1.1": {},
 		
 		"ghcr.io/lsc-sde/devcontainer-features/lscsde:0.1.1" : {
