@@ -25,6 +25,10 @@ on:
         description: Optional JSON array of build arguments
         type: string
         required: false
+      yamlPath:
+        description: The name of the value in the yaml config (if present)
+        type: string
+        default: ""
         
     outputs:
       GitVersion_SemVer:
@@ -72,4 +76,17 @@ jobs:
     with:
       symver: ${{ needs.semver.outputs.GitVersion_SemVer }}
       directory: ${{ inputs.directory }}
+    secrets: inherit
+
+  update-image:
+    if: inputs.yamlPath != ''
+    uses: lsc-sde/lsc-sde/.github/workflows/update-yaml.yaml@main
+    needs: 
+    - semver
+    - submodule
+    with:
+      repository: lsc-sde/iac-flux-lscsde
+      path: "core/image-config.yaml"
+      yamlPath: ".components.${{ inputs.yamlPath }}.image"
+      newValue: "lscsde/${{ inputs.imageName }}:${{ needs.semver.outputs.GitVersion_SemVer }}"
     secrets: inherit
