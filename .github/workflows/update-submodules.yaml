@@ -29,7 +29,7 @@ jobs:
         git config --global user.email 'shaun.turner1@nhs.net'
         git config --global pull.rebase false
 
-        git submodule update "${{ inputs.directory }}"
+        git submodule update --init "${{ inputs.directory }}"
 
         echo "Switching to ${{ inputs.directory }}"
         cd "${{ inputs.directory }}"
