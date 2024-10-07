@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: 'lsc-sde/lsc-sde'
-        submodules: 'true'
+        submodules: 'false'
         token: ${{ secrets.REPOS_RW_TOKEN }}
 
     - name: Update Submodule
@@ -28,6 +28,8 @@ jobs:
         git config --global user.name 'lsc-sde'
         git config --global user.email 'shaun.turner1@nhs.net'
         git config --global pull.rebase false
+
+        git submodule update "${{ inputs.directory }}"
 
         echo "Switching to ${{ inputs.directory }}"
         cd "${{ inputs.directory }}"
