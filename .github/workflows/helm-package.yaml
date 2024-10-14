@@ -75,7 +75,7 @@ jobs:
     - name: Update YAML File
       working-directory: "${{ inputs.directory }}${{ inputs.subdirectory }}"
       run: |
-        if [ "${{ inputs.update_yaml_file }}" != "" ]; then
+        if [ -n "${{ inputs.update_yaml_file }}" ]; then
           yq e -i '${{ inputs.update_yaml_field }} = "${{ inputs.update_yaml_value}}"' ${{ inputs.update_yaml_file }}
           cat ${{ inputs.update_yaml_file }}
         fi
