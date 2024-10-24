@@ -1,5 +1,6 @@
 iac/flux~
 docs/_site/
+docs/imported/
 docs/.jekyll-cache
 .devcontainer/k3d/volume/*
 !.devcontainer/k3d/volume/.keeper
