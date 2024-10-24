@@ -42,7 +42,7 @@ jobs:
         run: |
           for item in $(find -regex "\./.*/docs" | grep -v "imported"); do
             mkdir -p "./docs/imported/${item}"
-            cp -R "${item}/" "./docs/imported/${item}"
+            cp -Rv "${item}/" "./docs/imported/${item}"
           done
 
       - name: Setup Ruby
