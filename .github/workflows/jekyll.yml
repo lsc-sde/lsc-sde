@@ -38,12 +38,15 @@ jobs:
         with:
           submodules: 'true'
       
-      - name: Copy submodule docs
+      - name: Copy submodule docs 
+        working-directory: '${{ github.workspace }}'
         run: |
           for item in $(find -regex "\./.*/docs" | grep -v "imported"); do
             mkdir -p "./docs/imported/${item}"
             cp -Rv "${item}/" "./docs/imported/${item}"
           done
+       
+
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
