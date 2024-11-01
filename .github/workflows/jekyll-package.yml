@@ -9,8 +9,6 @@ name: Package Jekyll Package
 on:
   workflow_call:
   push:
-    branches: 
-      - "**"
     branches-ignore:
       - "main"
     paths:
