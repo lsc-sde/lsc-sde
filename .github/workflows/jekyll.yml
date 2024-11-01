@@ -28,8 +28,8 @@ concurrency:
 jobs:
   # Build job
   package:
-    uses: jekyll-package.yml
+    uses: ./jekyll-package.yml
 
   deploy:
-    uses: jekyll-deploy.yml
+    uses: ./jekyll-deploy.yml
     needs: package
