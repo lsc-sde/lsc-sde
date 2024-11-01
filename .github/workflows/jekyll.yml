@@ -27,9 +27,10 @@ concurrency:
 
 jobs:
   # Build job
+  
   package:
-    uses: ./jekyll-package.yml
+    uses: ./.github/workflows/jekyll-package.yml
 
   deploy:
-    uses: ./jekyll-deploy.yml
+    uses: ./.github/workflows/jekyll-deploy.yml
     needs: package
