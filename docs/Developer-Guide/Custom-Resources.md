@@ -11,3 +11,4 @@ The following custom resources are available to be used:
 * [AnalyticsWorkspaceBindings](./Custom-Resources/AnalyticsWorkspaceBindings.md)
 * [AnalyticsWorkspaceDataSources](./Custom-Resources/AnalyticsWorkspaceDataSources.md)
 * [AnalyticsWorkspaceDataBindings](./Custom-Resources/AnalyticsWorkspaceDataBindings.md)
+
