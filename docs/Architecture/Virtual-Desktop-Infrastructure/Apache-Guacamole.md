@@ -32,5 +32,5 @@ flowchart LR
     guac -.->|Auth via HTTPS| kc
 ```
 
-Apache Guacamole is complimented by the [AWMS Guacamole Operator](../../imported/products/sde/analytics-workspace-management/awms-guacamole-operator/docs/docs/operator.md) which provisions the browser containers for each workspace / user combination.  
+Apache Guacamole is complimented by the [AWMS Guacamole Operator](../../imported/products/sde/analytics-workspace-management/awms-guacamole-operator/docs/operator.md) which provisions the browser containers for each workspace / user combination.  
 
