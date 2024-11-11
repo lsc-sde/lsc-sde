@@ -9,30 +9,38 @@ The Lancashire and South Cumbria Secure Data Environment is a secure research an
 
 This service gives approved researchers with approved projects secure access to NHS healthcare data. All patient information in the SDE is pseudonymised, which means that any identifying (or personal) information such as names, addresses or NHS numbers are replaced with artificial, or ‘pseudo’, information.
 
+
 ```mermaid
 mindmap
   root)LSC SDE(
-    Jupyter Hub
-    OHDSI
-    Data Shield
-    AWMS
+    Data Layer
+    Applications Layer
 ```
 
-## Features of our SDE
-* [Secure Virtual Desktop Infrastructure (VDI)](./Secure-Data-Environment/Secure-Virtual-Desktop-Infrastructure.md) 
-* [Data Analytics Programming Tools](./Secure-Data-Environment/Data-Analytics-Programming.md)
-* [Flexible Infrastructure](./Secure-Data-Environment/Infrastructure.md)
-* [Elastic Compute Resource](./Secure-Data-Environment/Infrastructure/Elastic-Compute-Resource.md)
-* [Secure Access for External Users](./Secure-Data-Environment/External-Access.md)
-* [Secure Data Ingress and Egress](./Secure-Data-Environment/Secure-Data-Ingress-and-Egress.md)
-* [Analytics Component Applications](./Secure-Data-Environment/Components.md)
+The documentation on this site will largely focus on the application layer of the system
 
-## Integration with the North West SDE (NWSDE)
-The Lancashire and South Cumbria Secure Data Environment integrates with the [North West SDE](./Community.md) allowing researchers using the NWSDE to easily access secure compute resources while allowing our system to integrate with some of the capabilities of the NWSDE such as:
+## Data Layer
+The solution utilise Databricks (TODO: ADD link to databricks), this provides our datalake and the core data orchestration capabilities to centralise the data for use in the SDE and other projects.
 
-### Databricks
-North West SDE Implements the [Databricks platform](https://www.databricks.com) via [Microsoft Azure](https://azure.microsoft.com/en-gb/products/databricks). This provides data lakehouse capabilities alongside AI and ETL capabilites. 
+## Application Layer
+The application layer provides numerous different capabilities via a number of different applications.
 
-### Airlock capabilities
-The North West SDE Implements a [Trusted Research Environment](https://www.hdruk.ac.uk/access-to-health-data/trusted-research-environments/) via a customised version of [Azure TRE](https://microsoft.github.io/AzureTRE/v0.16.0/).
+```mermaid
+mindmap
+  root)LSC SDE(
+    Compute Resource
+    OMOP Analysis
+    Federated Analytics
+    Workspace Isolation
+    Externally Accessible
+    Portable
+    Multi-cluster offloading
+    Usage and Cost management
+    Secure
+    Portable
+    Easy to use, develop and deploy
+    Highly customisable, configurable and scalable
+    Community driven
+```
 
+This of course supplements the usual capabilities Data Governance, Cyber Security and Data Management that are outlined in the [SATRE specifications](https://satre-specification.readthedocs.io/).
