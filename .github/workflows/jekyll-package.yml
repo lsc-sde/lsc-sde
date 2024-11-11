@@ -42,9 +42,10 @@ jobs:
       - name: Copy submodule docs 
         working-directory: '${{ github.workspace }}'
         run: |
-          for item in $(find -regex "\./.*/docs" | grep -v "imported"); do
-            mkdir -p "./docs/imported/${item}"
-            cp -Rv "${item}/" "./docs/imported/${item}"
+          export ITEMS=$(find -regex "\./.*/docs" | grep -v "imported")
+          for ITEM in $ITEMS; do
+            mkdir -p "./docs/imported/${ITEM}"
+            cp -Rv "${ITEM}" "./docs/imported/${ITEM}/../"
           done
        
 
