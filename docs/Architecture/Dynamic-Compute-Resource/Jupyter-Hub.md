@@ -3,6 +3,7 @@ title: Jupyter Hub
 parent: Dynamic Compute Resource
 grand_parent: Architecture
 layout: page
+has_children: true
 ---
 
 Jupyter Hub, along with kubespawner, provides a way of provisioning dynamic jupyter notebooks, these notebooks provide a convenient way and user interface for being able to provide developers with compute resources.
