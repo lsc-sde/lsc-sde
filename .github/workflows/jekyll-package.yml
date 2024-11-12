@@ -37,7 +37,7 @@ jobs:
       - name: Copy submodule docs 
         working-directory: '${{ github.workspace }}'
         run: |
-          export ITEMS=$(find -regex "\./.*/docs" | grep -v "imported")
+          export ITEMS=$(find -regex "\./.*/docs" | grep -v "imported" | grep -v "legacy")
           for ITEM in $ITEMS; do
             mkdir -p "./docs/imported/${ITEM}"
             cp -Rv "${ITEM}" "./docs/imported/${ITEM}/../"
