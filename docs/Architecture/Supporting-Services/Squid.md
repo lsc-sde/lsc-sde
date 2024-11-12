@@ -1,11 +1,11 @@
 ---
 title: Squid
 layout: page
-parent: Components
+parent: Supporting Services
+grand_parent: Architecture
 has_children: true
 ---
 
-# Squid
 [Squid](https://www.squid-cache.org/) is a forward proxy server with caching capabilities and native support for TLS. 
 
 While a forward proxy might seem an antiquated solution for network traffic and in usual circumstances we might prefer a proper firewall solution and routing, we do not need anything so complicated for what we are doing here.
