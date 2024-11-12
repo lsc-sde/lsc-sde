@@ -3,6 +3,7 @@ title: Atlas
 layout: page
 parent: OHDSI
 grand_parent: Analytics Tools
+has_children: true
 ---
 
 # OHDSI ATLAS
