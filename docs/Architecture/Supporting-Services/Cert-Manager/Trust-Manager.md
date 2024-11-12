@@ -2,6 +2,8 @@
 title: Trust Manager
 layout: page
 parent: Cert Manager
+grand_parent: Supporting Services
+has_children: true
 ---
 
 # Trust Manager

@@ -152,6 +152,9 @@ The solution will provide a collection of services that will provide for secure 
 
 In each case, the solution will provide a number of gates for the approval of data before it can be either ingressed or egressed from the environment.
 
+#### Supporting Services
+The solution will utilise a number of supporting services to help the solution function correctly
+
 ### Solution Management
 To allow for easy management of the solution, a layer is needed to provide the tools necessary to allow administrators to monitor the solution and make changes as required.
 

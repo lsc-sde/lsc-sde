@@ -1,7 +1,8 @@
 ---
 title: Cert Manager
 layout: page
-parent: Components
+parent: Supporting Services
+grand_parent: Architecture
 has_children: true
 ---
 
