@@ -1,11 +1,11 @@
 ---
 title: Secrets Distributor
 layout: page
-parent: Components
+parent: Environment Specific Components
+grand_parent: Architecture
 has_children: true
 ---
 
-# Secrets Distributor
 The secrets distributor is responsible to copying secrets around kubernetes allowing them to be used in pod definitions in multiple namespaces, Further information can be found in the [Secrets Distributor](./docker/secrets-distributor/) repository
 
 ## Development
