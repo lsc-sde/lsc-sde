@@ -127,6 +127,9 @@ FluxCD will allow us to utilise a gitops methodology to deploy our applications 
 Helm charts will be used to deploy any applications and services for deployment into our environments.
 
 ### Core Solution Areas
+#### Analytics Tools
+The solution will [provide a number of analytics tools](./Architecture/Analytics-Tools.md) for visualising and querying data such as OMOP datasets used within the research workspaces. 
+
 #### Workspace Management Services
 The [Analytics workspace management solution](./Architecture/Workspace-Management-Services.md) (AWMS) will work alongside the dynamic compute resource and other aspects of the system to provide isolated workspaces.
 

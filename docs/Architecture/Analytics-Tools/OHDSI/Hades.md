@@ -2,7 +2,7 @@
 title: Hades
 layout: page
 parent: OHDSI
-grand_parent: Components
+grand_parent: Analytics Tools
 ---
 
 # OHDSI HADES

@@ -1,8 +1,8 @@
 ---
 title: Atlas
 layout: page
-parent: Atlas
-grand_parent: Components
+parent: OHDSI
+grand_parent: Analytics Tools
 ---
 
 # OHDSI ATLAS

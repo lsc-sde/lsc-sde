@@ -1,7 +1,8 @@
 ---
 title: OHDSI
 layout: page
-parent: Components
+parent: Analytics Tools
+grand_parent: Architecture
 has_children: true
 ---
 
