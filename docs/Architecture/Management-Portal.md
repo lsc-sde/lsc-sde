@@ -2,6 +2,7 @@
 title: Management Portal
 parent: Architecture
 layout: page
+has_children: true
 ---
 
 The solution should provide a management portal to allow administrators to maintain the various Workspaces, Data Sources and Bindings that make up the system.

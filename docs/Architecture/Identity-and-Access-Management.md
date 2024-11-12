@@ -2,6 +2,7 @@
 title: Identity and Access Management
 parent: Architecture
 layout: page
+has_children: true
 ---
 
 The solution will provide a generic and flexible base for identity and access management to be supported by all applications running on the solution. 

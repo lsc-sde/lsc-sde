@@ -2,6 +2,7 @@
 title: Environment Specific Components
 parent: Architecture
 layout: page
+has_children: true
 ---
 
 As this solution can run on many different types of hardware supported by many different cloud providers, etc some components will be specific to where the solution is deployed. Some of these components will be internal to kubernetes and specific to the kubernetes implementation that has been created and where it has been deployed, and others will be part of the solution itself.

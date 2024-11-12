@@ -2,6 +2,7 @@
 title: Airlock Services
 parent: Architecture
 layout: page
+has_children: true
 ---
 
 The solution will provide a collection of services that will provide for secure ingress and egress from the environment, these airlock services will provide capabilities for a number of different scenarios as outlined below.
