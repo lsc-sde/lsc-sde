@@ -1,7 +1,7 @@
 ---
 title: GitOps Flow
 layout: page
-parent: IAC
+parent: Infrastructure as Code
 grand_parent: Developer Guide
 nav_order: 1
 ---

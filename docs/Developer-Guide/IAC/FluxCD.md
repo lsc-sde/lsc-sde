@@ -1,7 +1,7 @@
 ---
 title: FluxCD
 layout: page
-parent: IAC
+parent: Infrastructure as Code
 grand_parent: Developer Guide
 ---
 
