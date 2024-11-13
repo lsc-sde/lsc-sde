@@ -9,7 +9,7 @@ nav_order: 1
 The default strategy, relies on pull requests into the main branch, the pipelines will then automatically push out a new release branch for the impacted repository and any dependencies.
 
 ```mermaid
-gitGraph:
+gitGraph
     commit
     branch issues/1-example order: 1
     commit
