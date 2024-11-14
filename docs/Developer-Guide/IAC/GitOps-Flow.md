@@ -12,55 +12,16 @@ There is a chain of flux and helm charts that work together in order to deploy a
 flowchart LR
     Core[Core Flux Chart]
     -->
-    CoreChart[Core Helm Chart]
+    NamespaceFlux[Namespaces Flux]
+    -->
+    NamespaceChart([Namespaces Helm Chart])
+    
+    Core --> CoreChart([Core Helm Chart])
+    --> ServiceFlux[Service Flux]
+    --> ServiceChart([Service Helm Chart])
 
-    CoreChart --> aks_dns([AKS DNS Helm Chart])
-    CoreChart --> analytics_workspace_management[AWMS Flux Chart] --> analytics_workspace_management_helm([AWMS Helm Chart]) 
-    CoreChart --> cert_manager[Cert Manager Flux Configuration] --> cert_manager_helm([Cert Manager Helm Chart])
-    CoreChart --> trust_manager([Trust Manager Helm Chart])
-    CoreChart --> ingress_nginx[NGINX Flux Configuration] --> ingress_nginx_helm([NGINX Helm Chart])
-    CoreChart --> jupyter_hub[Jupyter Hub Flux Configuration] --> jupyter_hub_helm([Jupyter Hub Helm Chart])
-    CoreChart --> keda[Keda Flux Configuration] --> keda_helm([Keda Helm Chart])
-    CoreChart --> metrics_server([Metrics Server Helm Chart])
-    CoreChart --> ohdsi[OHDSI Flux Configuration] --> ohdsi_helm([OHDSI Helm Chart])
-    CoreChart --> secrets_distributor[Secrets Distributor Flux Configuration] --> secrets_distributor_helm([Secrets Distributor Helm Chart])
-
-    style CoreChart fill:#dddd00,stroke:#000000,color:#000
-    style aks_dns fill:#dddd00,stroke:#000000,color:#000
-    style analytics_workspace_management_helm fill:#dddd00,stroke:#000000,color:#000
-    style cert_manager_helm fill:#f00,stroke:#000000,color:#fff
-    style trust_manager fill:#f00,stroke:#000000,color:#fff
-    style ingress_nginx_helm fill:#f00,stroke:#000000,color:#fff
-    style jupyter_hub_helm fill:#f00,stroke:#000000,color:#fff
-    style keda_helm fill:#f00,stroke:#000000,color:#fff
-    style metrics_server fill:#f00,stroke:#000000,color:#fff
-    style ohdsi_helm fill:#dddd00,stroke:#000000,color:#000
-    style secrets_distributor_helm fill:#dddd00,stroke:#000000,color:#000
-
-    style Core fill:#00f,stroke:#fff,color:#fff
-    style analytics_workspace_management fill:#00f,stroke:#fff,color:#fff
-    style cert_manager fill:#00f,stroke:#fff,color:#fff
-    style ingress_nginx fill:#00f,stroke:#fff,color:#fff
-    style jupyter_hub fill:#00f,stroke:#fff,color:#fff
-    style keda fill:#00f,stroke:#fff,color:#fff
-    style ohdsi fill:#00f,stroke:#fff,color:#fff
-    style secrets_distributor fill:#00f,stroke:#fff,color:#fff
-
-    click Core href "https://github.com/lsc-sde/iac-flux-lscsde" _blank
-    click analytics_workspace_management href "https://github.com/lsc-sde/iac-flux-analytics-workspace-management" _blank
-    click cert_manager href "https://github.com/lsc-sde/iac-flux-certmanager" _blank
-    click ingress_nginx href "https://github.com/lsc-sde/iac-flux-nginx" _blank
-    click jupyter_hub href "https://github.com/lsc-sde/iac-flux-jupyter" _blank
-    click keda href "https://github.com/lsc-sde/iac-flux-keda" _blank
-    click ohdsi href "https://github.com/lsc-sde/iac-flux-ohdsi" _blank
-    click secrets_distributor href "https://github.com/lsc-sde/iac-flux-secrets-distributor" _blank
-
-
-    click CoreChart href "https://github.com/lsc-sde/iac-helm-lscsde-flux" _blank
-    click aks_dns href "https://github.com/lsc-sde/iac-helm-aks-dns-operator/" _blank
-    click analytics_workspace_management_helm href "https://github.com/lsc-sde/iac-helm-analytics-workspace-management/" _blank
-    click ohdsi_helm href "https://github.com/lsc-sde/iac-helm-ohdsi" _blank
-    click secrets_distributor_helm href "https://github.com/lsc-sde/iac-helm-secrets-distributor" _blank
+    NamespaceFlux -.->|Dependency| ServiceFlux
+    NamespaceChart -.->|Dependency| ServiceChart
 ```
 
 ## Applying Hot-Fixes
@@ -69,72 +30,125 @@ When applying hot fixes to the environment we will typically identify the produc
 This allows us to control which environment is using which version of the code and subsequently what versions of the various components we are using.
 
 Once you've checked out the latest prod branch, you can then look at the release version for the effected component(s) by looking in either:
-* core/deployment-config.yaml - in older releases (current prod)
 * core/flux-config.yaml
 * core/helm-config.yaml
 * core/release.yaml
 
 Looking into these files should tell you which version the components are, so say for making a change in prod that impacts the jupyter components, you will look into the core/deployment-config.yaml file and look for jupyter_branch and/or jupyter_chart_version. The branch is the branch in the [jupyter flux repository](https://github.com/lsc-sde/iac-flux-jupyter), the chart version is the version of the jupyter hub helm chart we're using.
 
+```yaml example flux-config.yaml
+components:
+  aks_dns:
+    repository:
+      branch: main
+  analytics_workspace_management:
+    repository:
+      branch: "release/0.1.19"
+  cert_manager:
+    repository:
+      branch: "release/0.1.40"
+  github_runner:
+    repository:
+      branch: "release/0.1.56"
+  ingress_nginx:
+    repository:
+      branch: "release/0.1.61"
+  jupyter_hub:
+    repository:
+      branch: "release/0.2.105"
+  keda:
+    repository:
+      branch: "release/0.1.44"
+  metrics_server:
+    repository:
+      branch: main
+  ohdsi:
+    repository:
+      branch: "release/0.1.70"
+  secrets_distributor:
+    repository:
+      branch: "release/0.1.6"
+  guacamole:
+    repository:
+      branch: release/0.1.21
+  superset:
+    repository:
+      branch: release/0.1.16
+  rabbitmq:
+    repository:
+      branch: release/0.1.20
+  observability_metrics:
+    repository:
+      branch: release/0.1.42
+  keycloak:
+    repository:
+      branch: release/0.1.70
+  awms_guacamole:
+    repository:
+      branch: release/0.1.28
+  observability-metrics:
+    repository:
+      branch: release/0.1.45
 ```
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: deployment-config
-data:
-  ohdsi_branch: "release/0.1.55-auth-disabled"
-  ohdsi_chart_version: "0.1.30"
-  secrets_distributor_chart_version: "0.2.4"
-  certmanager_branch: "release/0.1.27"
-  certmanager_chart_version: "v1.14.2"
-  trustmanager_chart_version: "0.8.0"
-  github_runner_branch: "release/0.1.54"
-  github_runner_chart_version: "0.1.26"
-  aks_dns_branch: main
-  aks_dns_chart_version: "0.2.8"
-  configmap_transformer_branch: main
-  configmap_transformer_chart_version: "0.2.4"
-  nginx_branch: "release/0.1.53"
-  nginx_chart_version: "4.9.1"
-  keda_branch: "release/0.1.39"
-  keda_chart_version: "2.13.1"
-  keycloak_branch: "release/0.1.60"
-  jupyter_branch: "release/0.2.62"
-  jupyter_chart_version: "3.2.1"
-  analytics_workspace_management_chart_version: "0.1.13"
-  analytics_workspace_management_branch: "release/0.1.10"
-  metrics_server_chart_version: "3.12.0"
-  guacamole_chart_version: "0.1.8"
 
+```yaml example helm-config.yaml
+components:
+  aks_dns:
+    chart_version: "0.2.13"
+  analytics_workspace_management:
+    chart_version: "0.1.37"
+  cert_manager:
+    chart_version: "v1.14.2"
+  github_runner:
+    chart_version: "0.1.28"
+  ingress_nginx:
+    chart_version: "4.11.1"
+  jupyter_hub:
+    chart_version: "3.2.1"
+  keda:
+    chart_version: "2.13.1"
+  metrics_server:
+    chart_version: "3.12.0"
+  ohdsi:
+    chart_version: "0.1.35"
+  secrets_distributor:
+    chart_version: "0.2.14"
+  guacamole:
+    chart_version: "0.1.15"
+  awms_guacamole:
+    chart_version: 0.1.28
 ```
 
-You can see from the above that in this instance we'd be looking for branch **release/0.2.62** in the [jupyter flux repository](https://github.com/lsc-sde/iac-flux-jupyter). We will then checkout the repository which will use the standard branching strategy.
+
+```yaml example image-config.yaml
+components:
+  keycloak:
+    image: lscsde/awms-keycloak:0.1.8
+  awms_guacamole:
+    image: lscsde/awms-guacamole-operator:0.1.28
+```
+
+You can see from the above that in this instance we'd be looking for branch **release/0.2.105** in the [jupyter flux repository](https://github.com/lsc-sde/iac-flux-jupyter). We will then checkout the repository which will use the standard branching strategy.
 
 ```mermaid
 gitGraph LR:
     commit
     commit
-    branch release/0.1.1
-    checkout release/0.1.1
+    branch release/0.2.105
+    checkout release/0.2.105
     commit id: "Release"
     
     branch hotfix/123
     checkout hotfix/123
     commit id: "Hot Fix"
-    checkout main
-    commit
-    branch release/0.1.2
-    checkout release/0.1.2
-    commit id: "push"
 
-    checkout hotfix/123
-    checkout release/0.1.1
+    switch release/0.2.105
     merge hotfix/123
-    checkout main
-    merge release/0.1.1
-    branch release/0.1.3
-    checkout release/0.1.3
-    commit
+    commit id: "PR to release branch"
+
+    switch main
+    merge release/0.2.105
+    commit id: "PR to main branch"
 ```
 
 We will create a hotfix branch based upon the branch currently in use by this environment.
