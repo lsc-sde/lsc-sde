@@ -36,7 +36,8 @@ Once you've checked out the latest prod branch, you can then look at the release
 
 Looking into these files should tell you which version the components are, so say for making a change in prod that impacts the jupyter components, you will look into the core/deployment-config.yaml file and look for jupyter_branch and/or jupyter_chart_version. The branch is the branch in the [jupyter flux repository](https://github.com/lsc-sde/iac-flux-jupyter), the chart version is the version of the jupyter hub helm chart we're using.
 
-```yaml example flux-config.yaml
+### Example Flux Config
+```yaml
 components:
   aks_dns:
     repository:
@@ -91,7 +92,8 @@ components:
       branch: release/0.1.45
 ```
 
-```yaml example helm-config.yaml
+### Example Helm Config
+```yaml
 components:
   aks_dns:
     chart_version: "0.2.13"
@@ -119,7 +121,7 @@ components:
     chart_version: 0.1.28
 ```
 
-
+### Example Image Config
 ```yaml example image-config.yaml
 components:
   keycloak:
