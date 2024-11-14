@@ -122,7 +122,7 @@ components:
 ```
 
 ### Example Image Config
-```yaml example image-config.yaml
+```yaml
 components:
   keycloak:
     image: lscsde/awms-keycloak:0.1.8
