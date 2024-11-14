@@ -3,6 +3,7 @@ title: Keycloak
 parent: Identity and Access Management
 grand_parent: Architecture
 layout: page
+has_children: true
 ---
 
 Keycloak is an open source identity and access management system, all applications within the solution will authenticate to keycloak which in turn can then hook into a variety of external identity providers such as:
