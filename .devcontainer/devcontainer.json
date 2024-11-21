@@ -9,31 +9,31 @@
 		"ghcr.io/devcontainers/features/azure-cli:1": {},
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
 		"ghcr.io/devcontainers/features/python:1" : {},
-		"ghcr.io/lsc-sde/devcontainer-features/k3d:0.1.1" : {},
-		"ghcr.io/lsc-sde/devcontainer-features/fluxcd:0.1.1" : {},
-		"ghcr.io/lsc-sde/devcontainer-features/kustomize:0.1.0" : {},
-		"ghcr.io/lsc-sde/devcontainer-features/aks-tools:0.1.1" : {},
-		"ghcr.io/lsc-sde/devcontainer-features/temurin:0.1.1" : {},
-		"ghcr.io/lsc-sde/devcontainer-features/nginx:0.1.1" : {},
-		"ghcr.io/lsc-sde/devcontainer-features/postgres-on-k3d:0.1.6": {},
-		"ghcr.io/lsc-sde/devcontainer-features/keycloak:0.1.2": {},
-		"ghcr.io/lsc-sde/devcontainer-features/trust-manager:0.1.1": {},
+		"ghcr.io/lsc-sde/devcontainer-features/k3d:latest" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/fluxcd:latest" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/kustomize:latest" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/aks-tools:latest" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/temurin:latest" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/nginx:latest" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/postgres-on-k3d:latest": {},
+		"ghcr.io/lsc-sde/devcontainer-features/keycloak:latest": {},
+		"ghcr.io/lsc-sde/devcontainer-features/trust-manager:latest": {},
 		
-		"ghcr.io/lsc-sde/devcontainer-features/lscsde:0.1.1" : {
+		"ghcr.io/lsc-sde/devcontainer-features/lscsde:latest" : {
 			"secretsPath" : "/var/lib/rancher/k3s/storage/secrets",
 			"coreFluxWorkspaceFolder" : "${containerWorkspaceFolder}/lsc-sde/iac/flux/lscsde"
 		},
 		//"./features/metallb" : {},
-		"ghcr.io/lsc-sde/devcontainer-features/jupyterhub:0.1.4" : {
+		"ghcr.io/lsc-sde/devcontainer-features/jupyterhub:latest" : {
 			"hubDockerImageDefinition" : "${containerWorkspaceFolder}/lsc-sde/docker/jupyterhub",
 			"analyticsWorkspaceHelmChart" : "${containerWorkspaceFolder}/lsc-sde/iac/helm/analytics-workspace-management"
 		},
 		
-		"ghcr.io/lsc-sde/devcontainer-features/ohdsi:0.1.2" : {
+		"ghcr.io/lsc-sde/devcontainer-features/ohdsi:latest" : {
 			"pathToHelmChart" : "${containerWorkspaceFolder}/lsc-sde/iac/helm/ohsdi"
 		},
-		"ghcr.io/lsc-sde/devcontainer-features/apache-superset:0.1.2": {},
-		"ghcr.io/lsc-sde/devcontainer-features/apache-guacamole:0.1.3" : {}
+		"ghcr.io/lsc-sde/devcontainer-features/apache-superset:latest": {},
+		"ghcr.io/lsc-sde/devcontainer-features/apache-guacamole:latest" : {}
 		
 	},
 	"forwardPorts" : [
