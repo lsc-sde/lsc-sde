@@ -9,23 +9,7 @@ has_toc: false
 The following outlines a high level architecture of the solutions application layer.
 
 
-```mermaid
-mindmap
-  root)LSC SDE(
-    Compute Resource
-    OMOP Analysis
-    Federated Analytics
-    Workspace Isolation
-    Externally Accessible
-    Portable
-    Multi-cluster offloading
-    Usage and Cost management
-    Secure
-    Portable
-    Easy to use, develop and deploy
-    Highly customisable, configurable and scalable
-    Community driven
-```
+![Architecture](./Architecture/SDE.png)
 
 ## Functional Requirements
 The application layer consists of a number of core functional requirements
