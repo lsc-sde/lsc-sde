@@ -20,3 +20,15 @@ It is recommended that services that are publicly facing, such as [Keycloak](../
 
 ## Shared Services
 Users of a workspace are provided with shared resources such as [persistent storage volumes](../../Architecture/Dynamic-Compute-Resource/PVCs.md) that allows all users of a workspace to be able to access. This enables users to collaborate on the project.
+
+## Unnecessary Software
+Due to the containerised nature of the solution, each container should contain the tools necessary for the container to function as well as any prerequisites. At a result unnecessary software should not be included on the container images. When the solution is implemented software on any nodes should be also limited to what is necessary. 
+
+## Service Accounts 
+All containers should utilise non-root accounts to safeguard the container image and the kernels of the solution.
+
+## User Accounts
+System implementers can manage user access via keycloak itself or utilise keycloaks capabilities to interact with other identity providers to provide access.
+
+### Password Policies
+It is the responsibility of each system implementer to ensure password policies and practice are configured per industry standards and your organisations password policies. We also recommend that any default passwords are reset.
