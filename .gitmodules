@@ -168,4 +168,4 @@
 	url = https://github.com/lsc-sde/iac-flux-keycloak.git
 [submodule "docker/dataengineering-sqlmesh-notebook"]
 	path = docker/dataengineering-sqlmesh-notebook
-	url = https://github.com/lsc-sde/dataengineering-sqlmesh-notebook
+	url = https://github.com/lsc-sde/docker-dataengineering-sqlmesh-notebook
