@@ -166,3 +166,6 @@
 [submodule "products/sde-3rd-party/keycloak/iac-flux-keycloak"]
 	path = products/sde-3rd-party/keycloak/iac-flux-keycloak
 	url = https://github.com/lsc-sde/iac-flux-keycloak.git
+[submodule "docker/dataengineering-sqlmesh-notebook"]
+	path = docker/dataengineering-sqlmesh-notebook
+	url = https://github.com/lsc-sde/docker-dataengineering-sqlmesh-notebook
