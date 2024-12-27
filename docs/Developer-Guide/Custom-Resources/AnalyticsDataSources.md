@@ -1,5 +1,5 @@
 ---
-title: AnalyticsWorkspaceDataSources
+title: AnalyticsDataSources
 parent: Custom Resources
 layout: page
 grand_parent: Developer Guide
@@ -12,7 +12,7 @@ The following is an example of an uploaded analytics workspace data source:
 
 ```yaml
 apiVersion: xlscsde.nhs.uk/v1
-kind: AnalyticsWorkspaceDataSource
+kind: AnalyticsDataSource
 metadata:
   name: ds-782b4a1f07234229980f75f2f651412a
   labels:
@@ -41,4 +41,4 @@ spec:
     name: pvc-782b4a1f07234229980f75f2f651412a
 ```
 
-Once an AnalyticsWorkspaceDataSource is defined, it can be linked to an [AnalyticsWorkspace](./AnalyticsWorkspaces.md) via an [AnalyticsWorkspaceDataBinding](./AnalyticsWorkspaceDataBindings.md). This can then make it 
+Once an AnalyticsDataSource is defined, it can be linked to an [AnalyticsWorkspace](./AnalyticsWorkspaces.md) via an [AnalyticsDataSourceBinding](./AnalyticsDataSourceBindings.md). This can then make it available to the workspace
