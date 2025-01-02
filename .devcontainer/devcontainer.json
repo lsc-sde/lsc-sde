@@ -25,6 +25,7 @@
 			"coreFluxWorkspaceFolder" : "${containerWorkspaceFolder}/lsc-sde/iac/flux/lscsde"
 		},
 		//"./features/metallb" : {},
+		"ghcr.io/lsc-sde/devcontainer-features/awms:latest" : {},
 		"ghcr.io/lsc-sde/devcontainer-features/jupyterhub:latest" : {
 			"hubDockerImageDefinition" : "${containerWorkspaceFolder}/lsc-sde/docker/jupyterhub",
 			"analyticsWorkspaceHelmChart" : "${containerWorkspaceFolder}/lsc-sde/iac/helm/analytics-workspace-management"
