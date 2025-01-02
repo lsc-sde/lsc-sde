@@ -169,3 +169,6 @@
 [submodule "docker/dataengineering-sqlmesh-notebook"]
 	path = docker/dataengineering-sqlmesh-notebook
 	url = https://github.com/lsc-sde/docker-dataengineering-sqlmesh-notebook
+[submodule "products/sde/analytics-datasource-management/awms-crate-operator"]
+	path = products/sde/analytics-datasource-management/awms-crate-operator
+	url = https://github.com/lsc-sde/awms-crate-operator
