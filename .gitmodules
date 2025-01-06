@@ -172,3 +172,6 @@
 [submodule "products/sde/analytics-datasource-management/awms-crate-operator"]
 	path = products/sde/analytics-datasource-management/awms-crate-operator
 	url = https://github.com/lsc-sde/awms-crate-operator
+[submodule "products/sde/analytics-datasource-management/awms-datasource-operator"]
+	path = products/sde/analytics-datasource-management/awms-datasource-operator
+	url = https://github.com/lsc-sde/awms-datasource-operator.git
