@@ -15,6 +15,22 @@ A decision has been made that all components of this project will be made open s
 
 This allows us to maximise collaboration with other organisations and individuals in order to improve the services we're offering. 
 
+### Logging
+All microservices should log output logs to STDOUT and STDERR on their respective containers. This will allow logs to be consumed by centralised logging platforms and be analysed accordingly, as well as to be able to be accessed via kubectl for real-time diagnostics. It is the reposibility of individual organisations to implement their own centralised logging in their own environments.
+
+### Kubernetes Native by Default
+Where preferable, microservices should be kubernetes native, leveraging the custom resource definitions (CRD's) and the kubernetes control plane API's.
+
+### Security by Design
+#### Encryption in transit
+Services should be designed with security in mind as early as possible. Traffic between services should be encrypted-in-transit using the appropriate TLS standards. Where applicable, security certificates should be customisable to the services via mounted secrets. 
+
+#### Least Privilege
+Access to services should be given based upon the principle of least privilege. Users and services should be given only the permissions required to perform their role. 
+
+#### Network Connectivity
+External networks should always be trusted as hostile networks, rather than trusted, as a result network policies and firewall rules should be in place to protect the services exposed by the solution.
+
 ### Keeping things Generic
 As we are developing open source solutions it is important that every service we build should be designed in a manner that is as generic as possible, meaning that it will work in any environment. As a result we should not put any environment specifics into any applications or services. Environment config should be handled by the deployment of it on its relevant cluster as close to the cluster configuration as possible.
 
