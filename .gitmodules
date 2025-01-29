@@ -175,3 +175,6 @@
 [submodule "products/sde/analytics-datasource-management/awms-datasource-operator"]
 	path = products/sde/analytics-datasource-management/awms-datasource-operator
 	url = https://github.com/lsc-sde/awms-datasource-operator.git
+[submodule "docker/docker-llm-workspace"]
+	path = docker/docker-llm-workspace
+	url = https://github.com/lsc-sde/docker-llm-workspace.git
