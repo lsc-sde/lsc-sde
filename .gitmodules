@@ -181,3 +181,6 @@
 [submodule "products/sde/data-ingestion/cr8tor-publisher"]
 	path = products/sde/data-ingestion/cr8tor-publisher
 	url = https://github.com/lsc-sde-crates/cr8tor-publisher
+[submodule "products/sde/data-ingestion/cr8tor"]
+	path = products/sde/data-ingestion/cr8tor
+	url = https://github.com/lsc-sde-crates/cr8tor
