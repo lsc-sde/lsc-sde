@@ -15,3 +15,5 @@ Keycloak is an open source identity and access management system, all applicatio
 * etc
 
 This provides a great deal of flexibility within the solution while providing a firm configuration for the setup of the individual application that the solution exposes to its users.
+
+![Keycloak Architecture](./architecture.png)
