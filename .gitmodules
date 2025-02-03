@@ -178,3 +178,6 @@
 [submodule "docker/docker-llm-workspace"]
 	path = docker/docker-llm-workspace
 	url = https://github.com/lsc-sde/docker-llm-workspace.git
+[submodule "products/sde/data-ingestion/cr8tor-publisher"]
+	path = products/sde/data-ingestion/cr8tor-publisher
+	url = https://github.com/lsc-sde-crates/cr8tor-publisher
