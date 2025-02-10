@@ -1,0 +1,92 @@
+name: Docker build and push
+
+on:
+  workflow_call:
+    inputs:
+      imageName: 
+        description: Name of the image to build
+        type: string
+      directory:
+        description: The directory under the submodule to update
+        type: string
+      platforms: 
+        description: The platforms to build the docker images on 
+        type: string
+        default: '[ "amd64", "arm64" ]'
+      runnerType: 
+        type: string
+        default: ubuntu-latest
+        required: false
+      targets:
+        description: Optional var to allow creation of multiple stage targets defined in image Dockerfile
+        type: string
+        required: false
+      buildArgs:
+        description: Optional JSON array of build arguments
+        type: string
+        required: false
+      yamlPath:
+        description: The name of the value in the yaml config (if present)
+        type: string
+        default: ""
+        
+    outputs:
+      GitVersion_SemVer:
+        description: "The first output string"
+        value: ${{ jobs.semver.outputs.GitVersion_SemVer }}
+      FQ_BRANCH_NAME:
+        description: "Fully qualified branch name"
+        value: ${{ jobs.branch.outputs.FQ_BRANCH_NAME }}
+
+jobs:
+  semver:
+    uses: lsc-sde/lsc-sde/.github/workflows/semver.yaml@main
+    with:
+      useConfigFile: true
+    
+  branch:
+    uses: lsc-sde/lsc-sde/.github/workflows/flux.yaml@main
+    needs:
+    - semver
+    with:
+      symver: ${{ needs.semver.outputs.GitVersion_SemVer }}
+      environment: package
+      prefix: release
+    secrets: inherit
+
+  buildandpush:
+    uses: lsc-sde/lsc-sde/.github/workflows/ghcr-build.yaml@main
+    needs: 
+    - semver
+    - branch
+    with:
+      imageName: ${{ inputs.imageName }}
+      tag: ${{ needs.semver.outputs.GitVersion_SemVer }}
+      platforms: ${{ inputs.platforms }}
+      targets: ${{ inputs.targets }}
+      buildArgs: ${{ inputs.buildArgs }}
+      runnerType: ${{ inputs.runnerType }}
+    secrets: inherit
+
+  submodule:
+    uses: lsc-sde/lsc-sde/.github/workflows/update-submodules.yaml@main
+    needs: 
+    - semver
+    - buildandpush
+    with:
+      symver: ${{ needs.semver.outputs.GitVersion_SemVer }}
+      directory: ${{ inputs.directory }}
+    secrets: inherit
+
+  update-image:
+    if: inputs.yamlPath != ''
+    uses: lsc-sde/lsc-sde/.github/workflows/update-yaml.yaml@main
+    needs: 
+    - semver
+    - submodule
+    with:
+      repository: lsc-sde/iac-flux-lscsde
+      path: "core/image-config.yaml"
+      yamlPath: ".components.${{ inputs.yamlPath }}.image"
+      newValue: "lscsde/${{ inputs.imageName }}:${{ needs.semver.outputs.GitVersion_SemVer }}"
+    secrets: inherit
