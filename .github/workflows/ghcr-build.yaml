@@ -50,7 +50,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v5
       with:
-        images: ghcr.io/${GITHUB_REPOSITORY}/${{ inputs.imageName }}
+        images: ghcr.io/$GITHUB_REPOSITORY/${{ inputs.imageName }}
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
@@ -76,7 +76,7 @@ jobs:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         platforms: ${{ matrix.os }}/${{ matrix.platform }}
-        outputs: type=image,name=ghcr.io/${GITHUB_REPOSITORY}/${{ inputs.imageName }},push-by-digest=true,name-canonical=true,push=true
+        outputs: type=image,name=ghcr.io/$GITHUB_REPOSITORY/${{ inputs.imageName }},push-by-digest=true,name-canonical=true,push=true
         target: ${{ matrix.target != 'null' && matrix.target || null }}
         build-args: |
           <<EOF
@@ -142,7 +142,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${GITHUB_REPOSITORY}/${{ inputs.imageName }}
+          images: ghcr.io/$GITHUB_REPOSITORY/${{ inputs.imageName }}
           tags: |
             type=raw,${{ steps.concatenate.outputs.tag_prefix }}${{ inputs.tag }}
           labels: |
@@ -157,11 +157,11 @@ jobs:
         name: Create manifest list and push
         working-directory: /tmp/digests/${{ steps.concatenate.outputs.digest_url }}
         run: |
-          TAGNAME="ghcr.io/${GITHUB_REPOSITORY}/${{ inputs.imageName }}:${{ steps.concatenate.outputs.tag_prefix }}${{ inputs.tag }}"
-          DATA=$(printf "ghcr.io/${GITHUB_REPOSITORY}/${{ inputs.imageName }}@sha256:%s\n" *)
+          TAGNAME="ghcr.io/$GITHUB_REPOSITORY/${{ inputs.imageName }}:${{ steps.concatenate.outputs.tag_prefix }}${{ inputs.tag }}"
+          DATA=$(printf "ghcr.io/$GITHUB_REPOSITORY/${{ inputs.imageName }}@sha256:%s\n" *)
           echo $DATA
           docker buildx imagetools create -t "${TAGNAME}" $(echo $DATA | xargs)
       -
         name: Inspect image
         run: |
-          docker buildx imagetools inspect ghcr.io/${GITHUB_REPOSITORY}/${{ inputs.imageName }}:${{ steps.meta.outputs.version }} 
+          docker buildx imagetools inspect ghcr.io/$GITHUB_REPOSITORY/${{ inputs.imageName }}:${{ steps.meta.outputs.version }} 
