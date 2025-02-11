@@ -1,0 +1,50 @@
+on:
+  workflow_call:
+    inputs:
+      symver:
+        description: The symver value for this check-in
+        type: string
+      environment:
+        description: The name of the environment
+        type: string
+      prefix:
+        description: The prefix to add to the branch name
+        type: string
+    outputs:
+      FQ_BRANCH_NAME:
+        description: Fully qualified branch name
+        value: ${{ jobs.createbranch.outputs.FQ_BRANCH_NAME }}
+
+      
+jobs:
+  createbranch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    environment: ${{ inputs.environment }}
+    outputs:
+      FQ_BRANCH_NAME: ${{ steps.branch.outputs.FQ_BRANCH_NAME }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Create Branch for ${{ inputs.environment }}
+      id: branch
+      run: |
+        export FQ_BRANCH_NAME="${{ inputs.prefix }}/${{ inputs.symver }}"
+        git config --global user.name 'lsc-sde'
+        git config --global user.email 'shaun.turner1@nhs.net'
+
+        echo "Creating Branch: ${FQ_BRANCH_NAME}"
+        git branch "${FQ_BRANCH_NAME}"
+
+        echo "Switching to branch: ${FQ_BRANCH_NAME}"
+        git switch "${FQ_BRANCH_NAME}"
+
+        echo "Running Fetch"
+        git fetch
+
+        echo "Pushing to branch: ${FQ_BRANCH_NAME}"
+        git push -u "origin" "${FQ_BRANCH_NAME}"
+
+        echo "FQ_BRANCH_NAME=${FQ_BRANCH_NAME}" >> $GITHUB_OUTPUT

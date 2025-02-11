@@ -45,7 +45,7 @@ jobs:
       useConfigFile: true
     
   branch:
-    uses: lsc-sde/lsc-sde/.github/workflows/flux.yaml@main
+    uses: lsc-sde/lsc-sde/.github/workflows/flux-with-permissions.yaml@main
     needs:
     - semver
     with:
