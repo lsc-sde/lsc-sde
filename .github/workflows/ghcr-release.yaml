@@ -29,6 +29,9 @@ on:
         description: The name of the value in the yaml config (if present)
         type: string
         default: ""
+      pathToImageDefinition:
+        type: string
+        default: ./
         
     outputs:
       GitVersion_SemVer:
@@ -66,6 +69,7 @@ jobs:
       targets: ${{ inputs.targets }}
       buildArgs: ${{ inputs.buildArgs }}
       runnerType: ${{ inputs.runnerType }}
+      pathToImageDefinition: ${{ inputs.pathToImageDefinition }}
     secrets: inherit
 
   submodule:
