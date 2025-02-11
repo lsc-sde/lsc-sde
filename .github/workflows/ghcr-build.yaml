@@ -27,9 +27,6 @@ on:
         description: Optional JSON array of docker target build arguments
         type: string
         required: false
-    secrets:
-      PAT_TOKEN:
-        required: false
 
 jobs:
   build:
@@ -75,14 +72,12 @@ jobs:
       id: build
       uses: docker/build-push-action@v6
       with:
-        file: ${{ inputs.pathToImageDefinition }}/Dockerfile
+        context: ${{ inputs.pathToImageDefinition }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
         platforms: ${{ matrix.os }}/${{ matrix.platform }}
         outputs: type=image,name=ghcr.io/${GITHUB_REPOSITORY}/${{ inputs.imageName }},push-by-digest=true,name-canonical=true,push=true
         target: ${{ matrix.target != 'null' && matrix.target || null }}
-        secrets: |
-          PAT_TOKEN=${{ secrets.PAT_TOKEN }}
         build-args: |
           <<EOF
           ${{ steps.parse_build_args.outputs.build_args }}
