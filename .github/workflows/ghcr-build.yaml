@@ -30,6 +30,9 @@ on:
 
 jobs:
   build:
+    permissions:
+      packages: write
+      contents: read
     runs-on: ${{ inputs.runnerType }} 
     strategy:
       fail-fast: false
