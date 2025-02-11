@@ -22,14 +22,11 @@ jobs:
     environment: ${{ inputs.environment }}
     outputs:
       FQ_BRANCH_NAME: ${{ steps.branch.outputs.FQ_BRANCH_NAME }}
-    permissions:
-      contents: write
-
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      # with:
-      #   token: ${{ secrets.REPOS_RW_TOKEN }}
+      with:
+        token: ${{ secrets.REPOS_RW_TOKEN }}
 
     - name: Create Branch for ${{ inputs.environment }}
       id: branch
