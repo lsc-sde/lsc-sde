@@ -97,5 +97,5 @@ jobs:
       repository: lsc-sde/iac-flux-lscsde
       path: "core/image-config.yaml"
       yamlPath: ".components.${{ inputs.yamlPath }}.image"
-      newValue: "lscsde/${{ inputs.imageName }}:${{ needs.semver.outputs.GitVersion_SemVer }}"
+      newValue: "ghcr.io/$GITHUB_REPOSITORY/${{ inputs.imageName }}:${{ needs.semver.outputs.GitVersion_SemVer }}"
     secrets: inherit
