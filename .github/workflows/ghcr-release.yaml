@@ -32,6 +32,10 @@ on:
       pathToImageDefinition:
         type: string
         default: ./
+      updateSubmodule:
+        description: Update the submodule on the core repository?
+        type: boolean
+        default: true
         
     outputs:
       GitVersion_SemVer:
@@ -73,6 +77,7 @@ jobs:
     secrets: inherit
 
   submodule:
+    if: inputs.updateSubmodule
     uses: lsc-sde/lsc-sde/.github/workflows/update-submodules.yaml@main
     needs: 
     - semver
