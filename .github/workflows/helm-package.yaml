@@ -28,6 +28,11 @@ on:
         description: The value to update the field in the YAML file
         type: string
         default: ""
+
+      switchMain:
+        description: Switch to the main branch on the repo 
+        type: boolean
+        default: true
       
 jobs:
   package:
@@ -65,7 +70,8 @@ jobs:
         git pull
 
         
-    - name: "Switch to main branch for ${{ inputs.directory }}"
+    - if: inputs.switchMain
+      name: "Switch to main branch for ${{ inputs.directory }}"
       working-directory: "${{ inputs.directory }}"
       run: |
         git switch main
