@@ -184,3 +184,6 @@
 [submodule "products/sde/data-ingestion/cr8tor"]
 	path = products/sde/data-ingestion/cr8tor
 	url = https://github.com/lsc-sde-crates/cr8tor
+[submodule "iac/flux/neulander"]
+	path = iac/flux/neulander
+	url = https://github.com/lsc-sde/iac-flux-neulander/
