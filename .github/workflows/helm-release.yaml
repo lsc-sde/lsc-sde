@@ -24,6 +24,11 @@ on:
         description: The prefix of the yaml in the yaml config
         type: string
         default: ".chart_version"
+      
+      updateSubmodule:
+        description: Update the submodule on the core repository?
+        type: boolean
+        default: true
 
     
     outputs:
@@ -64,6 +69,7 @@ jobs:
 
 
   submodule:
+    if: inputs.updateSubmodule
     uses: lsc-sde/lsc-sde/.github/workflows/update-submodules.yaml@main
     needs: 
     - semver
