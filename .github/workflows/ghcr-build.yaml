@@ -143,7 +143,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: /tmp/digests/${{ steps.concatenate.outputs.digest_url }}
-          pattern: digests-*-*-${{ matrix.target }}
+          pattern: digests-${{ inputs.imageName }}-*-*-${{ matrix.target }}
           merge-multiple: true
       -
         name: Set up Docker Buildx
