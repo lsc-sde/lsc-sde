@@ -98,7 +98,7 @@ jobs:
       name: Build digest url
       id: concatenate
       run: |
-        digest_url="${{ matrix.target }}/${{ matrix.buildArgs.TARGET_VERSION != null && matrix.buildArgs.TARGET_VERSION  || '' }}"
+        digest_url="${{ matrix.target }}/${{ inputs.imageName }}-${{ matrix.buildArgs.TARGET_VERSION != null && matrix.buildArgs.TARGET_VERSION  || '' }}"
         echo "digest_url=$digest_url" >> $GITHUB_OUTPUT
 
     - name: Export digest
@@ -110,7 +110,7 @@ jobs:
     - name: Upload digest
       uses: actions/upload-artifact@v4
       with:
-        name: digests-${{ matrix.os }}-${{ matrix.platform }}-${{ matrix.target }}
+        name: digests-${{ inputs.imageName }}-${{ matrix.os }}-${{ matrix.platform }}-${{ matrix.target }}
         path: /tmp/digests/${{ steps.concatenate.outputs.digest_url }}/*
         if-no-files-found: error
         retention-days: 1
@@ -134,7 +134,7 @@ jobs:
         name: Concatenate dynamic tag and digest variables
         id: concatenate
         run: |
-          digest_url="${{ matrix.target }}/${{ matrix.buildArgs.TARGET_VERSION != null && matrix.buildArgs.TARGET_VERSION  || '' }}"
+          digest_url="${{ matrix.target }}/${{ inputs.imageName }}-${{ matrix.buildArgs.TARGET_VERSION != null && matrix.buildArgs.TARGET_VERSION  || '' }}"
           tag_prefix="${{ matrix.target != 'null' && matrix.target  || '' }}${{ matrix.buildArgs.TARGET_VERSION != null && format('{0}-', matrix.buildArgs.TARGET_VERSION) || '' }}"
           echo "digest_url=$digest_url" >> $GITHUB_OUTPUT
           echo "tag_prefix=$tag_prefix" >> $GITHUB_OUTPUT
