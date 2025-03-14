@@ -35,7 +35,8 @@
 			"pathToHelmChart" : "${containerWorkspaceFolder}/lsc-sde/iac/helm/ohsdi"
 		},
 		"ghcr.io/lsc-sde/devcontainer-features/apache-superset:latest": {},
-		"ghcr.io/lsc-sde/devcontainer-features/apache-guacamole:latest" : {}
+		"ghcr.io/lsc-sde/devcontainer-features/apache-guacamole:latest" : {},
+		"ghcr.io/lsc-sde-crates/cr8tor-publisher/cr8tor-publisher-krapctl:latest": {}
 		
 	},
 	"forwardPorts" : [
