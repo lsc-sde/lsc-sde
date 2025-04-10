@@ -187,3 +187,6 @@
 [submodule "iac/flux/neulander"]
 	path = iac/flux/neulander
 	url = https://github.com/lsc-sde/iac-flux-neulander/
+[submodule "iac/flux/tobiko"]
+	path = iac/flux/tobiko
+	url = https://github.com/lsc-sde/iac-flux-tobiko/
