@@ -1,0 +1,9 @@
+{
+	"name": "adf-lsc-uks-lthdev",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1b279316-6ca6-4f06-bc11-10f807bd7c4e",
+		"tenantId": "f12f0279-8a84-4068-8322-7a6fb0f839b8"
+	}
+}
