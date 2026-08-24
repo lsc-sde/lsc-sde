@@ -75,7 +75,7 @@ jobs:
     - name: Prepare Repository
       run: |
         git config --global user.name 'lsc-sde'
-        git config --global user.email 'shaun.turner1@nhs.net'
+        git config --global user.email 'lsc-sde-bot@users.noreply.github.com'
         git switch "main"
         git fetch
 

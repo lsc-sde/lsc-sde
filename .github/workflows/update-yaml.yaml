@@ -28,7 +28,7 @@ jobs:
         UPDATE_MESSAGE="Updating file at ${{ inputs.path }} setting ${{ inputs.yamlPath }} to ${{ inputs.newValue }}"
         echo "${UPDATE_MESSAGE}"
         git config --global user.name 'lsc-sde'
-        git config --global user.email 'shaun.turner1@nhs.net'
+        git config --global user.email 'lsc-sde-bot@users.noreply.github.com'
         git config --global pull.rebase false
 
         IFS=', ' read -r -a files <<< "${{ inputs.path }}"

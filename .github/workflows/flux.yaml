@@ -33,7 +33,7 @@ jobs:
       run: |
         export FQ_BRANCH_NAME="${{ inputs.prefix }}/${{ inputs.symver }}"
         git config --global user.name 'lsc-sde'
-        git config --global user.email 'shaun.turner1@nhs.net'
+        git config --global user.email 'lsc-sde-bot@users.noreply.github.com'
 
         echo "Creating Branch: ${FQ_BRANCH_NAME}"
         git branch "${FQ_BRANCH_NAME}"

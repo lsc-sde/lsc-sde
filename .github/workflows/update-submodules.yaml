@@ -26,7 +26,7 @@ jobs:
         UPDATE_MESSAGE="Updated submodule at ${{ inputs.directory }} to version ${{ inputs.symver }}"
         echo "${UPDATE_MESSAGE}"
         git config --global user.name 'lsc-sde'
-        git config --global user.email 'shaun.turner1@nhs.net'
+        git config --global user.email 'lsc-sde-bot@users.noreply.github.com'
         git config --global pull.rebase false
 
         git submodule update --init "${{ inputs.directory }}"
